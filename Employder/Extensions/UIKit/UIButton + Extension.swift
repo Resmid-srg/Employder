@@ -5,7 +5,6 @@
 //  Created by Serov Dmitry on 09.08.22.
 //
 
-import Foundation
 import UIKit
 
 extension UIButton {
@@ -31,5 +30,14 @@ extension UIButton {
             self.layer.shadowOpacity = 0.2
             self.layer.shadowOffset = CGSize(width: 0, height: 4)
         }
+    }
+    
+    func customizeGoogleButton() {
+        let googleLogo = UIImageView(image: UIImage(named: "google"), contentMode: .scaleAspectFit)
+        googleLogo.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(googleLogo)
+        googleLogo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        googleLogo.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        googleLogo.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
 }

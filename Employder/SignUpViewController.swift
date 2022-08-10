@@ -44,14 +44,24 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController {
     
     private func setupConstraints() {
-        let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 0)
-        let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 0)
-        let confirmPasswordStackView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField], axis: .vertical, spacing: 0)
+        let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField],
+                                         axis: .vertical,
+                                         spacing: 0)
+        let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField],
+                                            axis: .vertical,
+                                            spacing: 0)
+        let confirmPasswordStackView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField],
+                                                   axis: .vertical,
+                                                   spacing: 0)
         
         signUpButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
-        let stackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, confirmPasswordStackView, signUpButton], axis: .vertical, spacing: 40)
-        let bottomStackView = UIStackView(arrangedSubviews: [alreadyOnboardLabel, loginButton], axis: .horizontal, spacing: 8)
+        let stackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, confirmPasswordStackView, signUpButton],
+                                    axis: .vertical,
+                                    spacing: 40)
+        let bottomStackView = UIStackView(arrangedSubviews: [alreadyOnboardLabel, loginButton],
+                                          axis: .horizontal,
+                                          spacing: 8)
         
         helloLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false

@@ -21,9 +21,9 @@ class AuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         view.backgroundColor = .white
+        googleButton.customizeGoogleButton()
         setupConstraints()
     }
 
@@ -34,12 +34,15 @@ class AuthViewController: UIViewController {
 extension AuthViewController {
     
     private func setupConstraints() {
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         let googleView = ButtonFormAuthView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormAuthView(label: emailLabel, button: emailButton)
         let loginView = ButtonFormAuthView(label: alreadyOnboardLabel, button: loginButton)
         
-        let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView], axis: .vertical, spacing: 40)
+        let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView],
+                                    axis: .vertical,
+                                    spacing: 40)
+        
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(logoImageView)

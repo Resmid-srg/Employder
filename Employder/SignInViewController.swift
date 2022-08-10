@@ -32,8 +32,11 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupConstraints()
+        
         view.backgroundColor = .white
+        googleButton.customizeGoogleButton()
+        setupConstraints()
+
             
         
     }
@@ -46,13 +49,21 @@ extension SignInViewController {
     private func setupConstraints() {
         
         let googleButtonView = ButtonFormAuthView(label: loginWithLabel, button: googleButton)
-        let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 0)
-        let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 0)
+        let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField],
+                                         axis: .vertical,
+                                         spacing: 0)
+        let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField],
+                                            axis: .vertical,
+                                            spacing: 0)
         
         loginButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
-        let stackView = UIStackView(arrangedSubviews: [googleButtonView, orLabel, emailStackView, passwordStackView, loginButton], axis: .vertical, spacing: 40)
-        let bottomStackView = UIStackView(arrangedSubviews: [needAccLabel, singUpButton], axis: .horizontal, spacing: 10)
+        let stackView = UIStackView(arrangedSubviews: [googleButtonView, orLabel, emailStackView, passwordStackView, loginButton],
+                                    axis: .vertical,
+                                    spacing: 40)
+        let bottomStackView = UIStackView(arrangedSubviews: [needAccLabel, singUpButton],
+                                          axis: .horizontal,
+                                          spacing: 10)
         
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false

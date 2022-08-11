@@ -55,9 +55,7 @@ extension SignInViewController {
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField],
                                             axis: .vertical,
                                             spacing: 0)
-        
-        loginButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
+                
         let stackView = UIStackView(arrangedSubviews: [googleButtonView, orLabel, emailStackView, passwordStackView, loginButton],
                                     axis: .vertical,
                                     spacing: 40)
@@ -72,6 +70,8 @@ extension SignInViewController {
         view.addSubview(welcomeLabel)
         view.addSubview(stackView)
         view.addSubview(bottomStackView)
+        
+        loginButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         NSLayoutConstraint.activate([
             welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),

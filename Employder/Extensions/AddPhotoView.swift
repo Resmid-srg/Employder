@@ -13,7 +13,7 @@ class AddPhotoView: UIView {
         let image = UIView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.clipsToBounds = true
-        image.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        image.layer.borderColor = UIColor.black.cgColor
         image.layer.borderWidth = 1
         return image
     }()
@@ -34,7 +34,7 @@ class AddPhotoView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "plus")
         button.setImage(image, for: .normal)
-        button.tintColor = #colorLiteral(red: 0.448291719, green: 0.1095626131, blue: 0.4291127622, alpha: 1)
+        button.tintColor = UIColor.purpleMainColor()
         return button
     }()
     

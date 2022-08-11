@@ -21,4 +21,11 @@ extension UIColor {
         return #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     }
     
+    static func purpleMainColor() -> UIColor {
+        return #colorLiteral(red: 0.448291719, green: 0.1095626131, blue: 0.4291127622, alpha: 1)
+    }
+    
+    static func purpleLightColor() -> UIColor {
+        return #colorLiteral(red: 0.448291719, green: 0.1095626131, blue: 0.4291127622, alpha: 0.03807929422)
+    }
 }

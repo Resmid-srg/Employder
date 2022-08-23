@@ -13,7 +13,30 @@ class CandidatesViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemGreen
+        setupSearchBar()
     }
+    
+    private func setupSearchBar() {
+        navigationController?.navigationBar.barTintColor = .blue
+        //navigationController.navigationBar.shadowImage = UIImage()
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+    }
+
+    
+}
+
+//MARK: - UISearchBarDelegate
+
+extension CandidatesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print (searchText)
+    }
+    
 }
 
 //MARK: - SwiftUI

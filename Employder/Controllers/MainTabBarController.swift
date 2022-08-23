@@ -21,7 +21,7 @@ class MainTabBarController: UITabBarController {
         let candidatesImage = UIImage(systemName: "person.3.fill")!
         
         viewControllers = [
-        
+            
             generateNavigationController(rootViewController: listViewController, title: "Connections", image: listImage),
             generateNavigationController(rootViewController: candidatesViewController, title: "Candidates", image: candidatesImage)
         

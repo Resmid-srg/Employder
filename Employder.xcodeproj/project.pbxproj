@@ -19,6 +19,7 @@
 		0A4AFF3C28A424BB00D0AE94 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4AFF3B28A424BB00D0AE94 /* AddPhotoView.swift */; };
 		0A4CE90B28BF780E0071EAAF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4CE90A28BF780E0071EAAF /* ProfileViewController.swift */; };
 		0A4CE90D28BFC7080071EAAF /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4CE90C28BFC7080071EAAF /* InsertableTextField.swift */; };
+		0A4CE90F28BFD3EF0071EAAF /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4CE90E28BFD3EF0071EAAF /* UIView + Extension.swift */; };
 		0A51CA4428A282CD00ECB8FC /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51CA4328A282CD00ECB8FC /* UILabel + Extension.swift */; };
 		0A51CA4628A2850000ECB8FC /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51CA4528A2850000ECB8FC /* UIImage + Extension.swift */; };
 		0A51CA4A28A2BA0D00ECB8FC /* ButtonFormAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51CA4928A2BA0D00ECB8FC /* ButtonFormAuthView.swift */; };
@@ -60,6 +61,7 @@
 		0A4AFF3B28A424BB00D0AE94 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		0A4CE90A28BF780E0071EAAF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0A4CE90C28BFC7080071EAAF /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
+		0A4CE90E28BFD3EF0071EAAF /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		0A51CA4328A282CD00ECB8FC /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		0A51CA4528A2850000ECB8FC /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		0A51CA4928A2BA0D00ECB8FC /* ButtonFormAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormAuthView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				0A6C46E028BE703800E7F221 /* UIViewController + Extension.swift */,
+				0A4CE90E28BFD3EF0071EAAF /* UIView + Extension.swift */,
 				0A90B67C28A5048200F5B4C3 /* UISegmentedControl + Extension.swift */,
 				0A5BA7F028A266D600C66C62 /* UIButton + Extension.swift */,
 				0A5BA7F228A26F1500C66C62 /* UIFont + Extension.swift */,
@@ -314,6 +317,7 @@
 				0A6C46DF28BE6CFF00E7F221 /* CandidateCell.swift in Sources */,
 				0A51CA4C28A2D2B300ECB8FC /* UIStackView + Extension.swift in Sources */,
 				0A51CA4428A282CD00ECB8FC /* UILabel + Extension.swift in Sources */,
+				0A4CE90F28BFD3EF0071EAAF /* UIView + Extension.swift in Sources */,
 				0AD68C3C28A5570400C7D15A /* MainTabBarController.swift in Sources */,
 				0A5BA7F528A276E800C66C62 /* UIColor + Extension.swift in Sources */,
 				0A5B1C8D28BB9DFA00BF535D /* SelfConfiguringCell.swift in Sources */,

@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     let userNameLabel = UILabel(text: "Trololo")
     let aboutMeLabel = UILabel(text: "ohhohohohoohohohhohoho")
     let imageView = UIImageView(image: UIImage(named: "human11"), contentMode: .scaleAspectFill)
-    let textField = UITextField()
+    let textField = InsertableTextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +31,17 @@ class ProfileViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         aboutMeLabel.numberOfLines = 0
-        textField.borderStyle = .roundedRect
+        //textField.borderStyle = .roundedRect
         containerView.backgroundColor = .systemGroupedBackground
         containerView.layer.cornerRadius = 32
+        
+//        if let button = textField.rightView as? UIButton {
+//            button.addTarget(self, action: #selector(@objc sendMessage()), for: .touchUpInside)
+//        }
+//    }
+//    
+//    @objc private func sendMessage() {
+//        print(#function)
     }
 }
 
@@ -63,20 +71,21 @@ extension ProfileViewController {
         
         NSLayoutConstraint.activate([
             userNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 44),
-            userNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48),
-            userNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -28)
+            userNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
+            userNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24)
         ])
         
         NSLayoutConstraint.activate([
             aboutMeLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 16),
-            aboutMeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48),
-            aboutMeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48)
+            aboutMeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
+            aboutMeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24)
         ])
         
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: aboutMeLabel.bottomAnchor, constant: 16),
-            textField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48),
-            textField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48)
+            textField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
+            textField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
+            textField.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
 }

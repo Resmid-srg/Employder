@@ -9,15 +9,49 @@ import UIKit
 
 class CandidatesViewController: UIViewController {
     
+    let users = Bundle.main.decode([MCandidate].self, from: "users.json")
+    
+    enum Section: Int, CaseIterable {
+        case users
+        
+        func description (usersCount: Int) -> String {
+            switch self {
+                case .users:
+                    return "\(usersCount) кандидатов онлайн"
+            }
+        }
+    }
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, MCandidate>?
+    var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .white
         setupSearchBar()
+        setupCollectionView()
+        createDataSource()
+        reloadData(with: nil)
+        
+        users.forEach {(user) in
+            print(user.userName)
+        }
+    }
+    
+    private func setupCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        //collectionView.backgroundColor = UIColor.purpleLightColor()
+        view.addSubview(collectionView)
+        
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
+        
+        collectionView.register(CandidateCell.self, forCellWithReuseIdentifier: CandidateCell.reuseId)
     }
     
     private func setupSearchBar() {
-        navigationController?.navigationBar.barTintColor = .blue
+        navigationController?.navigationBar.barTintColor = .white
         //navigationController.navigationBar.shadowImage = UIImage()
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
@@ -26,15 +60,104 @@ class CandidatesViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
     }
+    
+    private func reloadData(with searchText: String?) {
+        let filtered = users.filter { (user) -> Bool in
+            user.contains(filter: searchText)
+        }
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MCandidate>()
+        snapshot.appendSections([.users])
+        snapshot.appendItems(filtered, toSection: .users)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
 
     
+}
+
+//MARK: - Data Source
+
+extension CandidatesViewController {
+    
+    private func createDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, MCandidate>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, user) -> UICollectionViewCell? in
+            guard let section = Section(rawValue: indexPath.section) else {
+                fatalError("Unknown section kind")
+            }
+            
+            switch section {
+                case .users:
+                    return self.configur(collectionView: collectionView, cellType: CandidateCell.self, with: user, for: indexPath)
+            }
+        })
+        
+        dataSource?.supplementaryViewProvider = {
+            collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can non create new section header") }
+            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
+            let items = self.dataSource?.snapshot().itemIdentifiers(inSection: .users)
+            sectionHeader.configure(text: section.description(usersCount: items!.count), font: .systemFont(ofSize: 28, weight: .light), textColor: .label)
+            
+            return sectionHeader
+        }
+    }
+}
+
+//MARK: - Setup layout
+
+extension CandidatesViewController {
+    
+    private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let section = Section(rawValue: sectionIndex) else {
+                fatalError("Unknown section kind")
+            }
+            
+            switch section {
+                case .users:
+                    return self.createCandidatesSection()
+                    
+            }
+        }
+        
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+        layout.configuration = config
+        
+        return layout
+    }
+    
+    private func createCandidatesSection() -> NSCollectionLayoutSection {
+        let spacing = CGFloat(16)
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.6))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+        group.interItemSpacing = .fixed(spacing)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 16, bottom: 16, trailing: 16)
+        section.interGroupSpacing = spacing
+        
+        let sectionHeader = createSectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader]
+        return section
+    }
+    
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        return sectionHeader
+    }
 }
 
 //MARK: - UISearchBarDelegate
 
 extension CandidatesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print (searchText)
+        reloadData(with: searchText)
     }
     
 }

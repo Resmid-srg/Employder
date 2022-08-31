@@ -25,7 +25,15 @@ extension UIColor {
         return #colorLiteral(red: 0.448291719, green: 0.1095626131, blue: 0.4291127622, alpha: 1)
     }
     
+    static func gradientColor1() -> UIColor {
+        return #colorLiteral(red: 0.448291719, green: 0.1095626131, blue: 0.4291127622, alpha: 1)
+    }
+    
+    static func gradientColor2() -> UIColor {
+        return #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+    }
+    
     static func purpleLightColor() -> UIColor {
-        return #colorLiteral(red: 0.448291719, green: 0.1095626131, blue: 0.4291127622, alpha: 0.03807929422)
+        return #colorLiteral(red: 0.448291719, green: 0.1095626131, blue: 0.4291127622, alpha: 0.1481983419)
     }
 }

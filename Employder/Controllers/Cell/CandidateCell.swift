@@ -44,17 +44,17 @@ class CandidateCell: UICollectionViewCell, SelfConfiguringCell {
     }
     
     func configur<U>(with value: U) where U : Hashable {
-        guard let user: MCandidate = value as? MCandidate else { return }
-        userImageView.image = UIImage(named: user.avatarStringURL)
+        guard let userss: MCandidate = value as? MCandidate else { return }
+        userImageView.image = UIImage(named: userss.avatarStringURL)
         userImageView.contentMode = .scaleAspectFill
         userImageView.layer.cornerRadius = 40
         userImageView.clipsToBounds = true
-        userName.text = user.userName
+        userName.text = userss.userName
         userName.numberOfLines = 0
-        aboutMe.text = user.aboutMe
+        aboutMe.text = userss.aboutMe
         aboutMe.numberOfLines = 4
-        experience.text = "Опыт работы \(user.experience) года"
-        speciality.text = user.speciality
+        experience.text = "Опыт работы \(userss.experience) года"
+        speciality.text = userss.speciality
 
     }
     

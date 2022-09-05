@@ -28,13 +28,13 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
     }
     
     func configur<U>(with value: U) where U : Hashable {
-        guard let user: EChat = value as? EChat else { return }
-        friendImageView.image = UIImage(named: user.userImageString)
+        guard let userss: EChat = value as? EChat else { return }
+        friendImageView.image = UIImage(named: userss.userImageString)
         friendImageView.contentMode = .scaleAspectFill
         friendImageView.layer.cornerRadius = 39
         friendImageView.clipsToBounds = true
-        friendName.text = user.userName
-        friendLastMessage.text = user.lastMessage
+        friendName.text = userss.userName
+        friendLastMessage.text = userss.lastMessage
         gradientView.layer.cornerRadius = 8
         gradientView.clipsToBounds = true
     }

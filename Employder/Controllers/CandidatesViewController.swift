@@ -34,8 +34,8 @@ class CandidatesViewController: UIViewController {
         createDataSource()
         reloadData(with: nil)
         
-        users.forEach {(user) in
-            print(user.userName)
+        users.forEach {(userss) in
+            print(userss.userName)
         }
     }
     
@@ -62,8 +62,8 @@ class CandidatesViewController: UIViewController {
     }
     
     private func reloadData(with searchText: String?) {
-        let filtered = users.filter { (user) -> Bool in
-            user.contains(filter: searchText)
+        let filtered = users.filter { (userss) -> Bool in
+            userss.contains(filter: searchText)
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, MCandidate>()
@@ -80,14 +80,14 @@ class CandidatesViewController: UIViewController {
 extension CandidatesViewController {
     
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, MCandidate>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, user) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, MCandidate>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, userss) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }
             
             switch section {
                 case .users:
-                    return self.configur(collectionView: collectionView, cellType: CandidateCell.self, with: user, for: indexPath)
+                    return self.configur(collectionView: collectionView, cellType: CandidateCell.self, with: userss, for: indexPath)
             }
         })
         

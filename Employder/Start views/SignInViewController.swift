@@ -37,9 +37,24 @@ class SignInViewController: UIViewController {
         googleButton.customizeGoogleButton()
         setupConstraints()
 
-            
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
     }
+    
+    @objc private func loginButtonTapped() {
+        print(#function)
+        AuthService.shared.login(email: emailTextField.text,
+                                 password: passwordTextField.text) { (logResult) in
+            switch logResult {
+                case .success(let user):
+                    self.showAlert(with: "Успешно", and: "Вы зарегистрированы!")
+                    print(user.email!)
+                case .failure(let error):
+                    self.showAlert(with: "Ошибка", and: error.localizedDescription)
+            }
+        }
+    }
+    
 }
 
 //MARK: - Setup constraints

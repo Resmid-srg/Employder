@@ -22,13 +22,15 @@ class SignInViewController: UIViewController {
 
     let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
     let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .buttonBlack())
-    let singUpButton: UIButton = {
+    let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sing Up", for: .normal)
         button.setTitleColor(.buttonRed(), for: .normal)
         button.titleLabel?.font = .avenir20()
         return button
     }()
+    
+    weak var delegate: AuthNavigationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class SignInViewController: UIViewController {
         setupConstraints()
 
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     
     @objc private func loginButtonTapped() {
@@ -46,12 +48,19 @@ class SignInViewController: UIViewController {
         AuthService.shared.login(email: emailTextField.text,
                                  password: passwordTextField.text) { (logResult) in
             switch logResult {
-                case .success(let user):
-                    self.showAlert(with: "Успешно", and: "Вы зарегистрированы!")
-                    print(user.email!)
+                case .success:
+                    self.showAlert(with: "Успешно", and: "Вы авторизованы!") {
+                        self.present(MainTabBarController(), animated: true, completion: nil)
+                    }
                 case .failure(let error):
                     self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
+        }
+    }
+    
+    @objc private func signUpButtonTapped() {
+        dismiss(animated: true) {
+            self.delegate?.toSingUpVC()
         }
     }
     
@@ -70,31 +79,46 @@ extension SignInViewController {
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField],
                                             axis: .vertical,
                                             spacing: 0)
-                
-        let stackView = UIStackView(arrangedSubviews: [googleButtonView, orLabel, emailStackView, passwordStackView, loginButton],
+        
+        let stackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, loginButton],
                                     axis: .vertical,
-                                    spacing: 40)
-        let bottomStackView = UIStackView(arrangedSubviews: [needAccLabel, singUpButton],
+                                    spacing: 46)
+        let bottomStackView = UIStackView(arrangedSubviews: [needAccLabel, signUpButton],
                                           axis: .horizontal,
                                           spacing: 10)
         
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+        googleButtonView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
+        orLabel.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(welcomeLabel)
+        view.addSubview(googleButtonView)
         view.addSubview(stackView)
         view.addSubview(bottomStackView)
+        view.addSubview(orLabel)
         
         loginButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 80),
+            googleButtonView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 80),
+            googleButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            googleButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            orLabel.topAnchor.constraint(equalTo: googleButtonView.bottomAnchor, constant: 28),
+            orLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 28),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])

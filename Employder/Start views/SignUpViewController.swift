@@ -6,8 +6,11 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
+
+protocol AuthNavigationDelegate: AnyObject{
+    func toSingInVC()
+    func toSingUpVC()
+}
 
 class SignUpViewController: UIViewController {
     
@@ -30,6 +33,8 @@ class SignUpViewController: UIViewController {
         button.titleLabel?.font = .avenir20()
         return button
     }()
+    
+    weak var delegate: AuthNavigationDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +44,7 @@ class SignUpViewController: UIViewController {
         setupConstraints()
         
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
     @objc private func signUpButtonTapped() {
@@ -47,21 +53,30 @@ class SignUpViewController: UIViewController {
                                     password: passwordTextField.text,
                                     confirmPassword: confirmPasswordTextField.text) { (authResult) in
             switch authResult {
-                case .success(let user):
-                    self.showAlert(with: "Успешно", and: "Вы зарегистрированы!")
-                    print(user.email!)
+                case .success:
+                    self.showAlert(with: "Успешно", and: "Вы зарегистрированы!") {
+                        self.present(SetupProfileViewController(), animated: true, completion: nil)
+                    }
                 case .failure(let error):
                     self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         }
     }
     
+    @objc private func loginButtonTapped() {
+        dismiss(animated: true) {
+            self.delegate?.toSingInVC()
+        }
+    }
+    
 }
 
 extension UIViewController {
-    func showAlert(with title: String, and message: String) {
+    func showAlert(with title: String, and message: String, completion: @escaping () -> Void = { }) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAlert = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let okAlert = UIAlertAction(title: "Ok", style: .default) { (_) in
+            completion()
+        }
         alertController.addAction(okAlert)
         present(alertController, animated: true, completion: nil)
     }
@@ -86,7 +101,7 @@ extension SignUpViewController {
         
         let stackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, confirmPasswordStackView, signUpButton],
                                     axis: .vertical,
-                                    spacing: 40)
+                                    spacing: 46)
         let bottomStackView = UIStackView(arrangedSubviews: [alreadyOnboardLabel, loginButton],
                                           axis: .horizontal,
                                           spacing: 8)
@@ -100,12 +115,12 @@ extension SignUpViewController {
         view.addSubview(bottomStackView)
         
         NSLayoutConstraint.activate([
-            helloLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+            helloLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 128),
             helloLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
                 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: helloLabel.bottomAnchor, constant: 120),
+            stackView.topAnchor.constraint(equalTo: helloLabel.bottomAnchor, constant: 88),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])

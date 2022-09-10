@@ -10,10 +10,20 @@ import UIKit
 struct MCandidate: Hashable, Decodable {
     var userName: String
     var avatarStringURL: String
-    var experience: Int
-    var aboutMe: String
-    var id: Int
-    var speciality: String
+    var description: String
+    var email: String
+    var id: String
+    var sex: String
+    
+    var representation: [String: Any] {
+        var rep = ["userName": userName]
+        rep["avatarStringURL"] = avatarStringURL
+        rep["description"] = description
+        rep["email"] = email
+        rep["uid"] = id
+        rep["sex"] = sex
+        return rep
+    }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

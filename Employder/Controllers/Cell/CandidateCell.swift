@@ -51,10 +51,10 @@ class CandidateCell: UICollectionViewCell, SelfConfiguringCell {
         userImageView.clipsToBounds = true
         userName.text = userss.userName
         userName.numberOfLines = 0
-        aboutMe.text = userss.aboutMe
+        //aboutMe.text = userss.aboutMe
         aboutMe.numberOfLines = 4
-        experience.text = "Опыт работы \(userss.experience) года"
-        speciality.text = userss.speciality
+        //experience.text = "Опыт работы \(userss.experience) года"
+        //speciality.text = userss.speciality
 
     }
     

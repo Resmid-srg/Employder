@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol AuthNavigationDelegate: AnyObject{
-    func toSingInVC()
-    func toSingUpVC()
-}
-
 class SignUpViewController: UIViewController {
     
     let helloLabel = UILabel(text: "Hello!", font: .avenir26())
@@ -53,9 +48,9 @@ class SignUpViewController: UIViewController {
                                     password: passwordTextField.text,
                                     confirmPassword: confirmPasswordTextField.text) { (authResult) in
             switch authResult {
-                case .success:
+                case .success(let user):
                     self.showAlert(with: "Успешно", and: "Вы зарегистрированы!") {
-                        self.present(SetupProfileViewController(), animated: true, completion: nil)
+                        self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
                     }
                 case .failure(let error):
                     self.showAlert(with: "Ошибка", and: error.localizedDescription)

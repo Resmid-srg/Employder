@@ -18,6 +18,21 @@ class FirebaseService {
         return db.collection("users")
     }
     
+    func getUserData (user: User, completion: @escaping (Result<MCandidate, Error>) -> Void) {
+        let docRef = userRef.document(user.uid)
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                guard let mcandidate = MCandidate(document: document) else {
+                    completion(.failure(UserErrors.cannotConvertToMCandidate))
+                    return
+                }
+                completion(.success(mcandidate))
+            } else {
+                completion(.failure(UserErrors.cannotGetUserInfo))
+            }
+        }
+    }
+    
     func saveProfileWith(id: String, email: String, userName: String?, avatarImageString: String?, description: String?, sex: String?, completion: @escaping (Result<MCandidate, Error>) -> Void) {
         
         guard Validators.isFilled(userName: userName, description: description, sex: sex) else {

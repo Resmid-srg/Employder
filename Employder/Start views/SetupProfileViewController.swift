@@ -54,7 +54,7 @@ class SetupProfileViewController: UIViewController {
             sex: sexSelector.titleForSegment(at: sexSelector.selectedSegmentIndex)) { (result) in
                 switch result {
                     case .success(let mcandidate):
-                        self.showAlert(with: "Успешно", and: "Вы авторизованы!")
+                        self.showAlert(with: "Успешно", and: "Вы заполнили профиль!")
                         print(mcandidate)
                     case .failure(let error):
                         self.showAlert(with: "Ошибка", and: error.localizedDescription)

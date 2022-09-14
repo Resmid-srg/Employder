@@ -10,6 +10,8 @@ import Foundation
 enum UserErrors {
     case notFilled
     case photoNotExist
+    case cannotGetUserInfo
+    case cannotConvertToMCandidate
 }
 
 extension UserErrors: LocalizedError {
@@ -19,6 +21,10 @@ extension UserErrors: LocalizedError {
                 return NSLocalizedString("Заполните все поля", comment: "")
             case .photoNotExist:
                 return NSLocalizedString("Фото не определено", comment: "")
+            case .cannotGetUserInfo:
+                return NSLocalizedString("Невозможно получить информацию о пльзователе из Firebase", comment: "")
+            case .cannotConvertToMCandidate:
+                return NSLocalizedString("Невозможно конвертировать MCandidate из User", comment: "")
         }
     }
 }

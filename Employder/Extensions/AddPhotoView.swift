@@ -9,7 +9,7 @@ import UIKit
 
 class AddPhotoView: UIView {
     
-    let imageView1: UIView = {
+    let imageView: UIView = {
         let image = UIView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.clipsToBounds = true
@@ -22,7 +22,7 @@ class AddPhotoView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "avatar")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = false
 //        imageView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 //        imageView.layer.borderWidth = 1
@@ -41,8 +41,8 @@ class AddPhotoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(imageView1)
-        imageView1.addSubview(circleImageView)
+        addSubview(imageView)
+        imageView.addSubview(circleImageView)
         //addSubview(circleImageView)
         addSubview(plusButton)
         
@@ -56,22 +56,22 @@ class AddPhotoView: UIView {
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
-            imageView1.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            imageView1.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            imageView1.widthAnchor.constraint(equalToConstant: 100),
-            imageView1.heightAnchor.constraint(equalToConstant: 100)
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            imageView.widthAnchor.constraint(equalToConstant: 160),
+            imageView.heightAnchor.constraint(equalToConstant: 160)
         ])
         
         NSLayoutConstraint.activate([
-            circleImageView.centerXAnchor.constraint(equalTo: imageView1.centerXAnchor),
-            circleImageView.centerYAnchor.constraint(equalTo: imageView1.centerYAnchor),
-            circleImageView.widthAnchor.constraint(equalToConstant: 80),
-            circleImageView.heightAnchor.constraint(equalToConstant: 80)
+            circleImageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            circleImageView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
+            circleImageView.widthAnchor.constraint(equalToConstant: 160),
+            circleImageView.heightAnchor.constraint(equalToConstant: 160)
         ])
         
         NSLayoutConstraint.activate([
-            plusButton.centerYAnchor.constraint(equalTo: imageView1.centerYAnchor),
-            plusButton.leadingAnchor.constraint(equalTo: imageView1.trailingAnchor, constant: 16),
+            plusButton.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
+            plusButton.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
             plusButton.widthAnchor.constraint(equalToConstant: 30),
             plusButton.heightAnchor.constraint(equalToConstant: 30)
         ])
@@ -82,7 +82,7 @@ class AddPhotoView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView1.layer.masksToBounds = true
-        imageView1.layer.cornerRadius = imageView1.frame.width / 2
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = imageView.frame.width / 2
     }
 }

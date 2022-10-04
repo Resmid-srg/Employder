@@ -30,7 +30,7 @@
 		0A4CE90F28BFD3EF0071EAAF /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4CE90E28BFD3EF0071EAAF /* UIView + Extension.swift */; };
 		0A51537828E2F08A00B512F3 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 0A51537728E2F08A00B512F3 /* GoogleSignIn */; };
 		0A51CA4428A282CD00ECB8FC /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51CA4328A282CD00ECB8FC /* UILabel + Extension.swift */; };
-		0A51CA4628A2850000ECB8FC /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51CA4528A2850000ECB8FC /* UIImage + Extension.swift */; };
+		0A51CA4628A2850000ECB8FC /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51CA4528A2850000ECB8FC /* UIImageView + Extension.swift */; };
 		0A51CA4A28A2BA0D00ECB8FC /* ButtonFormAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51CA4928A2BA0D00ECB8FC /* ButtonFormAuthView.swift */; };
 		0A51CA4C28A2D2B300ECB8FC /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51CA4B28A2D2B300ECB8FC /* UIStackView + Extension.swift */; };
 		0A52568B28C6524B0064AB6C /* AuthErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A52568A28C6524B0064AB6C /* AuthErrors.swift */; };
@@ -45,6 +45,7 @@
 		0A5BA7F128A266D600C66C62 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BA7F028A266D600C66C62 /* UIButton + Extension.swift */; };
 		0A5BA7F328A26F1500C66C62 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BA7F228A26F1500C66C62 /* UIFont + Extension.swift */; };
 		0A5BA7F528A276E800C66C62 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BA7F428A276E800C66C62 /* UIColor + Extension.swift */; };
+		0A665EC328EC0E3F00632BD1 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A665EC228EC0E3F00632BD1 /* UIImage + Extension.swift */; };
 		0A6A3C5E28B52FC0008EF5DB /* Bandle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A3C5D28B52FC0008EF5DB /* Bandle-Decodable.swift */; };
 		0A6A3C5F28B53E11008EF5DB /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A6A3C5B28B52D88008EF5DB /* activeChats.json */; };
 		0A6A3C6028B53E13008EF5DB /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A6A3C5C28B52DD9008EF5DB /* waitingChats.json */; };
@@ -82,7 +83,7 @@
 		0A4CE90C28BFC7080071EAAF /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
 		0A4CE90E28BFD3EF0071EAAF /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		0A51CA4328A282CD00ECB8FC /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
-		0A51CA4528A2850000ECB8FC /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		0A51CA4528A2850000ECB8FC /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		0A51CA4928A2BA0D00ECB8FC /* ButtonFormAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormAuthView.swift; sourceTree = "<group>"; };
 		0A51CA4B28A2D2B300ECB8FC /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		0A52568A28C6524B0064AB6C /* AuthErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrors.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		0A5BA7F028A266D600C66C62 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		0A5BA7F228A26F1500C66C62 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		0A5BA7F428A276E800C66C62 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		0A665EC228EC0E3F00632BD1 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		0A6A3C5B28B52D88008EF5DB /* activeChats.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
 		0A6A3C5C28B52DD9008EF5DB /* waitingChats.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
 		0A6A3C5D28B52FC0008EF5DB /* Bandle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bandle-Decodable.swift"; sourceTree = "<group>"; };
@@ -184,7 +186,8 @@
 				0A5BA7F228A26F1500C66C62 /* UIFont + Extension.swift */,
 				0A5BA7F428A276E800C66C62 /* UIColor + Extension.swift */,
 				0A51CA4328A282CD00ECB8FC /* UILabel + Extension.swift */,
-				0A51CA4528A2850000ECB8FC /* UIImage + Extension.swift */,
+				0A665EC228EC0E3F00632BD1 /* UIImage + Extension.swift */,
+				0A51CA4528A2850000ECB8FC /* UIImageView + Extension.swift */,
 				0A51CA4B28A2D2B300ECB8FC /* UIStackView + Extension.swift */,
 				0A6A3C5B28B52D88008EF5DB /* activeChats.json */,
 				0A6A3C5C28B52DD9008EF5DB /* waitingChats.json */,
@@ -402,10 +405,11 @@
 				0A5BA7F528A276E800C66C62 /* UIColor + Extension.swift in Sources */,
 				0A5B1C8D28BB9DFA00BF535D /* SelfConfiguringCell.swift in Sources */,
 				0A6C46E128BE703800E7F221 /* UIViewController + Extension.swift in Sources */,
+				0A665EC328EC0E3F00632BD1 /* UIImage + Extension.swift in Sources */,
 				0A5ADE8528BE14AA00E8512A /* MCandidate.swift in Sources */,
 				0A5B1C8A28BB9C5A00BF535D /* WaitingChatCell.swift in Sources */,
 				0A6A3C5E28B52FC0008EF5DB /* Bandle-Decodable.swift in Sources */,
-				0A51CA4628A2850000ECB8FC /* UIImage + Extension.swift in Sources */,
+				0A51CA4628A2850000ECB8FC /* UIImageView + Extension.swift in Sources */,
 				0A2ADC9F28A141DC00F3F2BA /* AppDelegate.swift in Sources */,
 				0A126B5728C0E28000B7A2A3 /* AuthService.swift in Sources */,
 				0A51CA4A28A2BA0D00ECB8FC /* ButtonFormAuthView.swift in Sources */,

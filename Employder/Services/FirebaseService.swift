@@ -40,23 +40,32 @@ class FirebaseService {
             return
         }
         
+        guard avatarImage != UIImage(named: "avatar") else {
+            completion(.failure(UserErrors.photoNotExist))
+            return
+        }
         
-        
-        let mcandidate = MCandidate(userName: userName!,
+        var mcandidate = MCandidate(userName: userName!,
                                     avatarStringURL: "notExist",
                                     description: description!,
                                     email: email,
                                     id: id,
                                     sex: sex!)
         
-        self.userRef.document(mcandidate.id).setData(mcandidate.representation) { (error) in
-            if let error = error {
+        StorageService.shared.upload(photo: avatarImage!) { result in
+            switch result {
+            case .success(let url):
+                mcandidate.avatarStringURL = url.absoluteString
+                self.userRef.document(mcandidate.id).setData(mcandidate.representation) { (error) in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(mcandidate))
+                    }
+                }
+            case .failure(let error):
                 completion(.failure(error))
-            } else {
-                completion(.success(mcandidate))
             }
-        }
-        
-    }
-    
+        } //StorageService
+    } //saveProfileWith
 }

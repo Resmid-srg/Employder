@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import PhotosUI
 
 class SetupProfileViewController: UIViewController {
     
@@ -29,6 +30,8 @@ class SetupProfileViewController: UIViewController {
     init (currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
+        
+        //TODO: set google image
     }
     
     required init?(coder: NSCoder) {
@@ -42,6 +45,16 @@ class SetupProfileViewController: UIViewController {
         setupConstraints()
         
         goToChatButton.addTarget(self, action: #selector(goToChatButtonTapped), for: .touchUpInside)
+        fullAddPhotoView.plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func plusButtonTapped() {
+        var config = PHPickerConfiguration(photoLibrary: .shared())
+        config.selectionLimit = 1
+        config.filter = .images
+        let vc = PHPickerViewController(configuration: config)
+        vc.delegate = self
+        self.present(vc, animated: true)
     }
     
     @objc private func goToChatButtonTapped() {
@@ -64,6 +77,25 @@ class SetupProfileViewController: UIViewController {
                     self.showAlert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
+    }
+}
+    
+// MARK: - PHPickerViewControllerDelegate
+
+extension SetupProfileViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        results.forEach { result in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
+                guard let image = reading as? UIImage, error == nil else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.fullAddPhotoView.circleImageView.image = image
+                }
+            }
+        }
     }
 }
 
@@ -103,12 +135,12 @@ extension SetupProfileViewController {
         ])
         
         NSLayoutConstraint.activate([
-            fullAddPhotoView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 80),
+            fullAddPhotoView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 40),
             fullAddPhotoView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: fullAddPhotoView.bottomAnchor, constant: 80),
+            stackView.topAnchor.constraint(equalTo: fullAddPhotoView.bottomAnchor, constant: 50),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
@@ -125,14 +157,13 @@ struct SetupProfileVCProvider: PreviewProvider {
     
     struct ContainerView: UIViewControllerRepresentable {
         
-        let signInVC = SetupProfileViewController(currentUser: Auth.auth().currentUser!)
+        let setupProfileVC = SetupProfileViewController(currentUser: Auth.auth().currentUser!)
         
         func makeUIViewController(context: UIViewControllerRepresentableContext<SetupProfileVCProvider.ContainerView>) -> SetupProfileViewController {
-            return signInVC
+            return setupProfileVC
         }
         
         func updateUIViewController(_ uiViewController: SetupProfileVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SetupProfileVCProvider.ContainerView>) {
-            
         }
     }
 }

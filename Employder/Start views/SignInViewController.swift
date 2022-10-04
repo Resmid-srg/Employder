@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
     
     let emailTextField = OneLineTextField(font: .avenir20())
     let passwordTextField = OneLineTextField(font: .avenir20())
-
+    
     let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
     let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .buttonBlack())
     let signUpButton: UIButton = {
@@ -38,7 +38,7 @@ class SignInViewController: UIViewController {
         view.backgroundColor = .white
         googleButton.customizeGoogleButton()
         setupConstraints()
-
+        
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
@@ -48,12 +48,21 @@ class SignInViewController: UIViewController {
         AuthService.shared.login(email: emailTextField.text,
                                  password: passwordTextField.text) { (logResult) in
             switch logResult {
-                case .success:
-                    self.showAlert(with: "Успешно", and: "Вы авторизованы!") {
-                        self.present(MainTabBarController(), animated: true, completion: nil)
+            case .success(let user):
+                self.showAlert(with: "Успешно", and: "Вы авторизованы!") {
+                    FirebaseService.shared.getUserData(user: user) { result in
+                        switch result {
+                        case .success(_):
+                            let mainTabBar = MainTabBarController()
+                            mainTabBar.modalPresentationStyle = .fullScreen
+                            self.present(mainTabBar, animated: true, completion: nil)
+                        case .failure(_):
+                            self.present(SetupProfileViewController(currentUser: user), animated: true)
+                        }
                     }
-                case .failure(let error):
-                    self.showAlert(with: "Ошибка", and: error.localizedDescription)
+                }
+            case .failure(let error):
+                self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         }
     }

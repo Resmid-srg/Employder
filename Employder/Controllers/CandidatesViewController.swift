@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CandidatesViewController: UIViewController {
     
@@ -16,8 +17,8 @@ class CandidatesViewController: UIViewController {
         
         func description (usersCount: Int) -> String {
             switch self {
-                case .users:
-                    return "\(usersCount) кандидатов онлайн"
+            case .users:
+                return "\(usersCount) кандидатов онлайн"
             }
         }
     }
@@ -29,6 +30,7 @@ class CandidatesViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        self.title = "Кандидаты"
         setupSearchBar()
         setupCollectionView()
         createDataSource()
@@ -37,6 +39,22 @@ class CandidatesViewController: UIViewController {
         users.forEach {(userss) in
             print(userss.userName)
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(signOut))
+    }
+    
+    @objc private func signOut() {
+        let ac = UIAlertController(title: nil, message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        ac.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { _ in
+            do {
+                try Auth.auth().signOut()
+                UIApplication.shared.mainKeyWindow?.rootViewController = AuthViewController()
+            } catch {
+                print ("Error signing out \(error.localizedDescription)")
+            }
+        }))
+        present(ac, animated: true )
     }
     
     private func setupCollectionView() {
@@ -86,8 +104,8 @@ extension CandidatesViewController {
             }
             
             switch section {
-                case .users:
-                    return self.configur(collectionView: collectionView, cellType: CandidateCell.self, with: userss, for: indexPath)
+            case .users:
+                return self.configur(collectionView: collectionView, cellType: CandidateCell.self, with: userss, for: indexPath)
             }
         })
         
@@ -114,9 +132,9 @@ extension CandidatesViewController {
             }
             
             switch section {
-                case .users:
-                    return self.createCandidatesSection()
-                    
+            case .users:
+                return self.createCandidatesSection()
+                
             }
         }
         

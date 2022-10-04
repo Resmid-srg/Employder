@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Foundation
 import FirebaseFirestore
 
 struct MCandidate: Hashable, Decodable {
@@ -66,6 +65,6 @@ struct MCandidate: Hashable, Decodable {
         if filter.isEmpty { return true }
         let lowercasedFilter = filter.lowercased()
         return userName.lowercased().contains(lowercasedFilter)
-
+        
     }
 }

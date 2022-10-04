@@ -33,15 +33,12 @@ class ChatRequestViewController: UIViewController {
         denyButton.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         containerView.backgroundColor = .white
         containerView.layer.cornerRadius = 30
-//        acceptButton.applyGradients(cornerRadius: 10)
-        
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.acceptButton.applyGradients(cornerRadius: 10)
     }
-    
 }
 
 //MARK: - Setup constraints
@@ -54,7 +51,7 @@ extension ChatRequestViewController {
         view.addSubview(containerView)
         containerView.addSubview(userNameLabel)
         containerView.addSubview(aboutMeLabel)
-
+        
         let buttonsStackView = UIStackView(arrangedSubviews: [acceptButton, denyButton], axis: .horizontal, spacing: 16)
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.distribution = .fillEqually

@@ -33,12 +33,14 @@ class FirebaseService {
         }
     }
     
-    func saveProfileWith(id: String, email: String, userName: String?, avatarImageString: String?, description: String?, sex: String?, completion: @escaping (Result<MCandidate, Error>) -> Void) {
+    func saveProfileWith(id: String, email: String, userName: String?, avatarImage: UIImage?, description: String?, sex: String?, completion: @escaping (Result<MCandidate, Error>) -> Void) {
         
         guard Validators.isFilled(userName: userName, description: description, sex: sex) else {
             completion(.failure(UserErrors.notFilled))
             return
         }
+        
+        
         
         let mcandidate = MCandidate(userName: userName!,
                                     avatarStringURL: "notExist",

@@ -30,7 +30,7 @@ class SignUpViewController: UIViewController {
     }()
     
     weak var delegate: AuthNavigationDelegate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,12 +48,12 @@ class SignUpViewController: UIViewController {
                                     password: passwordTextField.text,
                                     confirmPassword: confirmPasswordTextField.text) { (authResult) in
             switch authResult {
-                case .success(let user):
-                    self.showAlert(with: "Успешно", and: "Вы зарегистрированы!") {
-                        self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
-                    }
-                case .failure(let error):
-                    self.showAlert(with: "Ошибка", and: error.localizedDescription)
+            case .success(let user):
+                self.showAlert(with: "Успешно", and: "Вы зарегистрированы!") {
+                    self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
+                }
+            case .failure(let error):
+                self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         }
     }
@@ -113,7 +113,7 @@ extension SignUpViewController {
             helloLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 128),
             helloLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-                
+        
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: helloLabel.bottomAnchor, constant: 88),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),

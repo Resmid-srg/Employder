@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 class AuthViewController: UIViewController {
     
@@ -21,7 +23,7 @@ class AuthViewController: UIViewController {
     
     let signUpVC = SignUpViewController()
     let signInVC = SignInViewController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,21 +33,51 @@ class AuthViewController: UIViewController {
         
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
         
         signInVC.delegate = self
         signUpVC.delegate = self
+        
+        //GIDSignIn.sharedInstance().delegate = self
     }
-
+    
     @objc private func emailButtonTapped() {
-        print(#function)
         present(signUpVC, animated: true, completion: nil)
     }
     
     @objc private func loginButtonTapped() {
-        print(#function)
         present(signInVC, animated: true, completion: nil)
     }
+    
+    @objc private func googleButtonTapped() {
+        sign()
+//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+//        let config = GIDConfiguration(clientID: clientID)
 
+//        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
+////            guard error == nil else { return }
+////            guard let user = user else { return }
+//            if let error = error {
+//                //completion(.failure(error))
+//                return
+//            }
+//
+//            guard
+//                let auth = user?.authentication,
+//                let idToken = auth.idToken
+//            else { return }
+//
+//            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: auth.accessToken)
+//
+//            Auth.auth().signIn(with: credential) { (result, error) in
+//                guard let result = result else {
+//                    //completion(.failure(error!))
+//                    return
+//                }
+//                //completion(.success(result.user))
+//            }
+//        }
+    }
 }
 
 extension AuthViewController: AuthNavigationDelegate {
@@ -54,6 +86,32 @@ extension AuthViewController: AuthNavigationDelegate {
     }
     func toSingUpVC() {
         present(signUpVC, animated: true, completion: nil)
+    }
+}
+
+extension AuthViewController {
+    func sign() {
+        AuthService.shared.googleLogin() { result in
+            switch result {
+            case .success(let user):
+                FirebaseService.shared.getUserData(user: user) { result in
+                    switch result {
+                    case .success:
+                        self.showAlert(with: "Успешно", and: "Вы авторизованы") {
+                            let mainTabBar = MainTabBarController()
+                            mainTabBar.modalPresentationStyle = .fullScreen
+                            self.present(mainTabBar, animated: true)
+                        }
+                    case .failure:
+                        self.showAlert(with: "Успешно", and: "Вы зарегистрированы") {
+                            self.present(SetupProfileViewController(currentUser: user), animated: true)
+                        }
+                    }
+                }
+            case .failure(let error):
+                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+            }
+        }
     }
 }
 

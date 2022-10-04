@@ -8,7 +8,7 @@
 import UIKit
 
 class CandidateCell: UICollectionViewCell, SelfConfiguringCell {
-
+    
     
     
     static var reuseId: String = "CandidateCell"
@@ -55,7 +55,7 @@ class CandidateCell: UICollectionViewCell, SelfConfiguringCell {
         aboutMe.numberOfLines = 4
         //experience.text = "Опыт работы \(userss.experience) года"
         //speciality.text = userss.speciality
-
+        
     }
     
     required init?(coder: NSCoder) {
@@ -83,7 +83,7 @@ extension CandidateCell {
         containerView.addSubview(aboutMeHeader)
         containerView.addSubview(experience)
         containerView.addSubview(speciality)
-                
+        
         NSLayoutConstraint.activate([
             containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             containerView.topAnchor.constraint(equalTo: self.topAnchor),

@@ -49,15 +49,19 @@ class SetupProfileViewController: UIViewController {
             id: currentUser.uid,
             email: currentUser.email!,
             userName: fullNameTextField.text,
-            avatarImageString: "nil",
+            avatarImage: fullAddPhotoView.circleImageView.image,
             description: aboutMeTextField.text,
             sex: sexSelector.titleForSegment(at: sexSelector.selectedSegmentIndex)) { (result) in
                 switch result {
-                    case .success(let mcandidate):
-                        self.showAlert(with: "Успешно", and: "Вы заполнили профиль!")
-                        print(mcandidate)
-                    case .failure(let error):
-                        self.showAlert(with: "Ошибка", and: error.localizedDescription)
+                case .success(let mcandidate):
+                    self.showAlert(with: "Успешно", and: "Вы заполнили профиль!") {
+                        let mainTabBar = MainTabBarController()
+                        mainTabBar.modalPresentationStyle = .fullScreen
+                        self.present(mainTabBar, animated: true)
+                    }
+                    print(mcandidate)
+                case .failure(let error):
+                    self.showAlert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
     }
@@ -78,7 +82,7 @@ extension SetupProfileViewController {
         let sexStackView = UIStackView(arrangedSubviews: [sexLabel,sexSelector],
                                        axis: .vertical,
                                        spacing: 8)
-
+        
         let stackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutMeStackView, sexStackView, goToChatButton],
                                     axis: .vertical,
                                     spacing: 40)

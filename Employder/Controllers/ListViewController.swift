@@ -11,16 +11,16 @@ class ListViewController: UIViewController {
     
     let activeChats = Bundle.main.decode([EChat].self, from: "activeChats.json")
     let waitingChats = Bundle.main.decode([EChat].self, from: "waitingChats.json")
-
+    
     enum Section: Int, CaseIterable {
         case waitingChats, activeChats
         
         func description() -> String {
             switch self {
-                case .waitingChats:
-                    return "Waiting to meet"
-                case .activeChats:
-                    return "Chats"
+            case .waitingChats:
+                return "Waiting to meet"
+            case .activeChats:
+                return "Chats"
             }
         }
     }
@@ -32,6 +32,7 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        self.title = "Связи"
         setupSearchBar()
         setupCollectionView()
         createDataSource()
@@ -40,7 +41,7 @@ class ListViewController: UIViewController {
     }
     
     private func setupSearchBar() {
-        navigationController?.navigationBar.barTintColor = .white 
+        navigationController?.navigationBar.barTintColor = .white
         //navigationController.navigationBar.shadowImage = UIImage()
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
@@ -69,7 +70,7 @@ class ListViewController: UIViewController {
         snapshot.appendItems(activeChats, toSection: .activeChats)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
- 
+    
 }
 
 //MARK: - Data Source
@@ -83,11 +84,11 @@ extension ListViewController {
             }
             
             switch section {
-                case .activeChats:
-                    return self.configur(collectionView: collectionView, cellType: ActiveChatCell.self, with: chat, for: indexPath)
-                case .waitingChats:
-                    return self.configur(collectionView: collectionView, cellType: WaitingChatCell.self, with: chat, for: indexPath)
-
+            case .activeChats:
+                return self.configur(collectionView: collectionView, cellType: ActiveChatCell.self, with: chat, for: indexPath)
+            case .waitingChats:
+                return self.configur(collectionView: collectionView, cellType: WaitingChatCell.self, with: chat, for: indexPath)
+                
             }
         })
         
@@ -113,10 +114,10 @@ extension ListViewController {
             }
             
             switch section {
-                case .activeChats:
-                    return self.createActiveChats()
-                case .waitingChats:
-                    return self.createWaitingChats()
+            case .activeChats:
+                return self.createActiveChats()
+            case .waitingChats:
+                return self.createWaitingChats()
             }
         }
         
@@ -126,7 +127,7 @@ extension ListViewController {
         
         return layout
     }
-
+    
     private func createWaitingChats() -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -145,7 +146,7 @@ extension ListViewController {
         
         return section
     }
-
+    
     private func createActiveChats() -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))

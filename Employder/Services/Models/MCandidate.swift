@@ -42,6 +42,23 @@ struct MCandidate: Hashable, Decodable {
         self.sex = sex
     }
     
+    init?(document: QueryDocumentSnapshot) {
+        let data = document.data()
+        guard let userName = data["userName"] as? String,
+              let avatarStringURL = data["avatarStringURL"] as? String,
+              let description = data["description"] as? String,
+              let email = data["email"] as? String,
+              let id = data["uid"] as? String,
+              let sex = data["sex"] as? String else { return nil }
+        
+        self.userName = userName
+        self.avatarStringURL = avatarStringURL
+        self.description = description
+        self.email = email
+        self.id = id
+        self.sex = sex
+    }
+    
     var representation: [String: Any] {
         var rep = ["userName": userName]
         rep["avatarStringURL"] = avatarStringURL

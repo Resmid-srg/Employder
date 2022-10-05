@@ -8,6 +8,8 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FirebaseCore
+
 
 class AuthViewController: UIViewController {
     
@@ -51,32 +53,6 @@ class AuthViewController: UIViewController {
     
     @objc private func googleButtonTapped() {
         sign()
-//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//        let config = GIDConfiguration(clientID: clientID)
-
-//        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
-////            guard error == nil else { return }
-////            guard let user = user else { return }
-//            if let error = error {
-//                //completion(.failure(error))
-//                return
-//            }
-//
-//            guard
-//                let auth = user?.authentication,
-//                let idToken = auth.idToken
-//            else { return }
-//
-//            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: auth.accessToken)
-//
-//            Auth.auth().signIn(with: credential) { (result, error) in
-//                guard let result = result else {
-//                    //completion(.failure(error!))
-//                    return
-//                }
-//                //completion(.success(result.user))
-//            }
-//        }
     }
 }
 
@@ -91,11 +67,11 @@ extension AuthViewController: AuthNavigationDelegate {
 
 extension AuthViewController {
     func sign() {
-        AuthService.shared.googleLogin() { result in
-            switch result {
+        AuthService.shared.googleLogin() { googleLoginResult in
+            switch googleLoginResult {
             case .success(let user):
-                FirebaseService.shared.getUserData(user: user) { result in
-                    switch result {
+                FirebaseService.shared.getUserData(user: user) { getUserResult in
+                    switch getUserResult {
                     case .success:
                         self.showAlert(with: "Успешно", and: "Вы авторизованы") {
                             let mainTabBar = MainTabBarController()
@@ -115,6 +91,7 @@ extension AuthViewController {
     }
 }
 
+ 
 //MARK: - Setup constraints
 
 extension AuthViewController {

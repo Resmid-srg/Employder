@@ -36,6 +36,8 @@
 		0A52568B28C6524B0064AB6C /* AuthErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A52568A28C6524B0064AB6C /* AuthErrors.swift */; };
 		0A52568D28C6529F0064AB6C /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A52568C28C6529F0064AB6C /* Validators.swift */; };
 		0A52D3FE28B699A900CB47C6 /* ActiveChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A52D3FD28B699A900CB47C6 /* ActiveChatCell.swift */; };
+		0A57F15228EDD5F10058CF0A /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F15128EDD5F10058CF0A /* ListenerService.swift */; };
+		0A57F15528EDEDA60058CF0A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0A57F15428EDEDA60058CF0A /* SDWebImage */; };
 		0A5ADE8328BE142700E8512A /* EChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5ADE8228BE142700E8512A /* EChat.swift */; };
 		0A5ADE8528BE14AA00E8512A /* MCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5ADE8428BE14AA00E8512A /* MCandidate.swift */; };
 		0A5B1C8828BB8F3A00BF535D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B1C8728BB8F3A00BF535D /* GradientView.swift */; };
@@ -89,6 +91,7 @@
 		0A52568A28C6524B0064AB6C /* AuthErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrors.swift; sourceTree = "<group>"; };
 		0A52568C28C6529F0064AB6C /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		0A52D3FD28B699A900CB47C6 /* ActiveChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatCell.swift; sourceTree = "<group>"; };
+		0A57F15128EDD5F10058CF0A /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
 		0A5ADE8128BE130300E8512A /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		0A5ADE8228BE142700E8512A /* EChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EChat.swift; sourceTree = "<group>"; };
 		0A5ADE8428BE14AA00E8512A /* MCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCandidate.swift; sourceTree = "<group>"; };
@@ -118,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A57F15528EDEDA60058CF0A /* SDWebImage in Frameworks */,
 				0AD9B83128CB6D520073E2F0 /* FirebaseFirestore in Frameworks */,
 				0A51537828E2F08A00B512F3 /* GoogleSignIn in Frameworks */,
 				0A126B5528C0D16100B7A2A3 /* FirebaseAuth in Frameworks */,
@@ -136,6 +140,7 @@
 				0A126B5628C0E28000B7A2A3 /* AuthService.swift */,
 				0AD9B82D28CB6CA30073E2F0 /* FirebaseService.swift */,
 				0A4C753828EA16B300E745DA /* StorageService.swift */,
+				0A57F15128EDD5F10058CF0A /* ListenerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				0AD9B83028CB6D520073E2F0 /* FirebaseFirestore */,
 				0A51537728E2F08A00B512F3 /* GoogleSignIn */,
 				0A4C753628EA141200E745DA /* FirebaseStorage */,
+				0A57F15428EDEDA60058CF0A /* SDWebImage */,
 			);
 			productName = Employder;
 			productReference = 0A2ADC9B28A141DC00F3F2BA /* Employder.app */;
@@ -342,6 +348,7 @@
 			packageReferences = (
 				0A126B4F28C0D16100B7A2A3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				0A51537628E2F08A00B512F3 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				0A57F15328EDEDA60058CF0A /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 0A2ADC9C28A141DC00F3F2BA /* Products */;
 			projectDirPath = "";
@@ -378,6 +385,7 @@
 				0A3D1EC828A39CAE00E213A5 /* OneLineTextField.swift in Sources */,
 				0A5B1C8F28BBB95300BF535D /* SectionHeader.swift in Sources */,
 				0A5B1C8828BB8F3A00BF535D /* GradientView.swift in Sources */,
+				0A57F15228EDD5F10058CF0A /* ListenerService.swift in Sources */,
 				0A4C753928EA16B300E745DA /* StorageService.swift in Sources */,
 				0A3D1EC628A38FA800E213A5 /* SignUpViewController.swift in Sources */,
 				0A52568B28C6524B0064AB6C /* AuthErrors.swift in Sources */,
@@ -641,6 +649,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		0A57F15328EDEDA60058CF0A /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -663,6 +679,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A51537628E2F08A00B512F3 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
+		};
+		0A57F15428EDEDA60058CF0A /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A57F15328EDEDA60058CF0A /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 		0AD9B83028CB6D520073E2F0 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;

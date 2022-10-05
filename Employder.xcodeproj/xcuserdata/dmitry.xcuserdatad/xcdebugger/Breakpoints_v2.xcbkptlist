@@ -14,73 +14,9 @@
             filePath = "Employder/Start views/AuthViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "googleButtonTapped()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "18FF8F87-00A4-49D3-A13B-53B61647FD67"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "sign()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "18FF8F87-00A4-49D3-A13B-53B61647FD67 - 2b11e3c0e1065479"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "18FF8F87-00A4-49D3-A13B-53B61647FD67 - 41ab1c5f06faf4b1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; () in Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "607F0B3E-A69F-4B89-8B9A-20D202AC73E0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "sign()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -94,8 +30,8 @@
             filePath = "Employder/Start views/AuthViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "sign()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,184 +46,10 @@
             filePath = "Employder/Services/AuthService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "googleLogin(completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FDB1907B-9C88-4ED2-971A-2D9FF32F76C0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FBB8569D-BCE3-4389-B80F-EEC11AA2414E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3F9ABEAE-E954-4FF1-91FB-2CFBE75A328B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "3F9ABEAE-E954-4FF1-91FB-2CFBE75A328B - 538529924a0dcabb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "444">
-               </Location>
-               <Location
-                  uuid = "3F9ABEAE-E954-4FF1-91FB-2CFBE75A328B - 538529924a0dcabb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "508">
-               </Location>
-               <Location
-                  uuid = "3F9ABEAE-E954-4FF1-91FB-2CFBE75A328B - 6d16892847fcba9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "141"
-                  endingLineNumber = "141"
-                  offsetFromSymbolStart = "92">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "41B438B7-AF8E-44C8-B062-22D412949A80"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F5BFB1F4-44A4-41C0-AA4C-367F4D379243"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F5BFB1F4-44A4-41C0-AA4C-367F4D379243 - 538529924a0dcabb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "444">
-               </Location>
-               <Location
-                  uuid = "F5BFB1F4-44A4-41C0-AA4C-367F4D379243 - 538529924a0dcabb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "508">
-               </Location>
-               <Location
-                  uuid = "F5BFB1F4-44A4-41C0-AA4C-367F4D379243 - 6d16892847fcba9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "141"
-                  endingLineNumber = "141"
-                  offsetFromSymbolStart = "92">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -300,426 +62,10 @@
             filePath = "Employder/Services/AuthService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "googleLogin(completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6F790526-E1B6-46F2-8F71-90294CCA83DD"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "547F145F-4730-4265-A489-CA6DFC6B985B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1E0F0641-3BF6-4BF5-AB79-CBF56AE00DC5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1E0F0641-3BF6-4BF5-AB79-CBF56AE00DC5 - 6d16892847fcb67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  uuid = "1E0F0641-3BF6-4BF5-AB79-CBF56AE00DC5 - 6d16892847fcb67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "336">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "36D6D37E-B5E7-4C04-BF14-4EC07B4C1A08"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "36D6D37E-B5E7-4C04-BF14-4EC07B4C1A08 - 6d16892847fcb67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  uuid = "36D6D37E-B5E7-4C04-BF14-4EC07B4C1A08 - 6d16892847fcb67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "336">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "99B882B8-3312-465C-812E-D2D804F51104"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "99B882B8-3312-465C-812E-D2D804F51104 - 6d16892847fcb67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  uuid = "99B882B8-3312-465C-812E-D2D804F51104 - 6d16892847fcb67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "336">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D7258821-FED2-4295-B794-10F82D5338DE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D7258821-FED2-4295-B794-10F82D5338DE - 6d16892847fcb67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  uuid = "D7258821-FED2-4295-B794-10F82D5338DE - 6d16892847fcb67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "336">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2140F3BD-D978-4302-96EF-B911168D25E1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2140F3BD-D978-4302-96EF-B911168D25E1 - 6d16892847fcc80"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "148"
-                  endingLineNumber = "148"
-                  offsetFromSymbolStart = "356">
-               </Location>
-               <Location
-                  uuid = "2140F3BD-D978-4302-96EF-B911168D25E1 - 6d16892847fcc80"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "148"
-                  endingLineNumber = "148"
-                  offsetFromSymbolStart = "404">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "653FBCB9-4F8C-4A45-A3B0-FFE5F13198DE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FFF4DF00-0CD7-4607-94BC-49BCBA3C7C3A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9A9E2305-23AB-4EF8-9496-17D6BD5BE35F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9A9E2305-23AB-4EF8-9496-17D6BD5BE35F - 6d16892847fcc5d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
-                  offsetFromSymbolStart = "736">
-               </Location>
-               <Location
-                  uuid = "9A9E2305-23AB-4EF8-9496-17D6BD5BE35F - 4cb1baee028cb846"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "154"
-                  endingLineNumber = "154"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4724760D-5C63-4478-8F53-64C8128DEBA2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "52141DE2-931B-448A-8DC1-27B7EFC44613"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "52141DE2-931B-448A-8DC1-27B7EFC44613 - 6d16892847fcc5d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
-                  offsetFromSymbolStart = "736">
-               </Location>
-               <Location
-                  uuid = "52141DE2-931B-448A-8DC1-27B7EFC44613 - 4cb1baee028cb846"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDGoogleUser&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Employder.AuthService.googleLogin(completion: (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "154"
-                  endingLineNumber = "154"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -732,104 +78,8 @@
             filePath = "Employder/Services/AuthService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3A6D9C7A-B67D-4A1B-89FB-FE54EB3E8E39"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0284F8E0-3E3F-45D2-AD3F-016C103DC4D2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E2E77F61-1A96-48D3-9D85-9706FE77E949"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "AuthService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A669A3A3-C031-4A82-9EDD-4D4F2A1D762D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AC0BDE0C-3A57-44FD-B5BD-3D832D193F30"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7D2B2B5C-4319-480B-B05E-F95FFFF36099"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "googleLogin(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -844,42 +94,10 @@
             filePath = "Employder/Services/AuthService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "googleLogin(completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DDB25178-385D-4478-B36F-DDCA54EEFBA4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/AuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "googleLogin(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C7519FF2-726C-46D3-86C9-2CD4E1D42913"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "AuthViewController"
-            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -892,72 +110,8 @@
             filePath = "Employder/Start views/AuthViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A42C9C0E-A2A7-497F-B955-A1F9C4F23808"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "sign()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A42C9C0E-A2A7-497F-B955-A1F9C4F23808 - 41ab1c5f06faf490"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; () in Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  uuid = "A42C9C0E-A2A7-497F-B955-A1F9C4F23808 - 710df15b8b9755ce"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Employder.MCandidate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; () in Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FB69551F-921B-45B7-A556-5D1B6CB494BF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "sign()"
             landmarkType = "7">
          </BreakpointContent>
@@ -972,72 +126,8 @@
             filePath = "Employder/Start views/AuthViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8F340027-D6C4-4DED-91C3-0B9D2F658250"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "sign()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8F340027-D6C4-4DED-91C3-0B9D2F658250 - 710df15b8b975429"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Employder.MCandidate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; () in Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  uuid = "8F340027-D6C4-4DED-91C3-0B9D2F658250 - d484936451790c9f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Result&lt;Employder.MCandidate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; () in Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B0C02A7A-487D-4764-A77C-C316E7B47436"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "sign()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1052,168 +142,8 @@
             filePath = "Employder/Start views/AuthViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D208B39C-4E4A-4A5F-9CEE-12C386492B89"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "205835F4-0B61-421D-998F-8B04351A973E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "sign()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "205835F4-0B61-421D-998F-8B04351A973E - 710df15b8b9754f7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Employder.MCandidate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; () in Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "320">
-               </Location>
-               <Location
-                  uuid = "205835F4-0B61-421D-998F-8B04351A973E - 61dd41ebb5f70a58"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in closure #1 (Swift.Result&lt;Employder.MCandidate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; () in Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8E27BF80-DEBD-452B-AB05-E146FDEA5D44"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "sign()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8E27BF80-DEBD-452B-AB05-E146FDEA5D44 - 710df15b8b9754f7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Employder.MCandidate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; () in Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "320">
-               </Location>
-               <Location
-                  uuid = "8E27BF80-DEBD-452B-AB05-E146FDEA5D44 - 61dd41ebb5f70a58"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in closure #1 (Swift.Result&lt;Employder.MCandidate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.FIRUser, Swift.Error&gt;) -&gt; () in Employder.AuthViewController.sign() -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Start%20views/AuthViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7420FA55-0A9F-41EC-A803-5BC8320A3A15"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CA123F8C-AA82-4D7B-828A-08E190441A02"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "92329CE9-685F-4AC5-BB34-F32DDE1B6C5E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "sign()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1228,137 +158,9 @@
             filePath = "Employder/Start views/AuthViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "56CC8435-831F-496B-B07B-9FD6C4184968"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6F708CE4-DE42-4FED-8D57-504FDAA44EFC"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7E491891-BB22-4E51-A542-74F3E0748E1A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2455BD79-6EF3-491B-A031-5092CD39CC13"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F76EE833-3686-491C-8CB5-376157E5F7CA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "AuthViewController"
-            landmarkType = "21">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C285AAFE-FAAB-4860-BC2B-7981AFACBCCF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B85DB0DF-9E68-435C-A5A3-8B71594B24E0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1E96E43A-133C-4FAA-B78A-A2D4539AF0F3"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "googleButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1372,121 +174,9 @@
             filePath = "Employder/Start views/AuthViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "googleButtonTapped()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EA8AC063-B533-4EB6-A352-A5890F2BD1C4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Start views/AuthViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "sign()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "39B5D8D2-5C87-456E-8871-9EFD146587F6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/FirebaseService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "saveProfileWith(id:email:userName:avatarImage:description:sex:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "39B5D8D2-5C87-456E-8871-9EFD146587F6 - 1ca8dc23e74e5ccd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Employder.FirebaseService.saveProfileWith(id: Swift.String, email: Swift.String, userName: Swift.Optional&lt;Swift.String&gt;, avatarImage: Swift.Optional&lt;__C.UIImage&gt;, description: Swift.Optional&lt;Swift.String&gt;, sex: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;Employder.MCandidate, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/FirebaseService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "1228">
-               </Location>
-               <Location
-                  uuid = "39B5D8D2-5C87-456E-8871-9EFD146587F6 - f059072f417da530"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.URL, Swift.Error&gt;) -&gt; () in Employder.FirebaseService.saveProfileWith(id: Swift.String, email: Swift.String, userName: Swift.Optional&lt;Swift.String&gt;, avatarImage: Swift.Optional&lt;__C.UIImage&gt;, description: Swift.Optional&lt;Swift.String&gt;, sex: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;Employder.MCandidate, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Employder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dmitry/Documents/GitHub/Employder/Employder/Services/FirebaseService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "244">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5E207F5D-EF4C-433D-8DA5-7DE1BDB34525"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/FirebaseService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "saveProfileWith(id:email:userName:avatarImage:description:sex:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "894D8B36-E4B3-48F9-8188-9C60EC0CAFF4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/FirebaseService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "saveProfileWith(id:email:userName:avatarImage:description:sex:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B5C6902D-2A09-45B4-BF51-FD8B722B3D83"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Employder/Services/FirebaseService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "saveProfileWith(id:email:userName:avatarImage:description:sex:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1535,6 +225,54 @@
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "upload(photo:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FCF83DA1-43EA-464B-B79A-BF7E01410E69"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Employder/Start views/AuthViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "sign()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA2FD843-8531-4A09-832F-213E6A142175"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Employder/Start views/AuthViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "sign()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EBE258E0-56D2-4F72-880C-E8E21718B00D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Employder/Start views/AuthViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "toSingInVC()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

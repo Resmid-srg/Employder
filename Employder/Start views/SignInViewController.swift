@@ -41,6 +41,7 @@ class SignInViewController: UIViewController {
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
     }
     
     @objc private func loginButtonTapped() {
@@ -73,6 +74,37 @@ class SignInViewController: UIViewController {
         }
     }
     
+    @objc private func googleButtonTapped() {
+        //sign()
+        AuthService().googleLogin()
+    }
+    
+}
+
+extension SignInViewController {
+//    private func sign() {
+//        AuthService.shared.googleLogin() { googleLoginResult in
+//            switch googleLoginResult {
+//            case .success(let user):
+//                FirebaseService.shared.getUserData(user: user) { getUserResult in
+//                    switch getUserResult {
+//                    case .success:
+//                        self.showAlert(with: "Успешно", and: "Вы авторизованы") {
+//                            let mainTabBar = MainTabBarController()
+//                            mainTabBar.modalPresentationStyle = .fullScreen
+//                            self.present(mainTabBar, animated: true)
+//                        }
+//                    case .failure:
+//                        self.showAlert(with: "Успешно", and: "Вы зарегистрированы") {
+//                            self.present(SetupProfileViewController(currentUser: user), animated: true)
+//                        }
+//                    }
+//                }
+//            case .failure(let error):
+//                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+//            }
+//        }
+//    }
 }
 
 //MARK: - Setup constraints

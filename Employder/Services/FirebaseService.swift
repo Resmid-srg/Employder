@@ -18,6 +18,8 @@ class FirebaseService {
         return db.collection("users")
     }
     
+    var currentUser: MCandidate!
+    
     func getUserData (user: User, completion: @escaping (Result<MCandidate, Error>) -> Void) {
         let docRef = userRef.document(user.uid)
         docRef.getDocument { document, error in
@@ -26,6 +28,7 @@ class FirebaseService {
                     completion(.failure(UserErrors.cannotConvertToMCandidate))
                     return
                 }
+                self.currentUser = mcandidate
                 completion(.success(mcandidate))
             } else {
                 completion(.failure(UserErrors.cannotGetUserInfo))
@@ -68,4 +71,14 @@ class FirebaseService {
             }
         } //StorageService
     } //saveProfileWith
+    
+    func createWaitingChat(message: String, receiver: MCandidate, completion: @escaping (Result<Void, Error>) -> Void) {
+        let reference = db.collection(["users", receiver.id, "waitingChats"].joined(separator: "/"))
+        let messageRef = reference.document(self.currentUser.id).collection("messages")
+        
+        let chat = EChat(friendUserName: currentUser.userName,
+                         friendUserImageStringURL: currentUser.avatarStringURL,
+                         lastMessageContent: <#T##String#>,
+                         friendId: currentUser.id)
+    }
 }

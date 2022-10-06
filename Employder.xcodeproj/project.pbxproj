@@ -54,6 +54,7 @@
 		0A6C46DD28BE2EFE00E7F221 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A5ADE8128BE130300E8512A /* users.json */; };
 		0A6C46DF28BE6CFF00E7F221 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C46DE28BE6CFF00E7F221 /* CandidateCell.swift */; };
 		0A6C46E128BE703800E7F221 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C46E028BE703800E7F221 /* UIViewController + Extension.swift */; };
+		0A804E6C28EF7E9400AC0E76 /* UIApplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A804E6B28EF7E9400AC0E76 /* UIApplication + Extension.swift */; };
 		0A90B67D28A5048200F5B4C3 /* UISegmentedControl + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90B67C28A5048200F5B4C3 /* UISegmentedControl + Extension.swift */; };
 		0AD68C3628A5399D00C7D15A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD68C3528A5399D00C7D15A /* ListViewController.swift */; };
 		0AD68C3A28A5569100C7D15A /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD68C3928A5569100C7D15A /* CandidatesViewController.swift */; };
@@ -108,6 +109,7 @@
 		0A6A3C5D28B52FC0008EF5DB /* Bandle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bandle-Decodable.swift"; sourceTree = "<group>"; };
 		0A6C46DE28BE6CFF00E7F221 /* CandidateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		0A6C46E028BE703800E7F221 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		0A804E6B28EF7E9400AC0E76 /* UIApplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extension.swift"; sourceTree = "<group>"; };
 		0A90B67C28A5048200F5B4C3 /* UISegmentedControl + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl + Extension.swift"; sourceTree = "<group>"; };
 		0AD68C3528A5399D00C7D15A /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		0AD68C3928A5569100C7D15A /* CandidatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatesViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				0A4CE90E28BFD3EF0071EAAF /* UIView + Extension.swift */,
 				0A90B67C28A5048200F5B4C3 /* UISegmentedControl + Extension.swift */,
 				0A5BA7F028A266D600C66C62 /* UIButton + Extension.swift */,
+				0A804E6B28EF7E9400AC0E76 /* UIApplication + Extension.swift */,
 				0A5BA7F228A26F1500C66C62 /* UIFont + Extension.swift */,
 				0A5BA7F428A276E800C66C62 /* UIColor + Extension.swift */,
 				0A51CA4328A282CD00ECB8FC /* UILabel + Extension.swift */,
@@ -397,6 +400,7 @@
 				0A5BA7F128A266D600C66C62 /* UIButton + Extension.swift in Sources */,
 				0A41E36A28CD18160049ECFB /* UserErrors.swift in Sources */,
 				0AD9B82C28CB6AA90073E2F0 /* AuthNavigationDelegate.swift in Sources */,
+				0A804E6C28EF7E9400AC0E76 /* UIApplication + Extension.swift in Sources */,
 				0A4CE90D28BFC7080071EAAF /* InsertableTextField.swift in Sources */,
 				0A4AFF3A28A41F5A00D0AE94 /* SetupProfileViewController.swift in Sources */,
 				0A2ADCA328A141DC00F3F2BA /* AuthViewController.swift in Sources */,

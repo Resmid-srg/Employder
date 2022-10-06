@@ -83,6 +83,8 @@ class CandidatesViewController: UIViewController {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         
         collectionView.register(CandidateCell.self, forCellWithReuseIdentifier: CandidateCell.reuseId)
+        
+        collectionView.delegate = self
     }
     
     private func setupSearchBar() {
@@ -108,6 +110,16 @@ class CandidatesViewController: UIViewController {
     }
 
     
+}
+
+//MARK: - UICollectionViewDelegate
+
+extension CandidatesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let user = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        let profileVC = ProfileViewController(user: user)
+        present(profileVC, animated: true)
+    }
 }
 
 //MARK: - Data Source

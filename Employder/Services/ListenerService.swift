@@ -23,7 +23,7 @@ class ListenerService {
         return Auth.auth().currentUser!.uid
     }
     
-    func usersObserve (users: [MCandidate], completion: @escaping (Result<[MCandidate], Error>) -> Void) -> ListenerRegistration? {
+    func usersObserve (users: [MUser], completion: @escaping (Result<[MUser], Error>) -> Void) -> ListenerRegistration? {
         var users = users
         let usersListener = usersRef.addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
@@ -32,7 +32,7 @@ class ListenerService {
             }
             
             snapshot.documentChanges.forEach { diff in
-                guard let muser = MCandidate(document: diff.document) else { return }
+                guard let muser = MUser(document: diff.document) else { return }
                 switch diff.type {
                 case .added:
                     guard !users.contains(muser) else { return }

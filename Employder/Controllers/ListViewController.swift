@@ -9,8 +9,8 @@ import UIKit
 
 class ListViewController: UIViewController {
     
-    let activeChats = Bundle.main.decode([EChat].self, from: "activeChats.json")
-    let waitingChats = Bundle.main.decode([EChat].self, from: "waitingChats.json")
+    let activeChats = [MChat]()
+    let waitingChats = [MChat]()
     
     enum Section: Int, CaseIterable {
         case waitingChats, activeChats
@@ -25,7 +25,7 @@ class ListViewController: UIViewController {
         }
     }
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, EChat>?
+    var dataSource: UICollectionViewDiffableDataSource<Section, MChat>?
     var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -64,7 +64,7 @@ class ListViewController: UIViewController {
     }
     
     private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, EChat>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MChat>()
         snapshot.appendSections([.waitingChats, .activeChats])
         snapshot.appendItems(waitingChats, toSection: .waitingChats)
         snapshot.appendItems(activeChats, toSection: .activeChats)
@@ -78,7 +78,7 @@ class ListViewController: UIViewController {
 extension ListViewController {
     
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, EChat>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, chat) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, MChat>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, chat) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }

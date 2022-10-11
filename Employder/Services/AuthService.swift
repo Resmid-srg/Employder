@@ -16,6 +16,8 @@ class AuthService {
     static let shared = AuthService()
     private let auth = Auth.auth()
     
+    //MARK: - Authorization via email
+    
     func login(email: String?, password: String?, completion: @escaping (Result<User, Error>) -> Void) {
         
         guard let email = email,
@@ -33,6 +35,8 @@ class AuthService {
             completion(.success(logResult.user))
         }
     }
+    
+    //MARK: - Authorization and registration via google
     
     func googleLogin() {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
@@ -61,7 +65,7 @@ class AuthService {
                     UIApplication.getTopViewController()?.showAlert(with: "Ошибка", and: error!.localizedDescription)
                     return
                 }
-                FirebaseService.shared.getUserData(user: result.user) { getUserResult in
+                FirestoreService.shared.getUserData(user: result.user) { getUserResult in
                     switch getUserResult {
                     case .success:
                         UIApplication.getTopViewController()?.showAlert(with: "Успешно", and: "Вы авторизованы") {
@@ -107,6 +111,7 @@ class AuthService {
 //        }
 //    }
 
+    //MARK: - Registration via email
  
     func register(email: String?, password: String?, confirmPassword: String?, completion: @escaping (Result<User, Error>) -> Void) {
         

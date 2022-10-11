@@ -1,33 +1,33 @@
 [
     {
-        "userName": "Alexey",
-        "userImageString": "human1",
-        "lastMessage": "Я Алеша Попович! :) А ты?",
-        "id": 1
+        "friendUserName": "Alexey",
+        "friendUserImageStringURL": "human1",
+        "lastMessageContent": "Я Алеша Попович! :) А ты?",
+        "friendId": "1"
     },
     {
-        "userName": "Dmitry",
-        "userImageString": "human2",
-        "lastMessage": "Знакомы?",
-        "id": 2
+        "friendUserName": "Dmitry",
+        "friendUserImageStringURL": "human2",
+        "lastMessageContent": "Знакомы?",
+        "friendId": "2"
     },
     {
-        "userName": "Angel",
-        "userImageString": "human3",
-        "lastMessage": "Я завтра на сапы",
-        "id": 3
+        "friendUserName": "Angel",
+        "friendUserImageStringURL": "human3",
+        "lastMessageContent": "Я завтра на сапы",
+        "friendId": "3"
     },
     {
-        "userName": "Danil",
-        "userImageString": "human4",
-        "lastMessage": "Я инженер",
-        "id": 4
+        "friendUserName": "Danil",
+        "friendUserImageStringURL": "human4",
+        "lastMessageContent": "Я инженер",
+        "friendId": "4"
     },
     {
-        "userName": "Alexander",
-        "userImageString": "human5",
-        "lastMessage": "На нас напали!",
-        "id": 5
+        "friendUserName": "Alexander",
+        "friendUserImageStringURL": "human5",
+        "lastMessageContent": "На нас напали!",
+        "friendId": "5"
     },
 ]
 

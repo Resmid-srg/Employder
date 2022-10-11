@@ -22,20 +22,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = AuthViewController()
         
-//        if let user = Auth.auth().currentUser {
-//            FirebaseService.shared.getUserData(user: user) { result in
-//                switch result {
-//                case .success(_):
-//                    let mainTabBar = MainTabBarController()
-//                    mainTabBar.modalPresentationStyle = .fullScreen
-//                    self.window?.rootViewController = mainTabBar
-//                case .failure(_):
-//                    self.window?.rootViewController = AuthViewController()
-//                }
-//            }
-//        } else {
-//            window?.rootViewController = AuthViewController()
-//        }
+        if let user = Auth.auth().currentUser {
+            FirestoreService.shared.getUserData(user: user) { result in
+                switch result {
+                case .success(_):
+                    let mainTabBar = MainTabBarController()
+                    mainTabBar.modalPresentationStyle = .fullScreen
+                    self.window?.rootViewController = mainTabBar
+                case .failure(_):
+                    self.window?.rootViewController = AuthViewController()
+                }
+            }
+        } else {
+            window?.rootViewController = AuthViewController()
+        }
         
         window?.makeKeyAndVisible()
         

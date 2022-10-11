@@ -22,8 +22,8 @@ class  WaitingChatCell: UICollectionViewCell, SelfConfiguringCell {
     }
     
     func configur<U>(with value: U) where U : Hashable {
-        guard let userss: EChat = value as? EChat else { return }
-        friendImageView.image = UIImage(named: userss.userImageString)
+        guard let userss: MChat = value as? MChat else { return }
+        friendImageView.image = UIImage(named: userss.friendUserImageStringURL)
         friendImageView.contentMode = .scaleAspectFill
     }
     

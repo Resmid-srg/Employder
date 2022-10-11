@@ -16,9 +16,9 @@ class ProfileViewController: UIViewController {
     let imageView = UIImageView(image: UIImage(named: "human11"), contentMode: .scaleAspectFill)
     let textField = InsertableTextField()
     
-    private let user: MCandidate
+    private let user: MUser
     
-    init(user: MCandidate) {
+    init(user: MUser) {
         self.user = user
         self.userNameLabel.text = user.userName
         self.aboutMeLabel.text = user.description
@@ -60,7 +60,14 @@ class ProfileViewController: UIViewController {
         
         
         self.dismiss(animated: true) {
-            UIApplication.getTopViewController()?.showAlert(with: "test", and: "lol")
+            FirestoreService.shared.createWaitingChat(message: message, receiver: self.user) { result in
+                switch result {
+                case .success:
+                    UIApplication.getTopViewController()?.showAlert(with: "Успешно", and: "Ваше сообщение для \(self.user.userName) было отправлено")
+                case .failure(let error):
+                    UIApplication.getTopViewController()?.showAlert(with: "Ошибка", and: error.localizedDescription)
+                }
+            }
         }
     }
     

@@ -54,6 +54,10 @@ class SetupProfileViewController: UIViewController {
         
         goToChatButton.addTarget(self, action: #selector(goToChatButtonTapped), for: .touchUpInside)
         fullAddPhotoView.plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+        
+//        self.aboutMeTextField.delegate = self
+//        self.fullNameTextField.delegate = self
+        
     }
     
     @objc private func plusButtonTapped() {
@@ -66,7 +70,7 @@ class SetupProfileViewController: UIViewController {
     }
     
     @objc private func goToChatButtonTapped() {
-        FirebaseService.shared.saveProfileWith(
+        FirestoreService.shared.saveProfileWith(
             id: currentUser.uid,
             email: currentUser.email!,
             userName: fullNameTextField.text,
@@ -85,6 +89,13 @@ class SetupProfileViewController: UIViewController {
                     self.showAlert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
+    }
+}
+
+extension SetupProfileViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
     }
 }
     

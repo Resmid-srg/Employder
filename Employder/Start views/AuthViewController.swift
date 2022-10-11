@@ -18,6 +18,7 @@ class AuthViewController: UIViewController {
     let googleLabel = UILabel(text: "Get started with")
     let emailLabel = UILabel(text: "Or sign up with")
     let alreadyOnboardLabel = UILabel(text: "Already onboard?")
+    let textField1 = UITextField()
     
     let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
     let emailButton = UIButton(title: "Email", titleColor: .white, backgroundColor: .buttonBlack())
@@ -63,11 +64,43 @@ extension AuthViewController: AuthNavigationDelegate {
         present(signInVC, animated: true, completion: nil)
     }
     func toSingUpVC() {
+        signUpVC.modalPresentationStyle = .fullScreen
         present(signUpVC, animated: true, completion: nil)
     }
+    
+    private func setupKeyboardHidding() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+
+    
 }
 
 extension AuthViewController {
+    @objc func keyboardWillShow(sender: NSNotification) {
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
+        
+        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+        let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
+        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+        
+        if textFieldBottomY > keyboardTopY {
+            let textBoxY = convertedTextFieldFrame.origin.y
+            let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+            view.frame.origin.y = newFrameY
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+}
+
+//TODO: Old method google authorization
+//extension AuthViewController {
 //    private func sign() {
 //        AuthService.shared.googleLogin() { googleLoginResult in
 //            switch googleLoginResult {
@@ -91,7 +124,7 @@ extension AuthViewController {
 //            }
 //        }
 //    }
-}
+//}
 
  
 //MARK: - Setup constraints
@@ -103,7 +136,7 @@ extension AuthViewController {
         let emailView = ButtonFormAuthView(label: emailLabel, button: emailButton)
         let loginView = ButtonFormAuthView(label: alreadyOnboardLabel, button: loginButton)
         
-        let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView],
+        let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView, textField1],
                                     axis: .vertical,
                                     spacing: 40)
         

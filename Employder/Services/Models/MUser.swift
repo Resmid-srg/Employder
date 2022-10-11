@@ -1,5 +1,5 @@
 //
-//  MCandidate.swift
+//  MUser.swift
 //  Employder
 //
 //  Created by Serov Dmitry on 30.08.22.
@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
-struct MCandidate: Hashable, Decodable {
+struct MUser: Hashable, Decodable {
     var userName: String
     var avatarStringURL: String
     var description: String
@@ -73,7 +73,7 @@ struct MCandidate: Hashable, Decodable {
         hasher.combine(id)
     }
     
-    static func == (lhs: MCandidate, rhs: MCandidate) -> Bool {
+    static func == (lhs: MUser, rhs: MUser) -> Bool {
         return lhs.id == rhs.id
     }
     

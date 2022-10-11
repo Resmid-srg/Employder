@@ -51,7 +51,7 @@ class SignInViewController: UIViewController {
             switch logResult {
             case .success(let user):
                 self.showAlert(with: "Успешно", and: "Вы авторизованы!") {
-                    FirebaseService.shared.getUserData(user: user) { result in
+                    FirestoreService.shared.getUserData(user: user) { result in
                         switch result {
                         case .success(_):
                             let mainTabBar = MainTabBarController()

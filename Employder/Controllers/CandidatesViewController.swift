@@ -11,12 +11,11 @@ import FirebaseFirestore
 
 class CandidatesViewController: UIViewController {
     
-    //let users = Bundle.main.decode([MCandidate].self, from: "users.json")
-    var users = [MCandidate]()
+    var users = [MUser]()
     
     private var usersListener: ListenerRegistration?
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, MCandidate>?
+    var dataSource: UICollectionViewDiffableDataSource<Section, MUser>?
     var collectionView: UICollectionView!
     
     enum Section: Int, CaseIterable {
@@ -103,7 +102,7 @@ class CandidatesViewController: UIViewController {
             userss.contains(filter: searchText)
         }
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, MCandidate>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MUser>()
         snapshot.appendSections([.users])
         snapshot.appendItems(filtered, toSection: .users)
         dataSource?.apply(snapshot, animatingDifferences: true)
@@ -127,7 +126,7 @@ extension CandidatesViewController: UICollectionViewDelegate {
 extension CandidatesViewController {
     
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, MCandidate>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, userss) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, MUser>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, userss) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }

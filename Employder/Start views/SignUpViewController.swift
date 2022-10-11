@@ -36,7 +36,11 @@ class SignUpViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        //emailTextField.delegate = self
+        //passwordTextField.delegate = self
+        
         setupConstraints()
+        setupKeyboardHidding()
         
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
@@ -64,6 +68,35 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    private func setupKeyboardHidding() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+
+    
+}
+
+extension SignUpViewController {
+    @objc func keyboardWillShow(sender: NSNotification) {
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
+        
+        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+        let convertedTextFieldFrame = self.view.convert(currentTextField.frame, from: currentTextField.superview)
+        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+        
+        if textFieldBottomY < keyboardTopY {
+            let textBoxY = convertedTextFieldFrame.origin.y
+            let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+            self.view.frame.origin.y = newFrameY
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
 }
 
 extension UIViewController {

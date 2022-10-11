@@ -1,5 +1,5 @@
 //
-//  FirebaseService.swift
+//  FirestoreService.swift
 //  Employder
 //
 //  Created by Serov Dmitry on 09.09.22.
@@ -8,9 +8,9 @@
 import Firebase
 import FirebaseFirestore
 
-class FirebaseService {
+class FirestoreService {
     
-    static let shared = FirebaseService()
+    static let shared = FirestoreService()
     
     let db = Firestore.firestore()
     
@@ -18,13 +18,13 @@ class FirebaseService {
         return db.collection("users")
     }
     
-    var currentUser: MCandidate!
+    var currentUser: MUser!
     
-    func getUserData (user: User, completion: @escaping (Result<MCandidate, Error>) -> Void) {
+    func getUserData (user: User, completion: @escaping (Result<MUser, Error>) -> Void) {
         let docRef = userRef.document(user.uid)
         docRef.getDocument { document, error in
             if let document = document, document.exists {
-                guard let mcandidate = MCandidate(document: document) else {
+                guard let mcandidate = MUser(document: document) else {
                     completion(.failure(UserErrors.cannotConvertToMCandidate))
                     return
                 }
@@ -36,7 +36,7 @@ class FirebaseService {
         }
     }
     
-    func saveProfileWith(id: String, email: String, userName: String?, avatarImage: UIImage?, description: String?, sex: String?, completion: @escaping (Result<MCandidate, Error>) -> Void) {
+    func saveProfileWith(id: String, email: String, userName: String?, avatarImage: UIImage?, description: String?, sex: String?, completion: @escaping (Result<MUser, Error>) -> Void) {
         
         guard Validators.isFilled(userName: userName, description: description, sex: sex) else {
             completion(.failure(UserErrors.notFilled))
@@ -48,7 +48,7 @@ class FirebaseService {
             return
         }
         
-        var mcandidate = MCandidate(userName: userName!,
+        var mcandidate = MUser(userName: userName!,
                                     avatarStringURL: "notExist",
                                     description: description!,
                                     email: email,
@@ -72,13 +72,27 @@ class FirebaseService {
         } //StorageService
     } //saveProfileWith
     
-    func createWaitingChat(message: String, receiver: MCandidate, completion: @escaping (Result<Void, Error>) -> Void) {
+    func createWaitingChat(message: String, receiver: MUser, completion: @escaping (Result<Void, Error>) -> Void) {
         let reference = db.collection(["users", receiver.id, "waitingChats"].joined(separator: "/"))
         let messageRef = reference.document(self.currentUser.id).collection("messages")
         
-        let chat = EChat(friendUserName: currentUser.userName,
+        let message = MMessage(user: currentUser, content: message)
+        let chat = MChat(friendUserName: currentUser.userName,
                          friendUserImageStringURL: currentUser.avatarStringURL,
-                         lastMessageContent: <#T##String#>,
+                         lastMessageContent: message.content,
                          friendId: currentUser.id)
+        
+        reference.document(currentUser.id).setData(chat.representation) { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            messageRef.addDocument(data: message.representation) { error in
+                if let error = error {
+                    completion(.failure(error))
+                }
+                completion(.success(Void()))
+            }
+        }
     }
 }

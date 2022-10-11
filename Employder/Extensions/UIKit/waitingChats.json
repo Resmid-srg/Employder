@@ -1,32 +1,32 @@
 [
     {
-        "userName": "SuleyMAN",
-        "userImageString": "human6",
-        "lastMessage": "Я приемный! :) А ты?",
-        "id": 6
+        "friendUserName": "SuleyMAN",
+        "friendUserImageStringURL": "human6",
+        "lastMessageContent": "Я приемный! :) А ты?",
+        "friendId": "6"
     },
     {
-        "userName": "Hurem",
-        "userImageString": "human7",
-        "lastMessage": "Знакомы?",
-        "id": 7
+        "friendUserName": "Hurem",
+        "friendUserImageStringURL": "human7",
+        "lastMessageContent": "Знакомы?",
+        "friendId": "7"
     },
     {
-        "userName": "Ibragim",
-        "userImageString": "human8",
-        "lastMessage": "лалалалаала",
-        "id": 8
+        "friendUserName": "Ibragim",
+        "friendUserImageStringURL": "human8",
+        "lastMessageContent": "лалалалаала",
+        "friendId": "8"
     },
     {
-        "userName": "Pasha",
-        "userImageString": "human9",
-        "lastMessage": "Fistin anal? For three handred backs...",
-        "id": 9
+        "friendUserName": "Pasha",
+        "friendUserImageStringURL": "human9",
+        "lastMessageContent": "Fistin anal? For three handred backs...",
+        "friendId": "9"
     },
     {
-        "userName": "Parasha",
-        "userImageString": "human10",
-        "lastMessage": "На нас напали!",
-        "id": 10
+        "friendUserName": "Parasha",
+        "friendUserImageStringURL": "human10",
+        "lastMessageContent": "На нас напали!",
+        "friendId": "10"
     },
 ]

@@ -49,7 +49,7 @@ class CandidateCell: UICollectionViewCell, SelfConfiguringCell {
     }
     
     func configur<U>(with value: U) where U : Hashable {
-        guard let user: MCandidate = value as? MCandidate else { return }
+        guard let user: MUser = value as? MUser else { return }
         userImageView.image = UIImage(named: user.avatarStringURL)
         userImageView.contentMode = .scaleAspectFill
         userImageView.layer.cornerRadius = 40

@@ -38,10 +38,16 @@ class SignInViewController: UIViewController {
         view.backgroundColor = .white
         googleButton.customizeGoogleButton()
         setupConstraints()
+        setupKeyboardHidding()
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+//        emailTextField.tag = 0
+//        passwordTextField.tag = 1
     }
     
     @objc private func loginButtonTapped() {
@@ -79,32 +85,48 @@ class SignInViewController: UIViewController {
         AuthService().googleLogin()
     }
     
+    private func setupKeyboardHidding() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
 }
 
 extension SignInViewController {
-//    private func sign() {
-//        AuthService.shared.googleLogin() { googleLoginResult in
-//            switch googleLoginResult {
-//            case .success(let user):
-//                FirebaseService.shared.getUserData(user: user) { getUserResult in
-//                    switch getUserResult {
-//                    case .success:
-//                        self.showAlert(with: "Успешно", and: "Вы авторизованы") {
-//                            let mainTabBar = MainTabBarController()
-//                            mainTabBar.modalPresentationStyle = .fullScreen
-//                            self.present(mainTabBar, animated: true)
-//                        }
-//                    case .failure:
-//                        self.showAlert(with: "Успешно", and: "Вы зарегистрированы") {
-//                            self.present(SetupProfileViewController(currentUser: user), animated: true)
-//                        }
-//                    }
-//                }
-//            case .failure(let error):
-//                self.showAlert(with: "Ошибка", and: error.localizedDescription)
-//            }
-//        }
-//    }
+    @objc func keyboardWillShow(sender: NSNotification) {
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
+        
+        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+        let convertedTextFieldFrame = self.view.convert(currentTextField.frame, from: currentTextField.superview)
+        //let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+        
+        let textBoxY = convertedTextFieldFrame.origin.y
+        let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+        self.view.frame.origin.y = newFrameY
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 }
 
 //MARK: - Setup constraints

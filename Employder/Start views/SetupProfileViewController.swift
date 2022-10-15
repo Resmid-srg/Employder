@@ -51,12 +51,13 @@ class SetupProfileViewController: UIViewController {
         
         view.backgroundColor = .white
         setupConstraints()
+        setupKeyboardHidding()
         
         goToChatButton.addTarget(self, action: #selector(goToChatButtonTapped), for: .touchUpInside)
         fullAddPhotoView.plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         
-//        self.aboutMeTextField.delegate = self
-//        self.fullNameTextField.delegate = self
+        self.fullNameTextField.delegate = self
+        self.aboutMeTextField.delegate = self
         
     }
     
@@ -90,12 +91,47 @@ class SetupProfileViewController: UIViewController {
                 }
             }
     }
+    
+    private func setupKeyboardHidding() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+extension SetupProfileViewController {
+    @objc func keyboardWillShow(sender: NSNotification) {
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
+        
+        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+        let convertedTextFieldFrame = self.view.convert(currentTextField.frame, from: currentTextField.superview)
+        //let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+        
+        let textBoxY = convertedTextFieldFrame.origin.y
+        let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+        self.view.frame.origin.y = newFrameY
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
 }
 
 extension SetupProfileViewController: UITextFieldDelegate {
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        switch textField {
+        case fullNameTextField:
+            aboutMeTextField.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
     }
 }
     

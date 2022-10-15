@@ -36,8 +36,9 @@ class SignUpViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        //emailTextField.delegate = self
-        //passwordTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
         
         setupConstraints()
         setupKeyboardHidding()
@@ -107,6 +108,25 @@ extension UIViewController {
         }
         alertController.addAction(okAlert)
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            confirmPasswordTextField.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
     }
 }
 

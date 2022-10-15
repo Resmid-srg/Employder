@@ -10,11 +10,26 @@ import UIKit
 class ChatRequestViewController: UIViewController {
     
     let containerView = UIView()
-    let userNameLabel = UILabel(text: "Trololo")
-    let aboutMeLabel = UILabel(text: "ohhohohohoohohohhohoho")
+    let userNameLabel = UILabel()
+    let aboutMeLabel = UILabel()
     let imageView = UIImageView(image: UIImage(named: "human11"), contentMode: .scaleAspectFill)
     let acceptButton = UIButton(title: "Принять", titleColor: .white, backgroundColor: .black, font: .avenir20(), isShadow: false, cornerRadius: 10)
     let denyButton = UIButton(title: "Отклонить", titleColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), backgroundColor: .white, font: .avenir20(), isShadow: false, cornerRadius: 10)
+    
+    weak var delegate: WaitingChatsNavigationDelegate?
+    
+    private var chat: MChat
+    
+    init(chat: MChat) {
+        self.chat = chat
+        userNameLabel.text = chat.friendUserName
+        imageView.sd_setImage(with: URL(string: chat.friendUserImageStringURL))
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +37,21 @@ class ChatRequestViewController: UIViewController {
         view.backgroundColor = .white
         customizeElements()
         setupConstraints()
+        
+        denyButton.addTarget(self, action: #selector(denyButtonTapped), for: .touchUpInside)
+        acceptButton.addTarget(self, action: #selector(acceptButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func denyButtonTapped() {
+        self.dismiss(animated: true) {
+            self.delegate?.removeWaitingChats(chat: self.chat )
+        }
+    }
+    
+    @objc private func acceptButtonTapped() {
+        self.dismiss(animated: true) {
+            self.delegate?.changeToActive(chat: self.chat)
+        }
     }
     
     private func customizeElements() {
@@ -90,28 +120,5 @@ extension ChatRequestViewController {
             buttonsStackView.heightAnchor.constraint(equalToConstant: 48)
         ])
         
-    }
-}
-
-//MARK: - SwiftUI
-
-import SwiftUI
-
-struct ChatRequestVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        
-        let chatRequestVC = ChatRequestViewController()
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<ChatRequestVCProvider.ContainerView>) -> ChatRequestViewController {
-            return chatRequestVC
-        }
-        
-        func updateUIViewController(_ uiViewController: ChatRequestVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<ChatRequestVCProvider.ContainerView>) {
-            
-        }
     }
 }

@@ -65,6 +65,7 @@
 		0AD9B82C28CB6AA90073E2F0 /* AuthNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD9B82B28CB6AA90073E2F0 /* AuthNavigationDelegate.swift */; };
 		0AD9B82E28CB6CA30073E2F0 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD9B82D28CB6CA30073E2F0 /* FirestoreService.swift */; };
 		0AD9B83128CB6D520073E2F0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD9B83028CB6D520073E2F0 /* FirebaseFirestore */; };
+		0AFB912828FB40FB0024A10A /* WaitingChatsNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB912728FB40FB0024A10A /* WaitingChatsNavigationDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +123,7 @@
 		0AD68C3B28A5570400C7D15A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		0AD9B82B28CB6AA90073E2F0 /* AuthNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationDelegate.swift; sourceTree = "<group>"; };
 		0AD9B82D28CB6CA30073E2F0 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		0AFB912728FB40FB0024A10A /* WaitingChatsNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsNavigationDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 			children = (
 				0A5B1C8C28BB9DFA00BF535D /* SelfConfiguringCell.swift */,
 				0AD9B82B28CB6AA90073E2F0 /* AuthNavigationDelegate.swift */,
+				0AFB912728FB40FB0024A10A /* WaitingChatsNavigationDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				0A665EC328EC0E3F00632BD1 /* UIImage + Extension.swift in Sources */,
 				0A5ADE8528BE14AA00E8512A /* MUser.swift in Sources */,
 				0A5B1C8A28BB9C5A00BF535D /* WaitingChatCell.swift in Sources */,
+				0AFB912828FB40FB0024A10A /* WaitingChatsNavigationDelegate.swift in Sources */,
 				0A6A3C5E28B52FC0008EF5DB /* Bandle-Decodable.swift in Sources */,
 				0A51CA4628A2850000ECB8FC /* UIImageView + Extension.swift in Sources */,
 				0A2B78A828F05D7300F6D048 /* MMessage.swift in Sources */,

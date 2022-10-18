@@ -32,6 +32,17 @@ class ListViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, MChat>?
     var collectionView: UICollectionView!
     
+    private let currentUser: MUser
+
+    init(currentUser: MUser) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     deinit {
         waitingChatsListener?.remove()
         activeChatsListener?.remove()
@@ -221,6 +232,8 @@ extension ListViewController: UICollectionViewDelegate {
             self.present(chatRequestVC, animated: true)
         case .activeChats:
             print(indexPath)
+            let chatVC = ChatViewController(user: currentUser, chat: chat)
+            navigationController?.pushViewController(chatVC, animated: true)
         }
     }
 }

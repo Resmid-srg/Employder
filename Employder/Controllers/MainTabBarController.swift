@@ -6,15 +6,27 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainTabBarController: UITabBarController {
+    
+    private let currentUser: MUser
+    
+    init(currentUser: MUser = MUser(userName: "lll", avatarStringURL: "lll", description: "lll", email: "lll", id: "lll", sex: "lll")) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tabBar.tintColor = UIColor.purpleMainColor()
         
-        let listViewController = ListViewController()
+        let listViewController = ListViewController(currentUser: currentUser)
         let candidatesViewController = CandidatesViewController()
         
         let listImage = UIImage(systemName: "message.fill")!

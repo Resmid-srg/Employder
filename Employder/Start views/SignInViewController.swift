@@ -18,7 +18,7 @@ class SignInViewController: UIViewController {
     let needAccLabel = UILabel(text: "Need an account?")
     
     let emailTextField = OneLineTextField(font: .avenir20())
-    let passwordTextField = OneLineTextField(font: .avenir20())
+    let passwordTextField = OneLineTextField(font: .avenir20(), isSecure: true)
     
     let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
     let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .buttonBlack())
@@ -59,8 +59,8 @@ class SignInViewController: UIViewController {
                 self.showAlert(with: "Успешно", and: "Вы авторизованы!") {
                     FirestoreService.shared.getUserData(user: user) { result in
                         switch result {
-                        case .success(_):
-                            let mainTabBar = MainTabBarController()
+                        case .success(let mcandidate):
+                            let mainTabBar = MainTabBarController(currentUser: mcandidate)
                             mainTabBar.modalPresentationStyle = .fullScreen
                             self.present(mainTabBar, animated: true, completion: nil)
                         case .failure(_):

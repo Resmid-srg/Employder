@@ -9,10 +9,11 @@ import UIKit
 
 class OneLineTextField: UITextField {
     
-    convenience init(font: UIFont?) {
+    convenience init(font: UIFont?, isSecure: Bool = false) {
         self.init()
         
         self.font = font
+        self.isSecureTextEntry = isSecure
         self.borderStyle = .none
         self.translatesAutoresizingMaskIntoConstraints = false
         

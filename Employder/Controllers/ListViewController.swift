@@ -232,8 +232,10 @@ extension ListViewController: UICollectionViewDelegate {
             self.present(chatRequestVC, animated: true)
         case .activeChats:
             print(indexPath)
-            let chatVC = ChatViewController(user: currentUser, chat: chat)
+            let chatVC = ChatViewController(currentUser: currentUser, chat: chat)
+            self.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(chatVC, animated: true)
+            self.hidesBottomBarWhenPushed = false
         }
     }
 }

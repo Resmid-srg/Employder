@@ -17,8 +17,8 @@ class SetupProfileViewController: UIViewController {
     let aboutMeLabel = UILabel(text: "About me")
     let sexLabel = UILabel(text: "Sex")
     
-    let fullNameTextField = OneLineTextField(font: .avenir20())
-    let aboutMeTextField = OneLineTextField(font: .avenir20())
+    let fullNameTextField = OneLineTextField(font: .avenir20(), isSecure: true)
+    let aboutMeTextField = OneLineTextField(font: .avenir20(), isSecure: true)
     
     let fullAddPhotoView = AddPhotoView()
     
@@ -81,7 +81,7 @@ class SetupProfileViewController: UIViewController {
                 switch result {
                 case .success(let mcandidate):
                     self.showAlert(with: "Успешно", and: "Вы заполнили профиль!") {
-                        let mainTabBar = MainTabBarController()
+                        let mainTabBar = MainTabBarController(currentUser: mcandidate)
                         mainTabBar.modalPresentationStyle = .fullScreen
                         self.present(mainTabBar, animated: true)
                     }

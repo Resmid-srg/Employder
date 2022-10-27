@@ -38,6 +38,7 @@ class ProfileViewController: UIViewController {
         setupConstraints()
         setupKeyboardHidding()
         
+        print(aboutMeLabel.bounds.height)
     }
     
     private func customizeElements() {
@@ -87,7 +88,6 @@ extension ProfileViewController {
         
         let keyboardTopY = keyboardFrame.cgRectValue.origin.y
         let convertedTextFieldFrame = self.view.convert(currentTextField.frame, from: currentTextField.superview)
-        //let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
         
         let textBoxY = convertedTextFieldFrame.origin.y
         let newFrameY = (textBoxY - keyboardTopY / 1.3) * -1
@@ -118,15 +118,16 @@ extension ProfileViewController {
             imageView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: 30)
         ])
         
+        print(aboutMeLabel.bounds.height)
         NSLayoutConstraint.activate([
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            containerView.heightAnchor.constraint(equalToConstant: 220)
+            containerView.heightAnchor.constraint(equalToConstant: 220 + aboutMeLabel.frame.height)
         ])
         
         NSLayoutConstraint.activate([
-            userNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 44),
+            userNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 28),
             userNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
             userNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24)
         ])

@@ -382,8 +382,8 @@
             filePath = "Employder/Controllers/ListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "changeToActive(chat:)"
             landmarkType = "7">
          </BreakpointContent>

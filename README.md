@@ -4,8 +4,11 @@
 </p>
 
 <p align="center">
-    <img src="" alt="Version">
-    <img src="" alt="License">
+    <img src="https://img.shields.io/badge/Swift%20Compatibility-5.7%20%7C%205.6-orange" alt="VersionSwift">
+    <img src="https://img.shields.io/badge/Platform%20Compatibility-iOS-blue" alt="Platform">
+    <img src="https://img.shields.io/badge/Xcode-14-blue" alt="Xcode">
+    <img src="https://img.shields.io/badge/License-MIT-brightgreen" alt="License">
+
 </p>
 
 ## About

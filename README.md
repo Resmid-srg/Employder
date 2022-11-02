@@ -37,4 +37,4 @@ Doc here
 
 ## License
 
-Employder is released under the MIT License.
+Employder is released under the [MIT License](https://github.com/Resmid-srg/Employder/blob/main/LICENSE.txt).

@@ -36,3 +36,5 @@ Doc here
 - [Resmid-srg](https://github.com/Resmid-srg)
 
 ## License
+
+Employder is released under the MIT License.

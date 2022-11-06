@@ -48,6 +48,8 @@ class ListViewController: UIViewController {
         activeChatsListener?.remove()
     }
     
+    //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,6 +84,12 @@ class ListViewController: UIViewController {
                 self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         })
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        
     }
     
     private func setupSearchBar() {

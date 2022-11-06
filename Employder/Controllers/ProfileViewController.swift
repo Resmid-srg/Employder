@@ -30,6 +30,8 @@ class ProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +40,6 @@ class ProfileViewController: UIViewController {
         setupConstraints()
         setupKeyboardHidding()
         
-        print(aboutMeLabel.bounds.height)
     }
     
     private func customizeElements() {
@@ -55,7 +56,7 @@ class ProfileViewController: UIViewController {
             button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         }
     }
-    
+        
     @objc private func sendMessage() {
         print(#function)
         guard let message = textField.text, message != "" else { return }
@@ -118,18 +119,18 @@ extension ProfileViewController {
             imageView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: 30)
         ])
         
-        print(aboutMeLabel.bounds.height)
         NSLayoutConstraint.activate([
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            containerView.heightAnchor.constraint(equalToConstant: 220 + aboutMeLabel.frame.height)
+            containerView.heightAnchor.constraint(equalToConstant: 220)
         ])
         
         NSLayoutConstraint.activate([
             userNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 28),
             userNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            userNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24)
+            userNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
+            userNameLabel.heightAnchor.constraint(equalToConstant: 48)
         ])
         
         NSLayoutConstraint.activate([

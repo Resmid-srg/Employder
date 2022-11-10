@@ -54,7 +54,7 @@ class AuthViewController: UIViewController {
     
     @objc private func googleButtonTapped() {
         //sign()
-        AuthService().googleLogin()
+        AuthService.shared.googleLogin()
 
     }
 }

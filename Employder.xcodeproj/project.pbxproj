@@ -374,6 +374,7 @@
 				0A51537628E2F08A00B512F3 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				0A57F15328EDEDA60058CF0A /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				0A22E4D528FCAC60005C603D /* XCRemoteSwiftPackageReference "MessageKit" */,
+				0A65A16E291836860047691B /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 0A2ADC9C28A141DC00F3F2BA /* Products */;
 			projectDirPath = "";
@@ -695,6 +696,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		0A65A16E291836860047691B /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

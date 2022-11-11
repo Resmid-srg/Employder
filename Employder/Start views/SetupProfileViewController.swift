@@ -17,8 +17,8 @@ class SetupProfileViewController: UIViewController {
     let aboutMeLabel = UILabel(text: "About me")
     let sexLabel = UILabel(text: "Sex")
     
-    let fullNameTextField = OneLineTextField(font: .avenir20(), isSecure: true)
-    let aboutMeTextField = OneLineTextField(font: .avenir20(), isSecure: true)
+    let fullNameTextField = OneLineTextField(font: .avenir20())
+    let aboutMeTextField = OneLineTextField(font: .avenir20())
     
     let fullAddPhotoView = AddPhotoView()
     

@@ -59,7 +59,6 @@
 		0A6C46DD28BE2EFE00E7F221 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A5ADE8128BE130300E8512A /* users.json */; };
 		0A6C46DF28BE6CFF00E7F221 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C46DE28BE6CFF00E7F221 /* CandidateCell.swift */; };
 		0A6C46E128BE703800E7F221 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C46E028BE703800E7F221 /* UIViewController + Extension.swift */; };
-		0A745C1328F6DAB400F7491E /* ShowHideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C1228F6DAB400F7491E /* ShowHideKeyboard.swift */; };
 		0A804E6C28EF7E9400AC0E76 /* UIApplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A804E6B28EF7E9400AC0E76 /* UIApplication + Extension.swift */; };
 		0A90B67D28A5048200F5B4C3 /* UISegmentedControl + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90B67C28A5048200F5B4C3 /* UISegmentedControl + Extension.swift */; };
 		0AD68C3628A5399D00C7D15A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD68C3528A5399D00C7D15A /* ListViewController.swift */; };
@@ -120,7 +119,6 @@
 		0A6A3C5D28B52FC0008EF5DB /* Bandle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bandle-Decodable.swift"; sourceTree = "<group>"; };
 		0A6C46DE28BE6CFF00E7F221 /* CandidateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		0A6C46E028BE703800E7F221 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
-		0A745C1228F6DAB400F7491E /* ShowHideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideKeyboard.swift; sourceTree = "<group>"; };
 		0A804E6B28EF7E9400AC0E76 /* UIApplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extension.swift"; sourceTree = "<group>"; };
 		0A90B67C28A5048200F5B4C3 /* UISegmentedControl + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl + Extension.swift"; sourceTree = "<group>"; };
 		0AD68C3528A5399D00C7D15A /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				0A52568C28C6529F0064AB6C /* Validators.swift */,
-				0A745C1228F6DAB400F7491E /* ShowHideKeyboard.swift */,
 				0A52568A28C6524B0064AB6C /* AuthErrors.swift */,
 				0A41E36928CD18160049ECFB /* UserErrors.swift */,
 			);
@@ -432,7 +429,6 @@
 				0A4CE90B28BF780E0071EAAF /* ProfileViewController.swift in Sources */,
 				0A3D1ECA28A3C8B200E213A5 /* SignInViewController.swift in Sources */,
 				0A41E03028C09D2D00863426 /* ChatRequestViewController.swift in Sources */,
-				0A745C1328F6DAB400F7491E /* ShowHideKeyboard.swift in Sources */,
 				0A5ADE8328BE142700E8512A /* MChat.swift in Sources */,
 				0A4AFF3C28A424BB00D0AE94 /* AddPhotoView.swift in Sources */,
 				0A6C46DF28BE6CFF00E7F221 /* CandidateCell.swift in Sources */,

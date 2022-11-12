@@ -10,8 +10,6 @@ import SDWebImage
 
 class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
     
-    
-    
     static var reuseId: String = "ActiveChatCell"
     
     let friendImageView = UIImageView()
@@ -19,14 +17,19 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
     let friendLastMessage = UILabel(text: "user message ", font: .laoShangamMN18())
     let gradientView = GradientView(from: .topTrailing, to: .bottomLeading, startColor: .gradientColor1(), endColor: .gradientColor2())
     
+    //MARK: - init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
         setupConstraints()
-        
-        //self.layer.cornerRadius = 39
-        //self.clipsToBounds = true
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Setups
     
     func configur<U>(with value: U) where U : Hashable {
         guard let chat: MChat = value as? MChat else { return }
@@ -39,10 +42,6 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
         gradientView.layer.cornerRadius = 8
         gradientView.clipsToBounds = true
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 //MARK: - Setup constraints
@@ -51,16 +50,19 @@ extension ActiveChatCell {
     
     private func setupConstraints() {
         
+        //tAMIC
         friendImageView.translatesAutoresizingMaskIntoConstraints = false
         friendName.translatesAutoresizingMaskIntoConstraints = false
         friendLastMessage.translatesAutoresizingMaskIntoConstraints = false
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         
+        //addSubviews
         addSubview(friendImageView)
         addSubview(friendName)
         addSubview(friendLastMessage)
         addSubview(gradientView)
         
+        //Constarints
         NSLayoutConstraint.activate([
             friendImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             friendImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),

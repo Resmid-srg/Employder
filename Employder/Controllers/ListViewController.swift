@@ -10,21 +10,26 @@ import FirebaseFirestore
 
 class ListViewController: UIViewController {
     
+    private let currentUser: MUser
+    
+    //Models
     var activeChats = [MChat]()
     var waitingChats = [MChat]()
     
+    //Listeners
     private var waitingChatsListener: ListenerRegistration?
     private var activeChatsListener: ListenerRegistration?
     
+    //Sections of CollectionViewCompositiionalLayout
     enum Section: Int, CaseIterable {
         case waitingChats, activeChats
         
         func description() -> String {
             switch self {
             case .waitingChats:
-                return "Waiting to meet"
+                return "Ожидают знакомства"
             case .activeChats:
-                return "Chats"
+                return "Чаты"
             }
         }
     }
@@ -32,8 +37,8 @@ class ListViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, MChat>?
     var collectionView: UICollectionView!
     
-    private let currentUser: MUser
-
+    //MARK: - init/deinit
+    
     init(currentUser: MUser) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
@@ -53,13 +58,15 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setups
         view.backgroundColor = .white
-        self.title = "Связи"
+        self.title = "Общение"
         setupSearchBar()
         setupCollectionView()
         createDataSource()
         reloadData()
         
+        //Listeners
         waitingChatsListener = ListenerService.shared.waitingChatsObserve(chats: waitingChats, completion: { result in
             switch result {
             case .success(let chats):
@@ -86,15 +93,10 @@ class ListViewController: UIViewController {
         })
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        
-    }
+    //MARK: - Setups
     
     private func setupSearchBar() {
         navigationController?.navigationBar.barTintColor = .white
-        //navigationController.navigationBar.shadowImage = UIImage()
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -106,7 +108,6 @@ class ListViewController: UIViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        //collectionView.backgroundColor = UIColor.purpleLightColor()
         view.addSubview(collectionView)
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
@@ -142,7 +143,6 @@ extension ListViewController {
                 return self.configur(collectionView: collectionView, cellType: ActiveChatCell.self, with: chat, for: indexPath)
             case .waitingChats:
                 return self.configur(collectionView: collectionView, cellType: WaitingChatCell.self, with: chat, for: indexPath)
-                
             }
         })
         
@@ -151,7 +151,6 @@ extension ListViewController {
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can non create new section header") }
             guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
             sectionHeader.configure(text: section.description(), font: .laoShangamMN20(), textColor: .gray)
-            
             return sectionHeader
         }
     }
@@ -166,7 +165,6 @@ extension ListViewController {
             guard let section = Section(rawValue: sectionIndex) else {
                 fatalError("Unknown section kind")
             }
-            
             switch section {
             case .activeChats:
                 return self.createActiveChats()
@@ -174,11 +172,9 @@ extension ListViewController {
                 return self.createWaitingChats()
             }
         }
-        
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.interSectionSpacing = 20
         layout.configuration = config
-        
         return layout
     }
     
@@ -229,6 +225,7 @@ extension ListViewController {
 //MARK: - UICollectionViewDelegate
 
 extension ListViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let chat = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         guard let section = Section(rawValue: indexPath.section) else { return }
@@ -251,6 +248,7 @@ extension ListViewController: UICollectionViewDelegate {
 //MARK: - waitingChatNavigationDelegate
 
 extension ListViewController: WaitingChatsNavigationDelegate {
+    
     func removeWaitingChats(chat: MChat) {
         FirestoreService.shared.deleteWaitingChat(chat: chat) { result in
             switch result {
@@ -273,13 +271,12 @@ extension ListViewController: WaitingChatsNavigationDelegate {
             }
         }
     }
-    
-    
 }
 
 //MARK: - UISearchBarDelegate
 
 extension ListViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print (searchText)
     }

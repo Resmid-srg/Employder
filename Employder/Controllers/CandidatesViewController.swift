@@ -11,13 +11,13 @@ import FirebaseFirestore
 
 class CandidatesViewController: UIViewController {
     
+    //Models
     var users = [MUser]()
     
+    //Listeners
     private var usersListener: ListenerRegistration?
-    
-    var dataSource: UICollectionViewDiffableDataSource<Section, MUser>?
-    var collectionView: UICollectionView!
-    
+        
+    //Title - count of users online
     enum Section: Int, CaseIterable {
         case users
         
@@ -29,25 +29,36 @@ class CandidatesViewController: UIViewController {
         }
     }
     
+    var dataSource: UICollectionViewDiffableDataSource<Section, MUser>?
+    var collectionView: UICollectionView!
+    
+    //MARK: - deinit
+    
     deinit {
         usersListener?.remove()
     }
     
+    //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setups
         view.backgroundColor = .white
         self.title = "Кандидаты"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(signOut))
         setupSearchBar()
         setupCollectionView()
         createDataSource()
-        
+
         users.forEach {(userss) in
             print(userss.userName)
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(signOut))
-        
+        //Listeners
         usersListener = ListenerService.shared.usersObserve(users: users, completion: { result in
             switch result {
             case .success(let users):
@@ -58,6 +69,8 @@ class CandidatesViewController: UIViewController {
             }
         })
     }
+    
+    //MARK: - Setups
     
     @objc private func signOut() {
         let ac = UIAlertController(title: nil, message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
@@ -76,20 +89,17 @@ class CandidatesViewController: UIViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        //collectionView.backgroundColor = UIColor.purpleLightColor()
+        
         view.addSubview(collectionView)
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
-        
         collectionView.register(CandidateCell.self, forCellWithReuseIdentifier: CandidateCell.reuseId)
-        
         collectionView.delegate = self
     }
     
     private func setupSearchBar() {
-        navigationController?.navigationBar.barTintColor = .white
-        //navigationController.navigationBar.shadowImage = UIImage()
         let searchController = UISearchController(searchResultsController: nil)
+        navigationController?.navigationBar.barTintColor = .white
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
@@ -107,8 +117,6 @@ class CandidatesViewController: UIViewController {
         snapshot.appendItems(filtered, toSection: .users)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
-
-    
 }
 
 //MARK: - UICollectionViewDelegate
@@ -143,7 +151,6 @@ extension CandidatesViewController {
             guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
             let items = self.dataSource?.snapshot().itemIdentifiers(inSection: .users)
             sectionHeader.configure(text: section.description(usersCount: items!.count), font: .systemFont(ofSize: 28, weight: .light), textColor: .label)
-            
             return sectionHeader
         }
     }
@@ -162,14 +169,12 @@ extension CandidatesViewController {
             switch section {
             case .users:
                 return self.createCandidatesSection()
-                
             }
         }
         
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.interSectionSpacing = 20
         layout.configuration = config
-        
         return layout
     }
     
@@ -205,7 +210,6 @@ extension CandidatesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         reloadData(with: searchText)
     }
-    
 }
 
 //MARK: - SwiftUI
@@ -213,6 +217,7 @@ extension CandidatesViewController: UISearchBarDelegate {
 import SwiftUI
 
 struct CandidatesVCProvider: PreviewProvider {
+    
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
@@ -226,7 +231,6 @@ struct CandidatesVCProvider: PreviewProvider {
         }
         
         func updateUIViewController(_ uiViewController: CandidatesVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<CandidatesVCProvider.ContainerView>) {
-            
         }
     }
 }

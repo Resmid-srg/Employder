@@ -10,7 +10,6 @@ import Firebase
 import GoogleSignIn
 import FirebaseCore
 
-
 class AuthViewController: UIViewController {
     
     let logoImageView = UIImageView(image: UIImage(named: "logo"), contentMode: .scaleAspectFit)
@@ -27,22 +26,27 @@ class AuthViewController: UIViewController {
     let signUpVC = SignUpViewController()
     let signInVC = SignInViewController()
     
+    //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setups
         view.backgroundColor = .white
         googleButton.customizeGoogleButton()
         setupConstraints()
         
+        //Buttons
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
         
+        //Delgates
         signInVC.delegate = self
         signUpVC.delegate = self
-        
-        //GIDSignIn.sharedInstance().delegate = self
     }
+    
+    //MARK: - Buttons
     
     @objc private func emailButtonTapped() {
         present(signUpVC, animated: true, completion: nil)
@@ -53,31 +57,33 @@ class AuthViewController: UIViewController {
     }
     
     @objc private func googleButtonTapped() {
-        //sign()
         AuthService.shared.googleLogin()
-
     }
 }
 
+//MARK: - AuthNavigationDelegate
+
 extension AuthViewController: AuthNavigationDelegate {
+    
     func toSingInVC() {
         present(signInVC, animated: true, completion: nil)
     }
+    
     func toSingUpVC() {
         signUpVC.modalPresentationStyle = .fullScreen
         present(signUpVC, animated: true, completion: nil)
     }
+}
+
+//MARK: - Keyboard setups
+
+extension AuthViewController {
     
     private func setupKeyboardHidding() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-
-    
-}
-
-extension AuthViewController {
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
@@ -99,7 +105,7 @@ extension AuthViewController {
     }
 }
 
-//TODO: Old method google authorization
+//TODO: Method google authorization with escaping completion
 //extension AuthViewController {
 //    private func sign() {
 //        AuthService.shared.googleLogin() { googleLoginResult in
@@ -135,17 +141,19 @@ extension AuthViewController {
         let googleView = ButtonFormAuthView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormAuthView(label: emailLabel, button: emailButton)
         let loginView = ButtonFormAuthView(label: alreadyOnboardLabel, button: loginButton)
-        
         let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView, textField1],
                                     axis: .vertical,
                                     spacing: 40)
         
+        //tAMIC
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
+        //addSubviews
         view.addSubview(logoImageView)
         view.addSubview(stackView)
         
+        //Constraints
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
             logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),

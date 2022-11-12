@@ -83,6 +83,8 @@ class AuthService {
         }
     }
     
+    //TODO: - googleLogin through escaping
+    
 //    func googleLogin(completion: @escaping (Result<User, Error>) -> Void) {
 //        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 //        let config = GIDConfiguration(clientID: clientID)
@@ -134,4 +136,4 @@ class AuthService {
             completion(.success(authResult.user))
         }
     }
-}
+} //class AuthService

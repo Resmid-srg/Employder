@@ -11,16 +11,18 @@ import InputBarAccessoryView
 import SDWebImage
 import FirebaseFirestore
 
-
-
 class ChatViewController: MessagesViewController {
     
+    //Models
     private var messages: [MMessage] = []
-    private var messageListener: ListenerRegistration?
-    
     private let currentUser: MUser
     private let chat: MChat
-            
+
+    //Listeners
+    private var messageListener: ListenerRegistration?
+    
+    //MARK: - init/deinit
+    
     init(currentUser: MUser, chat: MChat) {
         self.currentUser = currentUser
         self.chat = chat
@@ -37,14 +39,20 @@ class ChatViewController: MessagesViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Delegates
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
+        //Setups
         configureMessageInputBar()
         
+        //Listeners
         messageListener = ListenerService.shared.messagesObserve(chat: chat, completion: { result in
             switch result {
             case .success(let message):
@@ -55,43 +63,68 @@ class ChatViewController: MessagesViewController {
         })
     }
     
+    //MARK: - viewDidAppear
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         messagesCollectionView.scrollToLastItem()
-
     }
+    
+    //MARK: - insertNewMessage
     
     private func insertNewMessage(message: MMessage) {
         guard !messages.contains(message) else { return }
         messages.append(message)
         messages.sort()
-                
+        
         messagesCollectionView.reloadData()
     }
     
-//MARK: - Configure InputBar
+    //MARK: - Configure InputBar
     
     private func configureMessageInputBar() {
-        //messageInputBar = CameraInputBarAccessoryView()
         messageInputBar.delegate = self
+        
         messageInputBar.inputTextView.tintColor = .red
         messageInputBar.sendButton.setTitleColor(.green, for: .normal)
         messageInputBar.sendButton.setTitleColor(UIColor.yellow.withAlphaComponent(0.3), for: .highlighted)
-        
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.isHidden = true
         messageInputBar.inputTextView.tintColor = .blue
-        messageInputBar.inputTextView.backgroundColor = UIColor(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
-        messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
-        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
-        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
-        messageInputBar.inputTextView.layer.borderColor = UIColor(red: 200 / 255, green: 200 / 255, blue: 200 / 255, alpha: 1).cgColor
+        messageInputBar.inputTextView.backgroundColor = UIColor(red: 245 / 255,
+                                                                green: 245 / 255,
+                                                                blue: 245 / 255,
+                                                                alpha: 1)
+        
+        messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 0.6,
+                                                                     green: 0.6,
+                                                                     blue: 0.6,
+                                                                     alpha: 1)
+        
+        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8,
+                                                                        left: 16,
+                                                                        bottom: 8,
+                                                                        right: 36)
+        
+        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8,
+                                                                            left: 20,
+                                                                            bottom: 8,
+                                                                            right: 36)
+        
+        messageInputBar.inputTextView.layer.borderColor = UIColor(red: 200 / 255,
+                                                                  green: 200 / 255,
+                                                                  blue: 200 / 255,
+                                                                  alpha: 1).cgColor
+        
+        messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8,
+                                                                           left: 0,
+                                                                           bottom: 8,
+                                                                           right: 0)
         messageInputBar.inputTextView.layer.borderWidth = 0.2
         messageInputBar.inputTextView.layer.cornerRadius = 16.0
         messageInputBar.inputTextView.layer.masksToBounds = true
-        messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        configureInputBarItems()
         inputBarType = .custom(messageInputBar)
+        configureInputBarItems()
     }
     
     private func configureInputBarItems() {
@@ -119,43 +152,24 @@ class ChatViewController: MessagesViewController {
                 item.setTitleColor(color, for: .normal)
             }
         let bottomItems = [.flexibleSpace, charCountButton]
-        
         configureInputBarPadding()
-        
         messageInputBar.setStackViewItems(bottomItems, forStack: .bottom, animated: false)
-        
         messageInputBar.sendButton
             .onEnabled { item in
                 UIView.animate(withDuration: 0.3, animations: {
-                    //item.imageView?.backgroundColor = .systemGray
                 })
             }.onDisabled { item in
                 UIView.animate(withDuration: 0.3, animations: {
-                    //item.imageView?.backgroundColor = .systemGray
                 })
             }
     }
 
-    
     private func configureInputBarPadding() {
         
         messageInputBar.padding.bottom = 0
         messageInputBar.middleContentViewPadding.right = -38
         messageInputBar.inputTextView.textContainerInset.bottom = 8
     }
-    
-//    func configureAvatarView(
-//      _ avatarView: AvatarView,
-//      for message: MessageType,
-//      at indexPath: IndexPath,
-//      in _: MessagesCollectionView)
-//    {
-//      let avatar = SampleData.shared.getAvatarFor(sender: message.sender)
-//      avatarView.set(avatar: avatar)
-//      avatarView.isHidden = isNextMessageSameSender(at: indexPath)
-//      avatarView.layer.borderWidth = 2
-//      avatarView.layer.borderColor = UIColor.primaryColor.cgColor
-//    }
 }
 
 //MARK: - MessagesDataSource
@@ -198,7 +212,7 @@ extension ChatViewController: MessagesLayoutDelegate {
     }
     
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        if indexPath.item % 4 == 0 {
+        if indexPath.item % 5 == 0 {
             return 30
         } else {
             return 0
@@ -225,7 +239,6 @@ extension ChatViewController: MessagesDisplayDelegate {
         avatarView.isHidden = isNextMessageSameSender(at: indexPath)
         avatarView.layer.borderWidth = 2
         avatarView.layer.borderColor = UIColor.purpleLightColor().cgColor
-        
     }
     
     func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
@@ -236,13 +249,11 @@ extension ChatViewController: MessagesDisplayDelegate {
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
         .bubble
     }
-    
 }
 
 //MARK: - InputBarAccessoryViewDelegate
 
 extension ChatViewController: InputBarAccessoryViewDelegate {
-    // MARK: Internal
     
     @objc
     func inputBar(_: InputBarAccessoryView, didPressSendButtonWith text: String) {
@@ -255,58 +266,32 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             case .failure(let error):
                 self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
-             
         })
     }
     
     func processInputBar(_ inputBar: InputBarAccessoryView, message: MMessage) {
-        // Here we can parse for which substrings were autocompleted
         let attributedText = inputBar.inputTextView.attributedText!
         let range = NSRange(location: 0, length: attributedText.length)
         attributedText.enumerateAttribute(.autocompleted, in: range, options: []) { _, range, _ in
-            
             let substring = attributedText.attributedSubstring(from: range)
             let context = substring.attribute(.autocompletedContext, at: 0, effectiveRange: nil)
             print("Autocompleted: `", substring, "` with context: ", context ?? [])
         }
-        
-        //let components = inputBar.inputTextView.components
         inputBar.inputTextView.text = String()
         inputBar.invalidatePlugins()
-        // Send button activity animation
         inputBar.sendButton.startAnimating()
         inputBar.inputTextView.placeholder = "Sending..."
-        // Resign first responder for iPad split view
         inputBar.inputTextView.resignFirstResponder()
         DispatchQueue.global(qos: .default).async {
-            // fake send request task
             sleep(1)
             DispatchQueue.main.async { [weak self] in
                 inputBar.sendButton.stopAnimating()
                 inputBar.inputTextView.placeholder = "Aa"
-                //self?.insertNewMessage(message: message)
-
                 self?.messagesCollectionView.scrollToLastItem(animated: true)
             }
         }
     }
-    
-    // MARK: Private
-    
-    //        private func insertMessages(_ data: [Any]) {
-    //            for component in data {
-    //                let user = SampleData.shared.currentSender
-    //                if let str = component as? String {
-    //                    let message = MockMessage(text: str, user: user, messageId: UUID().uuidString, date: Date())
-    //                    insertMessage(message)
-    //                } else if let img = component as? UIImage {
-    //                    let message = MockMessage(image: img, user: user, messageId: UUID().uuidString, date: Date())
-    //                    insertMessage(message)
-    //                }
-    //            }
-    //        }
 }
-
 
 //MARK: - SwiftUI
 

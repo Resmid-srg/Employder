@@ -10,13 +10,16 @@ import SDWebImage
 
 class ProfileViewController: UIViewController {
     
+    //Models
+    private let user: MUser
+    
     let containerView = UIView()
     let userNameLabel = UILabel(text: "Trololo")
     let aboutMeLabel = UILabel(text: "ohhohohohoohohohhohoho")
     let imageView = UIImageView(image: UIImage(named: "human11"), contentMode: .scaleAspectFill)
     let textField = InsertableTextField()
-    
-    private let user: MUser
+        
+    //MARK: init
     
     init(user: MUser) {
         self.user = user
@@ -35,12 +38,15 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setups
         view.backgroundColor = .white
         customizeElements()
         setupConstraints()
         setupKeyboardHidding()
         
     }
+    
+    //MARK: - Setups
     
     private func customizeElements() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +62,8 @@ class ProfileViewController: UIViewController {
             button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         }
     }
+    
+    //MARK: - Buttons
         
     @objc private func sendMessage() {
         print(#function)
@@ -72,16 +80,18 @@ class ProfileViewController: UIViewController {
                 }
             }
         }
-    }
+    } //func sendMessage
+}
+
+//MARK: - Keyboard Setups
+
+extension ProfileViewController {
     
     private func setupKeyboardHidding() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-}
-
-extension ProfileViewController {
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
@@ -106,12 +116,14 @@ extension ProfileViewController {
     
     private func setupConstraints() {
         
+        //addSubviews
         view.addSubview(imageView)
         view.addSubview(containerView)
         containerView.addSubview(userNameLabel)
         containerView.addSubview(aboutMeLabel)
         containerView.addSubview(textField)
         
+        //Constarints
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

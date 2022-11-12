@@ -13,8 +13,6 @@ struct MMessage: Hashable, MessageType {
 
     var sender: MessageKit.SenderType
     let content: String
-//    let senderId: String
-//    let senderUserName: String
     var sentDate: Date
     let id: String?
     
@@ -26,12 +24,8 @@ struct MMessage: Hashable, MessageType {
         return .text(content)
     }
 
-
-    
     init(user: MUser, content: String) {
         self.content = content
-//        senderId = user.id
-//        senderUserName = user.userName
         sender = UserMK(senderId: user.id, displayName: user.userName)
         sentDate = Date()
         id = nil
@@ -46,8 +40,6 @@ struct MMessage: Hashable, MessageType {
         
         self.id = document.documentID
         self.sentDate = sentData.dateValue()
-//        self.senderUserName = senderUserName
-//        self.senderId = senderID
         sender = UserMK(senderId: senderID, displayName: senderUserName)
         self.content = content
     }

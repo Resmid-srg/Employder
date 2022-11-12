@@ -8,6 +8,12 @@
 import UIKit
 
 class ChatRequestViewController: UIViewController {
+
+    //Models
+    private var chat: MChat
+
+    //Delegates
+    weak var delegate: WaitingChatsNavigationDelegate?
     
     let containerView = UIView()
     let userNameLabel = UILabel()
@@ -16,9 +22,7 @@ class ChatRequestViewController: UIViewController {
     let acceptButton = UIButton(title: "Принять", titleColor: .white, backgroundColor: .black, font: .avenir20(), isShadow: false, cornerRadius: 10)
     let denyButton = UIButton(title: "Отклонить", titleColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), backgroundColor: .white, font: .avenir20(), isShadow: false, cornerRadius: 10)
     
-    weak var delegate: WaitingChatsNavigationDelegate?
-    
-    private var chat: MChat
+    //MARK: - init
     
     init(chat: MChat) {
         self.chat = chat
@@ -31,16 +35,29 @@ class ChatRequestViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setups
         view.backgroundColor = .white
         customizeElements()
         setupConstraints()
         
+        //Buttons
         denyButton.addTarget(self, action: #selector(denyButtonTapped), for: .touchUpInside)
         acceptButton.addTarget(self, action: #selector(acceptButtonTapped), for: .touchUpInside)
     }
+    
+    //MARK: - viewWillLayoutSubviews
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.acceptButton.applyGradients(cornerRadius: 10)
+    }
+    
+    //MARK: - Buttons
     
     @objc private func denyButtonTapped() {
         self.dismiss(animated: true) {
@@ -54,6 +71,8 @@ class ChatRequestViewController: UIViewController {
         }
     }
     
+    //MARK: - Setups
+    
     private func customizeElements() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,11 +83,6 @@ class ChatRequestViewController: UIViewController {
         containerView.backgroundColor = .white
         containerView.layer.cornerRadius = 30
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        self.acceptButton.applyGradients(cornerRadius: 10)
-    }
 }
 
 //MARK: - Setup constraints
@@ -77,6 +91,7 @@ extension ChatRequestViewController {
     
     private func setupConstraints() {
         
+        //addSubviews
         view.addSubview(imageView)
         view.addSubview(containerView)
         containerView.addSubview(userNameLabel)
@@ -87,6 +102,7 @@ extension ChatRequestViewController {
         buttonsStackView.distribution = .fillEqually
         containerView.addSubview(buttonsStackView)
         
+        //Constraints
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -119,6 +135,5 @@ extension ChatRequestViewController {
             buttonsStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
             buttonsStackView.heightAnchor.constraint(equalToConstant: 48)
         ])
-        
     }
 }

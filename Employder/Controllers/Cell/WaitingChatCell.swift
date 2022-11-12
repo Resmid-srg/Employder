@@ -14,6 +14,8 @@ class  WaitingChatCell: UICollectionViewCell, SelfConfiguringCell {
     
     let friendImageView = UIImageView()
     
+    //MARK: - init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
@@ -22,14 +24,16 @@ class  WaitingChatCell: UICollectionViewCell, SelfConfiguringCell {
         self.clipsToBounds = true
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Setups
+    
     func configur<U>(with value: U) where U : Hashable {
         guard let chat: MChat = value as? MChat else { return }
         friendImageView.sd_setImage(with: URL(string: chat.friendUserImageStringURL ))
         friendImageView.contentMode = .scaleAspectFill
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -39,17 +43,19 @@ extension WaitingChatCell {
     
     private func setupConstraints() {
         
+        //tAMIC
         friendImageView.translatesAutoresizingMaskIntoConstraints = false
         
+        //addSubviews
         addSubview(friendImageView)
         
+        //Constaraints
         NSLayoutConstraint.activate([
             friendImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             friendImageView.topAnchor.constraint(equalTo: self.topAnchor),
             friendImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             friendImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
-        
     }
 }
 

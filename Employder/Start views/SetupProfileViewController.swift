@@ -28,6 +28,8 @@ class SetupProfileViewController: UIViewController {
     
     private let currentUser: User
     
+    //MARK: - init
+    
     init (currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
@@ -36,7 +38,6 @@ class SetupProfileViewController: UIViewController {
             fullNameTextField.text = userName
         }
         
-        //TODO: set google image
         if let photoURL = currentUser.photoURL {
             fullAddPhotoView.circleImageView.sd_setImage(with: photoURL)
         }
@@ -46,20 +47,26 @@ class SetupProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Delegates
+        self.fullNameTextField.delegate = self
+        self.aboutMeTextField.delegate = self
+        
+        //Setups
         view.backgroundColor = .white
         setupConstraints()
         setupKeyboardHidding()
         
+        //Buttons
         goToChatButton.addTarget(self, action: #selector(goToChatButtonTapped), for: .touchUpInside)
         fullAddPhotoView.plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
-        
-        self.fullNameTextField.delegate = self
-        self.aboutMeTextField.delegate = self
-        
     }
+    
+    //MARK: - Buttons
     
     @objc private func plusButtonTapped() {
         var config = PHPickerConfiguration(photoLibrary: .shared())
@@ -91,14 +98,17 @@ class SetupProfileViewController: UIViewController {
                 }
             }
     }
+}
+
+//MARK: - Keyboard Setup
+
+extension SetupProfileViewController {
     
     private func setupKeyboardHidding() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-}
-
-extension SetupProfileViewController {
+    
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
@@ -117,6 +127,8 @@ extension SetupProfileViewController {
         view.frame.origin.y = 0
     }
 }
+
+//MARK: - UITextFieldDelegate
 
 extension SetupProfileViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -174,14 +186,17 @@ extension SetupProfileViewController {
                                     axis: .vertical,
                                     spacing: 40)
         
+        //tAMIC
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         fullAddPhotoView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
+        //addSubviews
         view.addSubview(welcomeLabel)
         view.addSubview(fullAddPhotoView)
         view.addSubview(stackView)
         
+        //Constaraints
         goToChatButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         NSLayoutConstraint.activate([

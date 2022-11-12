@@ -28,6 +28,8 @@ class FirestoreService {
     
     var currentUser: MUser!
     
+    //MARK: - getUserData from firebase
+    
     func getUserData (user: User, completion: @escaping (Result<MUser, Error>) -> Void) {
         let docRef = userRef.document(user.uid)
         docRef.getDocument { document, error in
@@ -43,6 +45,8 @@ class FirestoreService {
             }
         }
     }
+    
+    //MARK: - saveProfileWith (filling out a profile when registrering)
     
     func saveProfileWith(id: String, email: String, userName: String?, avatarImage: UIImage?, description: String?, sex: String?, completion: @escaping (Result<MUser, Error>) -> Void) {
         
@@ -80,6 +84,8 @@ class FirestoreService {
         } //StorageService
     } //saveProfileWith
     
+    //MARK: - createWaitigChat and deleteWaitingChat
+    
     func createWaitingChat(message: String, receiver: MUser, completion: @escaping (Result<Void, Error>) -> Void) {
         let reference = db.collection(["users", receiver.id, "waitingChats"].joined(separator: "/"))
         let messageRef = reference.document(self.currentUser.id).collection("messages")
@@ -114,6 +120,8 @@ class FirestoreService {
         }
     }
     
+    //MARK: - deleteMessages
+    
     func deleteMessages(chat: MChat, completion: @escaping (Result<Void, Error>) -> Void) {
         let reference = waitingChatsRef.document(chat.friendId).collection("messages")
         
@@ -137,6 +145,8 @@ class FirestoreService {
         }
     }
     
+    //MARK: - getWaitingChatMessages
+    
     func getWaitingChatMessages(chat: MChat, completion: @escaping (Result<[MMessage], Error>) -> Void ) {
         let reference = waitingChatsRef.document(chat.friendId).collection("messages")
         var messages = [MMessage]()
@@ -152,6 +162,8 @@ class FirestoreService {
             completion(.success(messages))
         }
     }
+    
+    //MARK: - changeToActive and createActiveChat
     
     func changeToActive(chat: MChat, completion: @escaping (Result<Void, Error>) -> Void ) {
         getWaitingChatMessages(chat: chat) { resultGWCM in
@@ -177,7 +189,7 @@ class FirestoreService {
             }
         }
     }
-    
+        
     func createActiveChat(chat: MChat, messages: [MMessage], completion: @escaping (Result<Void, Error>) -> Void ) {
         let messagesRef = activeChatsRef.document(chat.friendId).collection("messages")
         activeChatsRef.document(chat.friendId).setData(chat.representation) { error in
@@ -196,6 +208,8 @@ class FirestoreService {
             }
         }
     }
+    
+    //MARK: - sendMessage
     
     func sendMessage(chat: MChat, message: MMessage, completion: @escaping (Result<Void, Error>) -> Void) {
         let friendRef = userRef.document(chat.friendId).collection("activeChats").document(currentUser.id)
@@ -224,4 +238,4 @@ class FirestoreService {
             }
         }
     }
-}
+} //class FirestoreService

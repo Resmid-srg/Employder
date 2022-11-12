@@ -12,13 +12,16 @@ class ButtonFormAuthView: UIView {
     init(label:UILabel, button: UIButton) {
         super.init(frame: .zero)
         
+        //tAMIC
         self.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
         
+        //addSubviews
         self.addSubview(label)
         self.addSubview(button)
         
+        //Constaraints
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.topAnchor),
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor)
@@ -32,7 +35,6 @@ class ButtonFormAuthView: UIView {
         ])
         
         bottomAnchor.constraint(equalTo: button.bottomAnchor).isActive = true
-        
     }
     
     required init?(coder: NSCoder) {

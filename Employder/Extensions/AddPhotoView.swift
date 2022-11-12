@@ -24,8 +24,6 @@ class AddPhotoView: UIView {
         imageView.image = UIImage(named: "avatar")
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = false
-//        imageView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        imageView.layer.borderWidth = 1
         return imageView
     }()
     
@@ -38,12 +36,13 @@ class AddPhotoView: UIView {
         return button
     }()
     
+    //MARK: - init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(imageView)
         imageView.addSubview(circleImageView)
-        //addSubview(circleImageView)
         addSubview(plusButton)
         
         setupConstraints()
@@ -52,6 +51,8 @@ class AddPhotoView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Setups constaraints
     
     private func setupConstraints() {
         

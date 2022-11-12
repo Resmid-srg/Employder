@@ -10,13 +10,11 @@ import UIKit
 class SignInViewController: UIViewController {
     
     let welcomeLabel = UILabel(text: "Welcome, master 🙏", font: .avenir26())
-    
     let loginWithLabel = UILabel(text: "Login with")
     let orLabel = UILabel(text: "or")
     let emailLabel = UILabel(text: "Email")
     let passwordLabel = UILabel(text: "Password")
     let needAccLabel = UILabel(text: "Need an account?")
-    
     let emailTextField = OneLineTextField(font: .avenir20())
     let passwordTextField = OneLineTextField(font: .avenir20(), isSecure: true)
     
@@ -30,25 +28,31 @@ class SignInViewController: UIViewController {
         return button
     }()
     
+    //Delegates
     weak var delegate: AuthNavigationDelegate?
+    
+    //MARK: - viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Delegates
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        //Setups
         view.backgroundColor = .white
         googleButton.customizeGoogleButton()
         setupConstraints()
         setupKeyboardHidding()
         
+        //Buttons
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
-        
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-//        emailTextField.tag = 0
-//        passwordTextField.tag = 1
     }
+    
+    //MARK: - Buttons
     
     @objc private func loginButtonTapped() {
         print(#function)
@@ -81,18 +85,19 @@ class SignInViewController: UIViewController {
     }
     
     @objc private func googleButtonTapped() {
-        //sign()
         AuthService().googleLogin()
     }
+}
+
+//MARK: - Setup Keyboard
+
+extension SignInViewController {
     
     private func setupKeyboardHidding() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-}
-
-extension SignInViewController {
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
@@ -100,17 +105,21 @@ extension SignInViewController {
         
         let keyboardTopY = keyboardFrame.cgRectValue.origin.y
         let convertedTextFieldFrame = self.view.convert(currentTextField.frame, from: currentTextField.superview)
-        //let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
         
-        let textBoxY = convertedTextFieldFrame.origin.y
-        let newFrameY = (textBoxY - keyboardTopY / 2) * -1
-        self.view.frame.origin.y = newFrameY
+        if textFieldBottomY > keyboardTopY {
+            let textBoxY = convertedTextFieldFrame.origin.y
+            let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+            view.frame.origin.y = newFrameY
+        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0
     }
 }
+
+//MARK: - UITextFieldDelegate
 
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -150,18 +159,21 @@ extension SignInViewController {
                                           axis: .horizontal,
                                           spacing: 10)
         
+        //tAMIC
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         googleButtonView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         orLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        //addSubviews
         view.addSubview(welcomeLabel)
         view.addSubview(googleButtonView)
         view.addSubview(stackView)
         view.addSubview(bottomStackView)
         view.addSubview(orLabel)
         
+        //Constraints
         loginButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         NSLayoutConstraint.activate([
@@ -190,9 +202,7 @@ extension SignInViewController {
             bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 80),
             bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
     }
-    
 }
 
 //MARK: - SwiftUI

@@ -12,6 +12,8 @@ class MainTabBarController: UITabBarController {
     
     private let currentUser: MUser
     
+    //MARK: - init
+    
     init(currentUser: MUser
          = MUser(userName: "lll", avatarStringURL: "lll", description: "lll", email: "lll", id: "lll", sex: "lll")
     ) {
@@ -23,23 +25,27 @@ class MainTabBarController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //setups
         tabBar.tintColor = UIColor.purpleMainColor()
-        
+        let listImage = UIImage(systemName: "message.fill")!
+        let candidatesImage = UIImage(systemName: "person.3.fill")!
+
+        //controllers
         let listViewController = ListViewController(currentUser: currentUser)
         let candidatesViewController = CandidatesViewController()
         
-        let listImage = UIImage(systemName: "message.fill")!
-        let candidatesImage = UIImage(systemName: "person.3.fill")!
-        
         viewControllers = [
-            
-            generateNavigationController(rootViewController: candidatesViewController, title: "Кандидаты", image: candidatesImage),
-            generateNavigationController(rootViewController: listViewController, title: "Связи", image: listImage)
+            generateNavigationController(rootViewController: candidatesViewController, title: "Знакомства", image: candidatesImage),
+            generateNavigationController(rootViewController: listViewController, title: "Общение", image: listImage)
         ]
     }
+    
+    //MARK: - generateNavigationController
     
     private func generateNavigationController(rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
         let navigationVC = UINavigationController(rootViewController: rootViewController)

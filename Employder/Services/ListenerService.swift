@@ -23,6 +23,8 @@ class ListenerService {
         return Auth.auth().currentUser!.uid
     }
     
+    //MARK: - userObserve
+    
     func usersObserve (users: [MUser], completion: @escaping (Result<[MUser], Error>) -> Void) -> ListenerRegistration? {
         var users = users
         let usersListener = usersRef.addSnapshotListener { querySnapshot, error in
@@ -50,6 +52,8 @@ class ListenerService {
         }
         return usersListener
     }
+    
+    //MARK: waitingChatsObserve
     
     func waitingChatsObserve (chats: [MChat], completion: @escaping (Result<[MChat], Error>) -> Void) -> ListenerRegistration? {
         var chats = chats
@@ -79,6 +83,8 @@ class ListenerService {
         return chatsListener
     }
     
+    //MARK: - activeChatsObserve
+    
     func activeChatsObserve (chats: [MChat], completion: @escaping (Result<[MChat], Error>) -> Void) -> ListenerRegistration? {
         var chats = chats
         let chatsRef = db.collection(["users", currentUserId, "activeChats"].joined(separator: "/"))
@@ -107,6 +113,8 @@ class ListenerService {
         return chatsListener
     }
     
+    //MARK: - messagesObserve
+    
     func messagesObserve(chat: MChat, completion: @escaping (Result<MMessage, Error>) -> Void) -> ListenerRegistration? {
         let ref = usersRef.document(currentUserId).collection("activeChats").document(chat.friendId).collection("messages")
         let messagesListener = ref.addSnapshotListener { querySnapshot, error in
@@ -125,7 +133,6 @@ class ListenerService {
                     break
                 }
             }
-            
         }
         return messagesListener
     }

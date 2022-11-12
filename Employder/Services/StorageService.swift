@@ -23,6 +23,8 @@ class StorageService {
         return Auth.auth().currentUser!.uid
     }
     
+    //MARK: - upload photo
+    
     func upload(photo: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
         
         guard let scaledImage = photo.scaledToSafeUploadSize, let imageData = scaledImage.jpegData(compressionQuality: 0.4) else { return }
@@ -44,8 +46,6 @@ class StorageService {
                 
                 completion(.success(downloadURL))
             }
-        }
-        
-    }
-    
-}
+        } //putData
+    } //upload
+} //class StorageService

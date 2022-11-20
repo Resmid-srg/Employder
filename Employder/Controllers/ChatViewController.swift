@@ -259,12 +259,12 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     func inputBar(_: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let message = MMessage(user: currentUser, content: text)
         processInputBar(messageInputBar, message: message)
-        FirestoreService.shared.sendMessage(chat: chat, message: message, completion: { result in
+        FirestoreService.shared.sendMessage(chat: chat, message: message, completion: { [weak self] result in
             switch result {
             case .success():
-                self.messagesCollectionView.scrollToLastItem()
+                self?.messagesCollectionView.scrollToLastItem()
             case .failure(let error):
-                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+                self?.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         })
     }

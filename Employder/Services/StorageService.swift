@@ -32,13 +32,13 @@ class StorageService {
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        avatarsRef.child(currentUserId).putData(imageData, metadata: metadata) { (metadata, error) in
+        avatarsRef.child(currentUserId).putData(imageData, metadata: metadata) { [weak self] (metadata, error) in
             guard let _ = metadata else {
                 completion(.failure(error!))
                 return
             }
             
-            self.avatarsRef.child(self.currentUserId).downloadURL { url, error in
+            self?.avatarsRef.child(self!.currentUserId).downloadURL { url, error in
                 guard let downloadURL = url else {
                     completion(.failure(error!))
                     return

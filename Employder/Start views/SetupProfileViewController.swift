@@ -84,17 +84,17 @@ class SetupProfileViewController: UIViewController {
             userName: fullNameTextField.text,
             avatarImage: fullAddPhotoView.circleImageView.image,
             description: aboutMeTextField.text,
-            sex: sexSelector.titleForSegment(at: sexSelector.selectedSegmentIndex)) { (result) in
+            sex: sexSelector.titleForSegment(at: sexSelector.selectedSegmentIndex)) { [weak self] result in
                 switch result {
                 case .success(let mcandidate):
-                    self.showAlert(with: "Успешно", and: "Вы заполнили профиль!") {
+                    self?.showAlert(with: "Успешно", and: "Вы заполнили профиль!") {
                         let mainTabBar = MainTabBarController(currentUser: mcandidate)
                         mainTabBar.modalPresentationStyle = .fullScreen
-                        self.present(mainTabBar, animated: true)
+                        self?.present(mainTabBar, animated: true)
                     }
                     print(mcandidate)
                 case .failure(let error):
-                    self.showAlert(with: "Ошибка", and: error.localizedDescription)
+                    self?.showAlert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
     }
@@ -154,12 +154,12 @@ extension SetupProfileViewController: PHPickerViewControllerDelegate {
         picker.dismiss(animated: true)
         
         results.forEach { result in
-            result.itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] reading, error in
                 guard let image = reading as? UIImage, error == nil else {
                     return
                 }
                 DispatchQueue.main.async {
-                    self.fullAddPhotoView.circleImageView.image = image
+                    self?.fullAddPhotoView.circleImageView.image = image
                 }
             }
         }

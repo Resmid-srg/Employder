@@ -250,24 +250,24 @@ extension ListViewController: UICollectionViewDelegate {
 extension ListViewController: WaitingChatsNavigationDelegate {
     
     func removeWaitingChats(chat: MChat) {
-        FirestoreService.shared.deleteWaitingChat(chat: chat) { result in
+        FirestoreService.shared.deleteWaitingChat(chat: chat) { [weak self] result in
             switch result {
             case .success:
-                self.showAlert(with: "Успешно!", and: "Чат с \(chat.friendUserName) был удален")
+                self?.showAlert(with: "Успешно!", and: "Чат с \(chat.friendUserName) был удален")
             case .failure(let error):
-                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+                self?.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         }
     }
     
     func changeToActive(chat: MChat) {
         print(#function)
-        FirestoreService.shared.changeToActive(chat: chat) { result in
+        FirestoreService.shared.changeToActive(chat: chat) { [weak self] result in
             switch result {
             case .success:
-                self.showAlert(with: "Успешно!", and: "Приятного общения с \(chat.friendUserName)")
+                self?.showAlert(with: "Успешно!", and: "Приятного общения с \(chat.friendUserName)")
             case .failure(let error):
-                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+                self?.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         }
     }

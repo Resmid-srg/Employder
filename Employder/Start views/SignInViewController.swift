@@ -57,23 +57,23 @@ class SignInViewController: UIViewController {
     @objc private func loginButtonTapped() {
         print(#function)
         AuthService.shared.login(email: emailTextField.text,
-                                 password: passwordTextField.text) { (logResult) in
+                                 password: passwordTextField.text) { [weak self] logResult in
             switch logResult {
             case .success(let user):
-                self.showAlert(with: "Успешно", and: "Вы авторизованы!") {
+                self?.showAlert(with: "Успешно", and: "Вы авторизованы!") {
                     FirestoreService.shared.getUserData(user: user) { result in
                         switch result {
                         case .success(let mcandidate):
                             let mainTabBar = MainTabBarController(currentUser: mcandidate)
                             mainTabBar.modalPresentationStyle = .fullScreen
-                            self.present(mainTabBar, animated: true, completion: nil)
+                            self?.present(mainTabBar, animated: true, completion: nil)
                         case .failure(_):
-                            self.present(SetupProfileViewController(currentUser: user), animated: true)
+                            self?.present(SetupProfileViewController(currentUser: user), animated: true)
                         }
                     }
                 }
             case .failure(let error):
-                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+                self?.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         }
     }

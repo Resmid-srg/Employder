@@ -67,11 +67,11 @@ class FirestoreService {
                                id: id,
                                sex: sex!)
         
-        StorageService.shared.upload(photo: avatarImage!) { result in
+        StorageService.shared.upload(photo: avatarImage!) { [weak self] result in
             switch result {
             case .success(let url):
                 mcandidate.avatarStringURL = url.absoluteString
-                self.userRef.document(mcandidate.id).setData(mcandidate.representation) { (error) in
+                self?.userRef.document(mcandidate.id).setData(mcandidate.representation) { (error) in
                     if let error = error {
                         completion(.failure(error))
                     } else {
@@ -111,12 +111,12 @@ class FirestoreService {
     }
     
     func deleteWaitingChat(chat: MChat, completion: @escaping (Result<Void, Error>) -> Void) {
-        waitingChatsRef.document(chat.friendId).delete { error in
+        waitingChatsRef.document(chat.friendId).delete { [weak self] error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            self.deleteMessages(chat: chat, completion: completion)
+            self?.deleteMessages(chat: chat, completion: completion)
         }
     }
     
@@ -166,13 +166,13 @@ class FirestoreService {
     //MARK: - changeToActive and createActiveChat
     
     func changeToActive(chat: MChat, completion: @escaping (Result<Void, Error>) -> Void ) {
-        getWaitingChatMessages(chat: chat) { resultGWCM in
+        getWaitingChatMessages(chat: chat) { [weak self] resultGWCM in
             switch resultGWCM {
             case .success(let messages):
-                self.deleteWaitingChat(chat: chat) { resultDWC in
+                self?.deleteWaitingChat(chat: chat) { resultDWC in
                     switch resultDWC {
                     case .success:
-                        self.createActiveChat(chat: chat, messages: messages) { resultCAC in
+                        self?.createActiveChat(chat: chat, messages: messages) { resultCAC in
                             switch resultCAC {
                             case .success:
                                 completion(.success(Void()))

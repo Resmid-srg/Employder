@@ -59,13 +59,13 @@ class CandidatesViewController: UIViewController {
         }
         
         //Listeners
-        usersListener = ListenerService.shared.usersObserve(users: users, completion: { result in
+        usersListener = ListenerService.shared.usersObserve(users: users, completion: { [weak self] result in
             switch result {
             case .success(let users):
-                self.users = users
-                self.reloadData(with: nil)
+                self?.users = users
+                self?.reloadData(with: nil)
             case .failure(let error):
-                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+                self?.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         })
     }

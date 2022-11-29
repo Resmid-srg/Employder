@@ -135,7 +135,7 @@ extension ProfileViewController {
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            containerView.heightAnchor.constraint(equalToConstant: 220)
+            containerView.heightAnchor.constraint(equalToConstant: 320)
         ])
         
         NSLayoutConstraint.activate([
@@ -146,13 +146,13 @@ extension ProfileViewController {
         ])
         
         NSLayoutConstraint.activate([
-            aboutMeLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 16),
+            aboutMeLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             aboutMeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
             aboutMeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24)
         ])
         
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: aboutMeLabel.bottomAnchor, constant: 16),
+            textField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -32),
             textField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
             textField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
             textField.heightAnchor.constraint(equalToConstant: 48)

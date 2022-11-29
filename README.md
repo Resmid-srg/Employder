@@ -14,6 +14,11 @@
 
 iOS App. Dating app for candidates and HR
 
+Used libraries via spm:
+- Firebase
+- MessageKit
+- SDWebImage
+
 ## Screenshots
 
 <table>

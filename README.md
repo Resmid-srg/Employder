@@ -14,11 +14,6 @@
 
 iOS App. Dating app for candidates and HR
 
-Used libraries via spm:
-- Firebase
-- MessageKit
-- SDWebImage
-
 ## Screenshots
 
 <table>
@@ -40,7 +35,14 @@ Used libraries via spm:
 
 ## Documentation
 
-Doc here
+For test use test account:
+- Login: test@mail.ru
+- Password: 1234567
+
+Used libraries via spm:
+- Firebase
+- MessageKit
+- SDWebImage
 
 ## Distribute
 

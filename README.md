@@ -10,11 +10,11 @@
     <img src="https://img.shields.io/badge/License-MIT-brightgreen" alt="License">
 </p>
 
-## About
+## О проекте
 
-iOS App. Dating app for candidates and HR
+iOS приложение для знакомств кандидатов и HR :)
 
-## Screenshots
+## Скриншоты
 
 <table>
 <tr>
@@ -29,26 +29,18 @@ iOS App. Dating app for candidates and HR
 </tr>
 </table>
 
-  
+## Документация
 
+Для теста используйте аккаунт:
+- Логин: test@mail.ru
+- Пароль: 1234567
 
-
-## Documentation
-
-For test use test account:
-- Login: test@mail.ru
-- Password: 1234567
-
-Used libraries via spm:
+Используемые библиотеки, подключенные через SPM:
 - Firebase
 - MessageKit
 - SDWebImage
 
-## Distribute
-
-- [Employder](link)
-
-## Developers
+## Разработчики
 
 - [Resmid-srg](https://github.com/Resmid-srg)
 

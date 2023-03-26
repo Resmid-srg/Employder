@@ -11,102 +11,106 @@ import GoogleSignIn
 import FirebaseCore
 
 class AuthViewController: UIViewController {
-    
+
     let logoImageView = UIImageView(image: UIImage(named: "logo"), contentMode: .scaleAspectFit)
-    
+
     let googleLabel = UILabel(text: "Get started with")
     let emailLabel = UILabel(text: "Or sign up with")
     let alreadyOnboardLabel = UILabel(text: "Already onboard?")
     let textField1 = UITextField()
-    
+
     let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
     let emailButton = UIButton(title: "Email", titleColor: .white, backgroundColor: .buttonBlack())
     let loginButton = UIButton(title: "Login", titleColor: .buttonRed(), backgroundColor: .white, isShadow: true)
-    
+
     let signUpVC = SignUpViewController()
     let signInVC = SignInViewController()
-    
-    //MARK: - viewDidLoad
-    
+
+    // MARK: - viewDidLoad
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Setups
+
+        // Setups
         view.backgroundColor = .white
         googleButton.customizeGoogleButton()
         setupConstraints()
-        
-        //Buttons
+
+        // Buttons
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
-        
-        //Delgates
+
+        // Delgates
         signInVC.delegate = self
         signUpVC.delegate = self
     }
-    
-    //MARK: - Buttons
-    
+
+    // MARK: - Buttons
+
     @objc private func emailButtonTapped() {
         present(signUpVC, animated: true, completion: nil)
     }
-    
+
     @objc private func loginButtonTapped() {
         present(signInVC, animated: true, completion: nil)
     }
-    
+
     @objc private func googleButtonTapped() {
         AuthService.shared.googleLogin()
     }
 }
 
-//MARK: - AuthNavigationDelegate
+// MARK: - AuthNavigationDelegate
 
 extension AuthViewController: AuthNavigationDelegate {
-    
+
     func toSingInVC() {
         present(signInVC, animated: true, completion: nil)
     }
-    
+
     func toSingUpVC() {
         signUpVC.modalPresentationStyle = .fullScreen
         present(signUpVC, animated: true, completion: nil)
     }
 }
 
-//MARK: - Keyboard setups
+// MARK: - Keyboard setups
 
 extension AuthViewController {
-    
+
     private func setupKeyboardHidding() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
               let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
-        
+
         let keyboardTopY = keyboardFrame.cgRectValue.origin.y
         let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
         let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
-        
+
         if textFieldBottomY > keyboardTopY {
             let textBoxY = convertedTextFieldFrame.origin.y
             let newFrameY = (textBoxY - keyboardTopY / 2) * -1
             view.frame.origin.y = newFrameY
         }
     }
-    
+
     @objc func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0
     }
 }
 
-//TODO: Method google authorization with escaping completion
-//extension AuthViewController {
+// TODO: Method google authorization with escaping completion
+// extension AuthViewController {
 //    private func sign() {
 //        AuthService.shared.googleLogin() { googleLoginResult in
 //            switch googleLoginResult {
@@ -130,13 +134,12 @@ extension AuthViewController {
 //            }
 //        }
 //    }
-//}
+// }
 
- 
-//MARK: - Setup constraints
+// MARK: - Setup constraints
 
 extension AuthViewController {
-    
+
     private func setupConstraints() {
         let googleView = ButtonFormAuthView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormAuthView(label: emailLabel, button: emailButton)
@@ -144,22 +147,22 @@ extension AuthViewController {
         let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView, textField1],
                                     axis: .vertical,
                                     spacing: 40)
-        
-        //tAMIC
+
+        // tAMIC
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //addSubviews
+
+        // addSubviews
         view.addSubview(logoImageView)
         view.addSubview(stackView)
-        
-        //Constraints
+
+        // Constraints
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
             logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
-        
+
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
@@ -168,7 +171,7 @@ extension AuthViewController {
     }
 }
 
-//MARK: - SwiftUI
+// MARK: - SwiftUI
 
 import SwiftUI
 
@@ -176,17 +179,19 @@ struct AuthVCProvider: PreviewProvider {
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
-    
+
     struct ContainerView: UIViewControllerRepresentable {
-        
+
         let viewController = AuthViewController()
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<AuthVCProvider.ContainerView>) -> AuthViewController {
+
+        func makeUIViewController(
+            context: UIViewControllerRepresentableContext<AuthVCProvider.ContainerView>) -> AuthViewController {
             return viewController
         }
-        
-        func updateUIViewController(_ uiViewController: AuthVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<AuthVCProvider.ContainerView>) {
-            
+
+        func updateUIViewController(_ uiViewController: AuthVCProvider.ContainerView.UIViewControllerType,
+                                    context: UIViewControllerRepresentableContext<AuthVCProvider.ContainerView>) {
+
         }
     }
 }

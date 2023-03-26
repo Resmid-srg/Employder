@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIButton {
-    
+
     convenience init(title: String,
                      titleColor: UIColor,
                      backgroundColor: UIColor,
@@ -16,14 +16,14 @@ extension UIButton {
                      isShadow: Bool = false,
                      cornerRadius: CGFloat = 4) {
         self.init(type: .system)
-        
+
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
         self.backgroundColor = backgroundColor
         self.titleLabel?.font = font
-        
+
         self.layer.cornerRadius = cornerRadius
-        
+
         if isShadow {
             self.layer.shadowColor = UIColor.black.cgColor
             self.layer.shadowRadius = 4
@@ -31,7 +31,7 @@ extension UIButton {
             self.layer.shadowOffset = CGSize(width: 0, height: 4)
         }
     }
-    
+
     func customizeGoogleButton() {
         let googleLogo = UIImageView(image: UIImage(named: "google"), contentMode: .scaleAspectFit)
         googleLogo.translatesAutoresizingMaskIntoConstraints = false

@@ -9,17 +9,17 @@ import UIKit
 import SwiftUI
 
 class SectionHeader: UICollectionReusableView {
-    
+
     static let reuseId = "SectionHeader"
-    
+
     let title = UILabel()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         title.translatesAutoresizingMaskIntoConstraints = false
         addSubview(title)
-        
+
         NSLayoutConstraint.activate([
             title.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             title.topAnchor.constraint(equalTo: self.topAnchor),
@@ -27,15 +27,15 @@ class SectionHeader: UICollectionReusableView {
             title.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
-    
+
     func configure(text: String, font: UIFont?, textColor: UIColor) {
         title.textColor = textColor
         title.font = font
         title.text = text
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }

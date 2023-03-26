@@ -15,11 +15,11 @@ struct MMessage: Hashable, MessageType {
     let content: String
     var sentDate: Date
     let id: String?
-    
+
     var messageId: String {
         return id ?? UUID().uuidString
     }
-    
+
     var kind: MessageKit.MessageKind {
         return .text(content)
     }
@@ -30,20 +30,20 @@ struct MMessage: Hashable, MessageType {
         sentDate = Date()
         id = nil
     }
-    
+
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
         guard let sentData = data["created"] as? Timestamp else { return nil }
         guard let senderID = data["senderID"] as? String else { return nil }
         guard let senderUserName = data["senderName"] as? String else { return nil }
         guard let content = data["content"] as? String else { return nil }
-        
+
         self.id = document.documentID
         self.sentDate = sentData.dateValue()
         sender = UserMK(senderId: senderID, displayName: senderUserName)
         self.content = content
     }
-    
+
     var representation: [String: Any] {
         let rep: [String: Any] = [
             "created": sentDate,
@@ -53,11 +53,11 @@ struct MMessage: Hashable, MessageType {
             ]
         return rep
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(messageId)
     }
-    
+
     static func == (lhs: MMessage, rhs: MMessage) -> Bool {
         return lhs.messageId == rhs.messageId
     }

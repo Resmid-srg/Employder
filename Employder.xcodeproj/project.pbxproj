@@ -70,7 +70,7 @@
 /* Begin PBXFileReference section */
 		0A126B5628C0E28000B7A2A3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		0A22E4D828FCAD03005C603D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		0A2ADC9B28A141DC00F3F2BA /* Employder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Employder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A2ADC9B28A141DC00F3F2BA /* Employder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Employder.app; path = "/Users/dmitry/Documents/GitHub/Employder/build/Debug-iphoneos/Employder.app"; sourceTree = "<absolute>"; };
 		0A2ADC9E28A141DC00F3F2BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A2ADCA028A141DC00F3F2BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0A2ADCA228A141DC00F3F2BA /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -157,17 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				0A2ADC9D28A141DC00F3F2BA /* Employder */,
-				0A2ADC9C28A141DC00F3F2BA /* Products */,
-				0A7D90D4293666F20025BDE3 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		0A2ADC9C28A141DC00F3F2BA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0A2ADC9B28A141DC00F3F2BA /* Employder.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		0A2ADC9D28A141DC00F3F2BA /* Employder */ = {
@@ -267,13 +257,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		0A7D90D4293666F20025BDE3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		0AD68C3728A5558A00C7D15A /* Start views */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +311,7 @@
 			buildConfigurationList = 0A2ADCAF28A141DF00F3F2BA /* Build configuration list for PBXNativeTarget "Employder" */;
 			buildPhases = (
 				0A2ADC9728A141DC00F3F2BA /* Sources */,
+				0A2A8AB429D028DF005A9D7F /* ShellScript */,
 				0A2ADC9828A141DC00F3F2BA /* Frameworks */,
 				0A2ADC9928A141DC00F3F2BA /* Resources */,
 			);
@@ -378,9 +362,8 @@
 				0A51537628E2F08A00B512F3 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				0A57F15328EDEDA60058CF0A /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				0A22E4D528FCAC60005C603D /* XCRemoteSwiftPackageReference "MessageKit" */,
-				0A65A16E291836860047691B /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
-			productRefGroup = 0A2ADC9C28A141DC00F3F2BA /* Products */;
+			productRefGroup = 0A2ADC9228A141DC00F3F2BA;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -401,6 +384,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A2A8AB429D028DF005A9D7F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n\tswiftlint --fix && swiftlint\nelse\n\techo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0A2ADC9728A141DC00F3F2BA /* Sources */ = {
@@ -522,7 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -576,7 +580,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -702,14 +706,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
-			};
-		};
-		0A65A16E291836860047691B /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/SwiftLint";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

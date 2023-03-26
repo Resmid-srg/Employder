@@ -10,17 +10,17 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class CandidatesViewController: UIViewController {
-    
-    //Models
+
+	// Models
     var users = [MUser]()
-    
-    //Listeners
+
+    // Listeners
     private var usersListener: ListenerRegistration?
-        
-    //Title - count of users online
+
+    // Title - count of users online
     enum Section: Int, CaseIterable {
         case users
-        
+
         func description (usersCount: Int) -> String {
             switch self {
             case .users:
@@ -28,22 +28,22 @@ class CandidatesViewController: UIViewController {
             }
         }
     }
-    
+
     var dataSource: UICollectionViewDiffableDataSource<Section, MUser>?
     var collectionView: UICollectionView!
-    
-    //MARK: - deinit
-    
+
+    // MARK: - deinit
+
     deinit {
         usersListener?.remove()
     }
-    
-    //MARK: - viewDidLoad
-    
+
+    // MARK: - viewDidLoad
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Setups
+
+        // Setups
         view.backgroundColor = .white
         self.title = "Кандидаты"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти",
@@ -57,8 +57,8 @@ class CandidatesViewController: UIViewController {
         users.forEach {(userss) in
             print(userss.userName)
         }
-        
-        //Listeners
+
+        // Listeners
         usersListener = ListenerService.shared.usersObserve(users: users, completion: { [weak self] result in
             switch result {
             case .success(let users):
@@ -69,34 +69,42 @@ class CandidatesViewController: UIViewController {
             }
         })
     }
-    
-    //MARK: - Setups
-    
+
+    // MARK: - Setups
+
     @objc private func signOut() {
-        let ac = UIAlertController(title: nil, message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Отмена", style: .cancel))
-        ac.addAction(UIAlertAction(title: "Выйти", style: .default, handler: { _ in
+        let alertController = UIAlertController(title: nil,
+												message: "Вы уверены, что хотите выйти?",
+												preferredStyle: .alert)
+		alertController.addAction(UIAlertAction(title: "Отмена",
+												style: .cancel))
+		alertController.addAction(UIAlertAction(title: "Выйти",
+												style: .default,
+												handler: { _ in
             do {
                 try Auth.auth().signOut()
                 UIApplication.shared.mainKeyWindow?.rootViewController = AuthViewController()
             } catch {
-                print ("Error signing out \(error.localizedDescription)")
+                print("Error signing out \(error.localizedDescription)")
             }
         }))
-        present(ac, animated: true )
+        present(alertController, animated: true )
     }
-    
+
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+
         view.addSubview(collectionView)
-        
-        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
-        collectionView.register(CandidateCell.self, forCellWithReuseIdentifier: CandidateCell.reuseId)
+
+        collectionView.register(SectionHeader.self,
+								forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+								withReuseIdentifier: SectionHeader.reuseId)
+        collectionView.register(CandidateCell.self,
+								forCellWithReuseIdentifier: CandidateCell.reuseId)
         collectionView.delegate = self
     }
-    
+
     private func setupSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         navigationController?.navigationBar.barTintColor = .white
@@ -106,12 +114,12 @@ class CandidatesViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
     }
-    
+
     private func reloadData(with searchText: String?) {
         let filtered = users.filter { (userss) -> Bool in
             userss.contains(filter: searchText)
         }
-        
+
         var snapshot = NSDiffableDataSourceSnapshot<Section, MUser>()
         snapshot.appendSections([.users])
         snapshot.appendItems(filtered, toSection: .users)
@@ -119,7 +127,7 @@ class CandidatesViewController: UIViewController {
     }
 }
 
-//MARK: - UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension CandidatesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -129,82 +137,99 @@ extension CandidatesViewController: UICollectionViewDelegate {
     }
 }
 
-//MARK: - Data Source
+// MARK: - Data Source
 
 extension CandidatesViewController {
-    
+
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, MUser>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, userss) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, MUser>(collectionView: collectionView,
+																		cellProvider: { (collectionView, indexPath, userss) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }
-            
+
             switch section {
             case .users:
-                return self.configur(collectionView: collectionView, cellType: CandidateCell.self, with: userss, for: indexPath)
+                return self.configur(collectionView: collectionView,
+									 cellType: CandidateCell.self,
+									 with: userss,
+									 for: indexPath)
             }
         })
-        
-        dataSource?.supplementaryViewProvider = {
-            collectionView, kind, indexPath in
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can non create new section header") }
-            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
+
+        dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+																					  withReuseIdentifier: SectionHeader.reuseId,
+																					  for: indexPath) as? SectionHeader else {
+				fatalError("Can non create new section header")
+			}
+            guard let section = Section(rawValue: indexPath.section) else {
+				fatalError("Unknown section kind")
+			}
+
             let items = self.dataSource?.snapshot().itemIdentifiers(inSection: .users)
-            sectionHeader.configure(text: section.description(usersCount: items!.count), font: .systemFont(ofSize: 28, weight: .light), textColor: .label)
+            sectionHeader.configure(text: section.description(usersCount: items!.count),
+									font: .systemFont(ofSize: 28, weight: .light),
+									textColor: .label)
             return sectionHeader
         }
     }
 }
 
-//MARK: - Setup layout
+// MARK: - Setup layout
 
 extension CandidatesViewController {
-    
+
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
             guard let section = Section(rawValue: sectionIndex) else {
                 fatalError("Unknown section kind")
             }
-            
+
             switch section {
             case .users:
                 return self.createCandidatesSection()
             }
         }
-        
+
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.interSectionSpacing = 20
         layout.configuration = config
         return layout
     }
-    
+
     private func createCandidatesSection() -> NSCollectionLayoutSection {
         let spacing = CGFloat(16)
-        
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+											  heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.6))
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+											   heightDimension: .fractionalWidth(0.6))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         group.interItemSpacing = .fixed(spacing)
-        
+
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 16, bottom: 16, trailing: 16)
         section.interGroupSpacing = spacing
-        
+
         let sectionHeader = createSectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
-    
+
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+													   heightDimension: .estimated(1))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
+																		elementKind: UICollectionView.elementKindSectionHeader,
+																		alignment: .top)
         return sectionHeader
     }
 }
 
-//MARK: - UISearchBarDelegate
+// MARK: - UISearchBarDelegate
 
 extension CandidatesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -212,25 +237,27 @@ extension CandidatesViewController: UISearchBarDelegate {
     }
 }
 
-//MARK: - SwiftUI
+// MARK: - SwiftUI
 
 import SwiftUI
 
-struct CandidatesVCProvider: PreviewProvider {
-    
+struct CandVCProv: PreviewProvider {
+
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
-    
+
     struct ContainerView: UIViewControllerRepresentable {
-        
+
         let tabBarVC = MainTabBarController()
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<CandidatesVCProvider.ContainerView>) -> MainTabBarController {
+
+        func makeUIViewController(
+            context: UIViewControllerRepresentableContext<CandVCProv.ContainerView>) -> MainTabBarController {
             return tabBarVC
         }
-        
-        func updateUIViewController(_ uiViewController: CandidatesVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<CandidatesVCProvider.ContainerView>) {
+
+        func updateUIViewController(_ uiViewController: CandVCProv.ContainerView.UIViewControllerType,
+                                    context: UIViewControllerRepresentableContext<CandVCProv.ContainerView>) {
         }
     }
 }

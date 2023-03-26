@@ -11,72 +11,72 @@ import SDWebImage
 import PhotosUI
 
 class SetupProfileViewController: UIViewController {
-    
+
     let welcomeLabel = UILabel(text: "Set up profile", font: .avenir26())
     let fullNameLabel = UILabel(text: "Full name")
     let aboutMeLabel = UILabel(text: "About me")
     let sexLabel = UILabel(text: "Sex")
-    
+
     let fullNameTextField = OneLineTextField(font: .avenir20())
     let aboutMeTextField = OneLineTextField(font: .avenir20())
-    
+
     let fullAddPhotoView = AddPhotoView()
-    
+
     let sexSelector = UISegmentedControl(first: "Male", second: "Female")
-    
+
     let goToChatButton = UIButton(title: "Go to chats!", titleColor: .white, backgroundColor: .buttonBlack())
-    
+
     private let currentUser: User
-    
-    //MARK: - init
-    
+
+    // MARK: - init
+
     init (currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
-        
+
         if let userName = currentUser.displayName {
             fullNameTextField.text = userName
         }
-        
+
         if let photoURL = currentUser.photoURL {
             fullAddPhotoView.circleImageView.sd_setImage(with: photoURL)
         }
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: - viewDidLoad
-    
+
+    // MARK: - viewDidLoad
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Delegates
+
+        // Delegates
         self.fullNameTextField.delegate = self
         self.aboutMeTextField.delegate = self
-        
-        //Setups
+
+        // Setups
         view.backgroundColor = .white
         setupConstraints()
         setupKeyboardHidding()
-        
-        //Buttons
+
+        // Buttons
         goToChatButton.addTarget(self, action: #selector(goToChatButtonTapped), for: .touchUpInside)
         fullAddPhotoView.plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
-    
-    //MARK: - Buttons
-    
+
+    // MARK: - Buttons
+
     @objc private func plusButtonTapped() {
         var config = PHPickerConfiguration(photoLibrary: .shared())
         config.selectionLimit = 1
         config.filter = .images
-        let vc = PHPickerViewController(configuration: config)
-        vc.delegate = self
-        self.present(vc, animated: true)
+        let PHPickerVC = PHPickerViewController(configuration: config)
+        PHPickerVC.delegate = self
+        self.present(PHPickerVC, animated: true)
     }
-    
+
     @objc private func goToChatButtonTapped() {
         FirestoreService.shared.saveProfileWith(
             id: currentUser.uid,
@@ -100,35 +100,39 @@ class SetupProfileViewController: UIViewController {
     }
 }
 
-//MARK: - Keyboard Setup
+// MARK: - Keyboard Setup
 
 extension SetupProfileViewController {
-    
+
     private func setupKeyboardHidding() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
               let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
-        
+
         let keyboardTopY = keyboardFrame.cgRectValue.origin.y
         let convertedTextFieldFrame = self.view.convert(currentTextField.frame, from: currentTextField.superview)
-        //let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
-        
+        // let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+
         let textBoxY = convertedTextFieldFrame.origin.y
         let newFrameY = (textBoxY - keyboardTopY / 2) * -1
         self.view.frame.origin.y = newFrameY
     }
-    
+
     @objc func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0
     }
 }
 
-//MARK: - UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 
 extension SetupProfileViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -140,19 +144,19 @@ extension SetupProfileViewController: UITextFieldDelegate {
         }
         return false
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
 }
-    
+
 // MARK: - PHPickerViewControllerDelegate
 
 extension SetupProfileViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
-        
+
         results.forEach { result in
             result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] reading, error in
                 guard let image = reading as? UIImage, error == nil else {
@@ -166,49 +170,50 @@ extension SetupProfileViewController: PHPickerViewControllerDelegate {
     }
 }
 
-//MARK: - Setup constraints
+// MARK: - Setup constraints
 
 extension SetupProfileViewController {
-    
+
     private func setupConstraints() {
-        
-        let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel,fullNameTextField],
+
+        let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel, fullNameTextField],
                                             axis: .vertical,
                                             spacing: 8)
-        let aboutMeStackView = UIStackView(arrangedSubviews: [aboutMeLabel,aboutMeTextField],
+        let aboutMeStackView = UIStackView(arrangedSubviews: [aboutMeLabel, aboutMeTextField],
                                            axis: .vertical,
                                            spacing: 8)
-        let sexStackView = UIStackView(arrangedSubviews: [sexLabel,sexSelector],
+        let sexStackView = UIStackView(arrangedSubviews: [sexLabel, sexSelector],
                                        axis: .vertical,
                                        spacing: 8)
-        
-        let stackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutMeStackView, sexStackView, goToChatButton],
-                                    axis: .vertical,
-                                    spacing: 40)
-        
-        //tAMIC
+
+        let stackView = UIStackView(
+            arrangedSubviews: [fullNameStackView, aboutMeStackView, sexStackView, goToChatButton],
+            axis: .vertical,
+            spacing: 40)
+
+        // tAMIC
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         fullAddPhotoView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //addSubviews
+
+        // addSubviews
         view.addSubview(welcomeLabel)
         view.addSubview(fullAddPhotoView)
         view.addSubview(stackView)
-        
-        //Constaraints
+
+        // Constaraints
         goToChatButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
+
         NSLayoutConstraint.activate([
             welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
+
         NSLayoutConstraint.activate([
             fullAddPhotoView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 40),
             fullAddPhotoView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
+
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: fullAddPhotoView.bottomAnchor, constant: 50),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
@@ -216,24 +221,27 @@ extension SetupProfileViewController {
         ])
     }
 }
-//MARK: - SwiftUI
+// MARK: - SwiftUI
 
 import SwiftUI
 
-struct SetupProfileVCProvider: PreviewProvider {
+struct SetupProfileVCProv: PreviewProvider {
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
-    
+
     struct ContainerView: UIViewControllerRepresentable {
-        
+
         let setupProfileVC = SetupProfileViewController(currentUser: Auth.auth().currentUser!)
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<SetupProfileVCProvider.ContainerView>) -> SetupProfileViewController {
+
+        func makeUIViewController(
+            context: UIViewControllerRepresentableContext<SetupProfileVCProv.ContainerView>) ->
+        SetupProfileViewController {
             return setupProfileVC
         }
-        
-        func updateUIViewController(_ uiViewController: SetupProfileVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SetupProfileVCProvider.ContainerView>) {
+
+        func updateUIViewController(_ uiViewController: SetupProfileVCProv.ContainerView.UIViewControllerType,
+                                    context: UIViewControllerRepresentableContext<SetupProfileVCProv.ContainerView>) {
         }
     }
 }

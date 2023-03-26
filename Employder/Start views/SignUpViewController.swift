@@ -8,7 +8,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-    
+
     let helloLabel = UILabel(text: "Hello!", font: .avenir26())
     let emailLabel = UILabel(text: "Email")
     let passwordLabel = UILabel(text: "Password")
@@ -17,7 +17,7 @@ class SignUpViewController: UIViewController {
     let emailTextField = OneLineTextField(font: .avenir20())
     let passwordTextField = OneLineTextField(font: .avenir20(), isSecure: true)
     let confirmPasswordTextField = OneLineTextField(font: .avenir20(), isSecure: true)
-    
+
     let signUpButton = UIButton(title: "Sign Up", titleColor: .white, backgroundColor: .buttonBlack())
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
@@ -26,32 +26,32 @@ class SignUpViewController: UIViewController {
         button.titleLabel?.font = .avenir20()
         return button
     }()
-    
-    //Delegates
+
+    // Delegates
     weak var delegate: AuthNavigationDelegate?
-    
-    //MARK: - viewDidLoad
-    
+
+    // MARK: - viewDidLoad
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Delegates
+
+        // Delegates
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
-        
-        //Setups
+
+        // Setups
         view.backgroundColor = .white
         setupConstraints()
         setupKeyboardHidding()
-        
-        //Buttons
+
+        // Buttons
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
-    
-    //MARK: - Buttons
-    
+
+    // MARK: - Buttons
+
     @objc private func signUpButtonTapped() {
         print(#function)
         AuthService.shared.register(email: emailTextField.text,
@@ -67,7 +67,7 @@ class SignUpViewController: UIViewController {
             }
         }
     }
-    
+
     @objc private func loginButtonTapped() {
         dismiss(animated: true) {
             self.delegate?.toSingInVC()
@@ -75,37 +75,43 @@ class SignUpViewController: UIViewController {
     }
 }
 
-//MARK: - Keyboard Setups
+// MARK: - Keyboard Setups
 
 extension SignUpViewController {
-    
+
     private func setupKeyboardHidding() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
-    
+
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
               let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
-        
+
         let keyboardTopY = keyboardFrame.cgRectValue.origin.y
         let convertedTextFieldFrame = self.view.convert(currentTextField.frame, from: currentTextField.superview)
         let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
-        
+
         if textFieldBottomY < keyboardTopY {
             let textBoxY = convertedTextFieldFrame.origin.y
             let newFrameY = (textBoxY - keyboardTopY / 2) * -1
             self.view.frame.origin.y = newFrameY
         }
     }
-    
+
     @objc func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0
     }
 }
 
-//MARK: - showAlert
+// MARK: - showAlert
 
 extension UIViewController {
     func showAlert(with title: String, and message: String, completion: @escaping () -> Void = { }) {
@@ -118,7 +124,7 @@ extension UIViewController {
     }
 }
 
-//MARK: - UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -132,19 +138,19 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         return false
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
 }
 
-//MARK: - Setup constraints
+// MARK: - Setup constraints
 
 extension SignUpViewController {
-    
+
     private func setupConstraints() {
-        
+
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField],
                                          axis: .vertical,
                                          spacing: 0)
@@ -154,39 +160,39 @@ extension SignUpViewController {
         let confirmPasswordStackView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField],
                                                    axis: .vertical,
                                                    spacing: 0)
-        
-        
-        let stackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, confirmPasswordStackView, signUpButton],
+
+        let stackView = UIStackView(
+            arrangedSubviews: [emailStackView, passwordStackView, confirmPasswordStackView, signUpButton],
                                     axis: .vertical,
                                     spacing: 46)
         let bottomStackView = UIStackView(arrangedSubviews: [alreadyOnboardLabel, loginButton],
                                           axis: .horizontal,
                                           spacing: 8)
-        
-        //tAMIC
+
+        // tAMIC
         helloLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //addSubviews
+
+        // addSubviews
         view.addSubview(helloLabel)
         view.addSubview(stackView)
         view.addSubview(bottomStackView)
-        
-        //Constraints
+
+        // Constraints
         signUpButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
+
         NSLayoutConstraint.activate([
             helloLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 128),
             helloLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
+
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: helloLabel.bottomAnchor, constant: 88),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
-        
+
         NSLayoutConstraint.activate([
             bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 120),
             bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -194,8 +200,7 @@ extension SignUpViewController {
     }
 }
 
-
-//MARK: - SwiftUI
+// MARK: - SwiftUI
 
 import SwiftUI
 
@@ -203,16 +208,18 @@ struct SingUpVCProvider: PreviewProvider {
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
-    
+
     struct ContainerView: UIViewControllerRepresentable {
-        
+
         let signUpVC = SignUpViewController()
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<SingUpVCProvider.ContainerView>) -> SignUpViewController {
+
+        func makeUIViewController(
+            context: UIViewControllerRepresentableContext<SingUpVCProvider.ContainerView>) -> SignUpViewController {
             return signUpVC
         }
-        
-        func updateUIViewController(_ uiViewController: SingUpVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SingUpVCProvider.ContainerView>) {
+
+        func updateUIViewController(_ uiViewController: SingUpVCProvider.ContainerView.UIViewControllerType,
+                                    context: UIViewControllerRepresentableContext<SingUpVCProvider.ContainerView>) {
         }
     }
 }

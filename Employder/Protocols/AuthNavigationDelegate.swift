@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AuthNavigationDelegate: AnyObject{
+protocol AuthNavigationDelegate: AnyObject {
     func toSingInVC()
     func toSingUpVC()
 }

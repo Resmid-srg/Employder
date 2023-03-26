@@ -9,47 +9,47 @@ import UIKit
 import SDWebImage
 
 class  WaitingChatCell: UICollectionViewCell, SelfConfiguringCell {
-    
+
     static var reuseId: String = "WaitingChatCell"
-    
+
     let friendImageView = UIImageView()
-    
-    //MARK: - init
-    
+
+    // MARK: - init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
-        
+
         self.layer.cornerRadius = 44
         self.clipsToBounds = true
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: - Setups
-    
-    func configur<U>(with value: U) where U : Hashable {
+
+    // MARK: - Setups
+
+    func configur<U>(with value: U) where U: Hashable {
         guard let chat: MChat = value as? MChat else { return }
         friendImageView.sd_setImage(with: URL(string: chat.friendUserImageStringURL ))
         friendImageView.contentMode = .scaleAspectFill
     }
 }
 
-//MARK: - Setup constraints
+// MARK: - Setup constraints
 
 extension WaitingChatCell {
-    
+
     private func setupConstraints() {
-        
-        //tAMIC
+
+        // tAMIC
         friendImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //addSubviews
+
+        // addSubviews
         addSubview(friendImageView)
-        
-        //Constaraints
+
+        // Constaraints
         NSLayoutConstraint.activate([
             friendImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             friendImageView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -59,7 +59,7 @@ extension WaitingChatCell {
     }
 }
 
-//MARK: - SwiftUI
+// MARK: - SwiftUI
 
 import SwiftUI
 
@@ -67,17 +67,19 @@ struct WaitingChatProvider: PreviewProvider {
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
-    
+
     struct ContainerView: UIViewControllerRepresentable {
-        
+
         let tabBarVC = MainTabBarController()
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<WaitingChatProvider.ContainerView>) -> MainTabBarController {
+
+        func makeUIViewController(
+            context: UIViewControllerRepresentableContext<WaitingChatProvider.ContainerView>) -> MainTabBarController {
             return tabBarVC
         }
-        
-        func updateUIViewController(_ uiViewController: WaitingChatProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<WaitingChatProvider.ContainerView>) {
-            
+
+        func updateUIViewController(_ uiViewController: WaitingChatProvider.ContainerView.UIViewControllerType,
+                                    context: UIViewControllerRepresentableContext<WaitingChatProvider.ContainerView>) {
+
         }
     }
 }

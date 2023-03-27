@@ -126,33 +126,6 @@ extension AuthViewController {
     }
 }
 
-// TODO: Method google authorization with escaping completion
-// extension AuthViewController {
-//    private func sign() {
-//        AuthService.shared.googleLogin() { googleLoginResult in
-//            switch googleLoginResult {
-//            case .success(let user):
-//                FirebaseService.shared.getUserData(user: user) { getUserResult in
-//                    switch getUserResult {
-//                    case .success:
-//                        self.showAlert(with: "Успешно", and: "Вы авторизованы") {
-//                            let mainTabBar = MainTabBarController()
-//                            mainTabBar.modalPresentationStyle = .fullScreen
-//                            self.present(mainTabBar, animated: true)
-//                        }
-//                    case .failure:
-//                        self.showAlert(with: "Успешно", and: "Вы зарегистрированы") {
-//                            self.present(SetupProfileViewController(currentUser: user), animated: true)
-//                        }
-//                    }
-//                }
-//            case .failure(let error):
-//                self.showAlert(with: "Ошибка", and: error.localizedDescription)
-//            }
-//        }
-//    }
-// }
-
 // MARK: - Setup constraints
 
 extension AuthViewController {

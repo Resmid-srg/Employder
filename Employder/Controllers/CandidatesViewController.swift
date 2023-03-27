@@ -143,7 +143,7 @@ extension CandidatesViewController {
 
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, MUser>(collectionView: collectionView,
-																		cellProvider: { (collectionView, indexPath, userss) -> UICollectionViewCell? in
+                                                                        cellProvider: { (collectionView, indexPath, userss) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }
@@ -151,9 +151,9 @@ extension CandidatesViewController {
             switch section {
             case .users:
                 return self.configur(collectionView: collectionView,
-									 cellType: CandidateCell.self,
-									 with: userss,
-									 for: indexPath)
+                                     cellType: CandidateCell.self,
+                                     with: userss,
+                                     for: indexPath)
             }
         })
 

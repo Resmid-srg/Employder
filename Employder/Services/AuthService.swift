@@ -38,54 +38,6 @@ class AuthService {
 
     // MARK: - Authorization and registration via google
 
-//    func googleLogin() {
-//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//        let config = GIDConfiguration(clientID: clientID)
-//
-//        guard let presenting = UIApplication.getTopViewController() else {
-//            return print("Error: Top view controller is nil")
-//        }
-//        GIDSignIn.sharedInstance.signIn(with: config, presenting: presenting) { user, error in
-//
-//            if let error = error {
-//                UIApplication.getTopViewController()?.showAlert(with: "Ошибка", and: error.localizedDescription)
-//                return
-//            }
-//
-//            guard
-//                let auth = user?.authentication,
-//                let idToken = auth.idToken
-//            else { return }
-//
-//            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: auth.accessToken)
-//
-//            Auth.auth().signIn(with: credential) { (result, error) in
-//                guard let result = result else {
-//                    UIApplication.getTopViewController()?.showAlert(with: "Ошибка", and: error!.localizedDescription)
-//                    return
-//                }
-//                FirestoreService.shared.getUserData(user: result.user) { getUserResult in
-//                    switch getUserResult {
-//                    case .success:
-//                        UIApplication.getTopViewController()?.showAlert(with: "Успешно", and: "Вы авторизованы") {
-//                            let mainTabBar = MainTabBarController()
-//                            mainTabBar.modalPresentationStyle = .fullScreen
-//                            UIApplication.getTopViewController()?.present(mainTabBar, animated: true)
-//                        }
-//                    case .failure:
-//                        UIApplication.getTopViewController()?.showAlert(with: "Успешно", and: "Вы зарегистрированы") {
-//                            UIApplication.getTopViewController()?.present(
-//                                SetupProfileViewController(currentUser: result.user), animated: true
-//                            )
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-
-    // TODO: - googleLogin through escaping
-
     func googleLogin(completion: @escaping (Result<User, Error>) -> Void) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         let config = GIDConfiguration(clientID: clientID)

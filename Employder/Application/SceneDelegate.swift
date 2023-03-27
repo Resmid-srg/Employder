@@ -49,5 +49,10 @@ extension UIApplication {
                 return keyWindow
             }
         }
+        set {
+            if let ader = newValue {
+                print("setter \(ader)")
+            }
+        }
     }
 }

@@ -85,7 +85,25 @@ class SignInViewController: UIViewController {
     }
 
     @objc private func googleButtonTapped() {
-        AuthService().googleLogin()
+        AuthService().googleLogin { [weak self] logResult in
+            switch logResult {
+            case .success(let user):
+                self?.showAlert(with: "Успешно", and: "Вы авторизованы!") {
+                    FirestoreService.shared.getUserData(user: user) { result in
+                        switch result {
+                        case .success(let mcandidate):
+                            let mainTabBar = MainTabBarController(currentUser: mcandidate)
+                            mainTabBar.modalPresentationStyle = .fullScreen
+                            self?.present(mainTabBar, animated: true, completion: nil)
+                        case .failure:
+                            self?.present(SetupProfileViewController(currentUser: user), animated: true)
+                        }
+                    }
+                }
+            case .failure(let error):
+                self?.showAlert(with: "Ошибка", and: error.localizedDescription)
+            }
+        }
     }
 }
 
@@ -113,7 +131,7 @@ extension SignInViewController {
         let convertedTextFieldFrame = self.view.convert(currentTextField.frame, from: currentTextField.superview)
         let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
 
-        if textFieldBottomY > keyboardTopY {
+        if textFieldBottomY < keyboardTopY {
             let textBoxY = convertedTextFieldFrame.origin.y
             let newFrameY = (textBoxY - keyboardTopY / 2) * -1
             view.frame.origin.y = newFrameY
@@ -205,7 +223,7 @@ extension SignInViewController {
         ])
 
         NSLayoutConstraint.activate([
-            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 80),
+            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50),
             bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }

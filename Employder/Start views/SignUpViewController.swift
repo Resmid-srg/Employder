@@ -194,7 +194,7 @@ extension SignUpViewController {
         ])
 
         NSLayoutConstraint.activate([
-            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 120),
+            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 100),
             bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }

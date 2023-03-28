@@ -63,15 +63,8 @@ class CandidateCell: UICollectionViewCell, SelfConfiguringCell {
 extension CandidateCell {
 
     private func setupConstrints() {
-
         // tAMIC
-        userName.translatesAutoresizingMaskIntoConstraints = false
-        userImageView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        aboutMe.translatesAutoresizingMaskIntoConstraints = false
-        aboutMeHeader.translatesAutoresizingMaskIntoConstraints = false
-        experience.translatesAutoresizingMaskIntoConstraints = false
-        speciality.translatesAutoresizingMaskIntoConstraints = false
+        disablingTAMIC()
 
         // addSubviews
         addSubview(containerView)
@@ -126,6 +119,16 @@ extension CandidateCell {
             speciality.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: 2),
             speciality.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
         ])
+    }
+
+    private func disablingTAMIC() {
+        userName.translatesAutoresizingMaskIntoConstraints = false
+        userImageView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        aboutMe.translatesAutoresizingMaskIntoConstraints = false
+        aboutMeHeader.translatesAutoresizingMaskIntoConstraints = false
+        experience.translatesAutoresizingMaskIntoConstraints = false
+        speciality.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 

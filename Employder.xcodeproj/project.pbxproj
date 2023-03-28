@@ -174,8 +174,8 @@
 			children = (
 				0AEC26B829225A0C00D9D519 /* Application */,
 				0A126B5828C0E28900B7A2A3 /* Services */,
-				0AD68C3828A555EF00C7D15A /* Controllers */,
 				0AD68C3728A5558A00C7D15A /* Start views */,
+				0AD68C3828A555EF00C7D15A /* Controllers */,
 				0A5B1C8B28BB9D2200BF535D /* Protocols */,
 				0A51CA4828A2AB0700ECB8FC /* Extensions */,
 				0A52568E28C686160064AB6C /* Helpers */,

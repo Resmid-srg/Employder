@@ -142,8 +142,9 @@ extension CandidatesViewController: UICollectionViewDelegate {
 extension CandidatesViewController {
 
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, MUser>(collectionView: collectionView,
-                                                                        cellProvider: { (collectionView, indexPath, userss) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, MUser>(
+            collectionView: collectionView,
+            cellProvider: { (collectionView, indexPath, userss) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }
@@ -158,9 +159,10 @@ extension CandidatesViewController {
         })
 
         dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-																					  withReuseIdentifier: SectionHeader.reuseId,
-																					  for: indexPath) as? SectionHeader else {
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: SectionHeader.reuseId,
+                for: indexPath) as? SectionHeader else {
 				fatalError("Can non create new section header")
 			}
             guard let section = Section(rawValue: indexPath.section) else {
@@ -221,10 +223,11 @@ extension CandidatesViewController {
 
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-													   heightDimension: .estimated(1))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
-																		elementKind: UICollectionView.elementKindSectionHeader,
-																		alignment: .top)
+                                                       heightDimension: .estimated(1))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: sectionHeaderSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
         return sectionHeader
     }
 }

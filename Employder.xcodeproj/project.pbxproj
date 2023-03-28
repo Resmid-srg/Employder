@@ -70,7 +70,6 @@
 /* Begin PBXFileReference section */
 		0A126B5628C0E28000B7A2A3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		0A22E4D828FCAD03005C603D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		0A2ADC9B28A141DC00F3F2BA /* Employder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Employder.app; path = "/Users/dmitry/Documents/GitHub/Employder/build/Debug-iphoneos/Employder.app"; sourceTree = "<absolute>"; };
 		0A2ADC9E28A141DC00F3F2BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A2ADCA028A141DC00F3F2BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0A2ADCA228A141DC00F3F2BA /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		0A5BA7F228A26F1500C66C62 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		0A5BA7F428A276E800C66C62 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		0A665EC228EC0E3F00632BD1 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		0A69EB1329D2CBC300150FBB /* Employder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Employder.app; path = "/Users/dmitry/Documents/GitHub/Employder/build/Debug-iphoneos/Employder.app"; sourceTree = "<absolute>"; };
 		0A6A3C5D28B52FC0008EF5DB /* Bandle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bandle-Decodable.swift"; sourceTree = "<group>"; };
 		0A6C46DE28BE6CFF00E7F221 /* CandidateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		0A6C46E028BE703800E7F221 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -330,7 +330,7 @@
 				0A7D90D5293666F20025BDE3 /* FirebaseAnalytics */,
 			);
 			productName = Employder;
-			productReference = 0A2ADC9B28A141DC00F3F2BA /* Employder.app */;
+			productReference = 0A69EB1329D2CBC300150FBB /* Employder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
